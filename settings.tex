@@ -1,0 +1,123 @@
+\documentclass[UTF8,fontset=none,zihao=-4,a4paper,leqno]{ctexbook}
+\ctexset{today=big}
+
+\usepackage{setspace}
+% Source: https://tex.stackexchange.com/questions/485059/pagination-issues-when-using-setspace
+\setdisplayskipstretch{}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[hidelinks,hyperindex]{hyperref}
+% Add hyperlinks to the table of contents
+\usepackage{bookmark}
+% partial=upright makes \partial stand up
+\usepackage[math-style=ISO,bold-style=ISO,mathrm=sym,mathbf=sym,partial=upright,warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+
+\allowdisplaybreaks[3]
+\AtBeginDocument{
+    % Standing-up-straight pi
+    \let\umathpi\pi
+    \renewcommand\pi{\symup\umathpi}
+    \let\umathiota\iota
+    \renewcommand\iota{\symup\umathiota}
+
+    \renewcommand\leq{\leqslant}
+    \renewcommand\geq{\geqslant}
+    \renewcommand\mathellipsis{\cdots}
+}
+
+\usepackage{enumitem}
+\setlist[1]{labelindent=\parindent}
+\setlist[itemize]{leftmargin=*,nosep}
+\setlist[enumerate]{leftmargin=*,nosep}
+\setlist[enumerate,1]{label=(\arabic*),ref=(\arabic*)}
+\setlist[description]{style=nextline,leftmargin=2\parindent}
+
+\makeatletter
+\providecommand{\openrighton}{}
+\renewcommand{\openrighton}{\@openrighttrue}
+\providecommand{\openrightoff}{}
+\renewcommand{\openrightoff}{\@openrightfalse}
+\makeatother
+
+\declaretheoremstyle[
+    spaceabove=2ex,
+    spacebelow=2ex,
+    headfont=\normalfont\bfseries,
+    notefont=\mdseries,
+    notebraces={(}{)},
+    bodyfont=\normalfont,
+    headindent=\parindent,
+    headpunct={},
+    postheadspace=1em
+]{myStyle}
+
+\declaretheoremstyle[
+    spaceabove=2ex,
+    spacebelow=2ex,
+    headfont=\normalfont\bfseries,
+    notefont=\mdseries,
+    notebraces={(}{)},
+    bodyfont=\normalfont,
+    headindent=\parindent,
+    headpunct={},
+    postheadspace=1em,
+    qed=\qedsymbol
+]{proofStyle}
+
+\declaretheorem[style=myStyle,name=定理,numberwithin=chapter]{theorem}
+\declaretheorem[style=myStyle,name=定义,sibling=theorem]{definition}
+\declaretheorem[style=myStyle,name=定义,numbered=no]{definition*}
+\declaretheorem[style=myStyle,name=命题,sibling=theorem]{proposition}
+\declaretheorem[style=myStyle,name=引理,sibling=theorem]{lemma}
+\declaretheorem[style=myStyle,name=公理,sibling=theorem]{axiom}
+\declaretheorem[style=myStyle,name=推论,sibling=theorem]{corollary}
+\declaretheorem[style=myStyle,name=例,sibling=theorem]{example}
+\declaretheorem[style=myStyle,name=注,sibling=theorem]{remark}
+\declaretheorem[style=myStyle,name=注,numbered=no]{remark*}
+\declaretheorem[style=myStyle,name=猜想,sibling=theorem]{conjecture}
+
+% Undefine the proof environment provided by `amsthm`
+\makeatletter
+\let\proof\@undefined
+\let\endproof\@undefined
+\makeatother
+\declaretheorem[style=proofStyle,name=证,numbered=no]{proof}
+
+\let\emph\relax
+\DeclareTextFontCommand{\emph}{\bfseries}
+
+% Punctuation style: narrow some punctuation symbols
+\punctstyle{kaiming}
+
+\usepackage[sort&compress]{gbt7714}
+\bibliographystyle{gbt7714-numerical}
+
+\setmainfont{XITS}
+% Standing-up-straight integral symbol (For XITS Math)
+\setmathfont{XITS Math}[StylisticSet=8]
+\setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
+% \setsansfont{Fira Sans}[BoldFont=Fira Sans SemiBold]
+% \setmonofont{Sarasa Mono SC}
+
+\setCJKmainfont[ItalicFont=Sarasa Mono SC Light]{Source Han Serif CN}
+\setCJKsansfont{Sarasa Mono SC}
+\setCJKmonofont{Sarasa Mono SC}
+
+% \usepackage{makeidx}
+% \makeindex
+
+\def\qedsymbol{证毕.}
+
+\renewcommand\thmcontinues[1]{%
+    \ifcsname hyperref\endcsname
+        \hyperref[#1]{续页}
+    \else
+        续页
+    \fi
+    {}\pageref{#1}%
+}

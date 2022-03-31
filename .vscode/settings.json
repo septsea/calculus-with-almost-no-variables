@@ -1,0 +1,28 @@
+{
+    "cSpell.enableFiletypes": [
+        "bibtex"
+    ],
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".old": true,
+        "**/**.aux": true,
+        "**/**.bbl": true,
+        "**/**.blg": true,
+        "**/indent.log": true,
+        "**/**.fdb_latexmk": true,
+        "**/**.fls": true,
+        "**/**.log": true,
+        "**/**.nav": true,
+        "**/**.out": true,
+        "**/**.pdf": true,
+        "**/**.snm": true,
+        "**/**.synctex.gz": true,
+        "**/**.toc": true,
+    }
+}
