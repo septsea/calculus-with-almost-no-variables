@@ -1,0 +1,222 @@
+\chapter{连续函数}
+
+本章简单地提及连续函数及其简单的性质; 这也是研究导数的基础.
+
+若无特别说明, 本章的函数的定义域与陪域都是 $\mathbb{R}$ 的子集.
+
+\section{连续的定义}
+
+\begin{definition}
+    设 $x \in \mathbb{R}$. 设 $\delta$ 为正数. 则 $N[x, \delta] = (x - \delta, x + \delta)$ 是 $x$ 的一个\emph{邻域}. 称 $N[x, \delta] - \{ x \} = (x - \delta, x) \cup (x, x + \delta)$ 是 $x$ 的一个\emph{去心邻域}.
+\end{definition}
+
+不难看出, $N[x, \delta]$ 就是 $\{ t \mid |t - x| < \delta \}$, 而 $N[x, \delta] - \{ x \}$ 就是 $\{ t \mid 0 < |t - x| < \delta \}$.
+
+下面的不等式十分有用.
+
+\begin{theorem}
+    对任意实数 $x$, $y$, 有
+    \begin{align*}
+        |x + y| \leq |x| + |y|.
+    \end{align*}
+    所以, 对任意实数 $a$, $b$, $c$,
+    \begin{align*}
+        |a - c| = |(a - b) + (b - c)| \leq |a - b| + |b - c|.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    注意到, 一个实数的绝对值不低于自身; 再注意到, 比较二个非负数的大小, 相当于比较它们的平方的大小. 所以
+    \begin{align*}
+         & {(|x| + |y|)^2 - |x + y|^2 = 2(|xy| - xy) \geq 0.} \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    设 $f$ 是 $A$ 上的函数. 设 $x \in A$. 若任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $f[A \cap N[x, \delta]] \subset N[f[x], \varepsilon]$, 则说 $f$ 于 $x$ \emph{连续}.
+\end{definition}
+
+不难看出, $f$ 于 $x$ 连续的一个必要与充分条件是: 任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $|t - x| < \delta$ 且 $t \in A$ 时, 必有 $|f[t] - f[x]| < \varepsilon$.
+
+\begin{theorem}
+    设 $f$, $g$ 是 $A$ 上的函数. 设 $x \in A$. 设 $f$, $g$ 都于 $x$ 连续. 设 $\ast$ 是三文字 $+$, $-$, $\cdot$ 的任意一个. 则 $f \ast g$ 也于 $x$ 连续.
+\end{theorem}
+
+\begin{proof}
+    以 $\ast$ 为 $+$ 或 $-$ 时为例. 任取 $\varepsilon > 0$. 这样, 因为 $f$ 于 $x$ 连续, 故存在正数 $\delta_1$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta_1$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{\varepsilon}{2}.
+    \end{align*}
+    因为 $g$ 于 $x$ 连续, 故存在正数 $\delta_2$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta_2$ 且 $t \in A$} \implies |g[t] - g[x]| < \frac{\varepsilon}{2}.
+    \end{align*}
+    取 $\delta$ 为 $\delta_1$, $\delta_2$ 的较小者. 这样, $|t - x| < \delta$ 且 $t \in A$ 时,
+    \begin{align*}
+        {|(f \ast g)[t] - (f \ast g)[x]|}
+        = {}    & {|(f[t] \ast g[t]) - (f[x] \ast g[x])|}       \\
+        = {}    & {|(f[t] - f[x]) \ast (g[t] - g[x])|}          \\
+        \leq {} & {|f[t] - f[x]| + |g[t] - g[x]|}               \\
+        < {}    & \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+        = \varepsilon.
+    \end{align*}
+
+    $\ast$ 为 $\cdot$ 时就稍繁一些. 不过, 不要恐慌. 注意到
+    \begin{align*}
+             & (fg)[t] - (fg)[x]                                   \\
+        = {} & f[t]g[t] - f[x]g[x]                                 \\
+        = {} & (f[t] - f[x] + f[x])g[t] + f[x](g[t] - g[x] + g[t]) \\
+        = {} & (f[t] - f[x])g[t] + f[x](g[t] - g[x]).
+    \end{align*}
+    所以, 我们想办法, 使 $(f[t] - f[x])g[t]$ 跟 $f[x](g[t] - g[x])$ 的绝对值都不超过 $\frac{\varepsilon}{2}$ 就好. 首先, 存在正数 $\delta_3$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta_3$ 且 $t \in A$} \implies |g[t] - g[x]| < \frac{\varepsilon}{2(1 + |f[x]|)}.
+    \end{align*}
+    其次, 存在正数 $\delta_4$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta_4$ 且 $t \in A$} \implies |g[t] - g[x]| < 1.
+    \end{align*}
+    由此可知, $|t - x| < \delta_4$ 且 $t \in A$ 时,
+    \begin{align*}
+        |g[t]| = |g[x] + (g[t] - g[x])| < |g[x]| + 1.
+    \end{align*}
+    最后, 存在正数 $\delta_5$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta_5$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{\varepsilon}{2(1 + |g[x]|)}.
+    \end{align*}
+    取 $\delta$ 为 $\delta_3$, $\delta_4$, $\delta_5$ 的最小者. 这样, $|t - x| < \delta$ 且 $t \in A$ 时,
+    \begin{align*}
+                & |(fg)[t] - (fg)[x]|                                                                                   \\
+        = {}    & |(f[t] - f[x])g[t] + f[x](g[t] - g[x])|                                                               \\
+        \leq {} & |f[t] - f[x]| \cdot |g[t]| + |f[x]| \cdot |g[t] - g[x]|                                               \\
+        < {}    & \frac{\varepsilon}{2(1 + |g[x]|)} \cdot (|g[x]| + 1) + |f[x]| \cdot \frac{\varepsilon}{2(1 + |f[x]|)} \\
+        < {}    & \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    设 $f$ 是 $A$ 上的函数. 设 $x \in A$. 设 $f$ 于 $x$ 连续. 若 $f[x] \neq 0$, 则 $f^{-1}$ 于 $x$ 连续.
+\end{theorem}
+
+\begin{proof}
+    任取 $\varepsilon > 0$. 注意到
+    \begin{align*}
+        f^{-1} [t] - f^{-1} [x] = -\frac{f[t] - f[x]}{f[t] f[x]}.
+    \end{align*}
+    所以, 我们想办法证明 $|f[t] f[x]|$ 比某个正数大. 这不难. 毕竟, 既然 $f[x] \neq 0$, 那么 $|f[x]|$ 当然是正数. 所以, 存在正数 $\delta_1$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta_1$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{|f[x]|}{2}.
+    \end{align*}
+    从而
+    \begin{align*}
+        |f[x]| = |f[t] - (f[t] - f[x])| \leq |f[t]| + |f[t] - f[x]| < |f[t]| + \frac{|f[x]|}{2},
+    \end{align*}
+    也就是
+    \begin{align*}
+        |f[t]| > |f[x]| - \frac{|f[x]|}{2} = \frac{|f[x]|}{2}.
+    \end{align*}
+    所以, $|t - x| < \delta_1$ 且 $t \in A$ 时,
+    \begin{align*}
+        |f[t] f[x]| > \frac{1}{2} |f[x]|^2.
+    \end{align*}
+    接下来想办法使 $|f[t] - f[x]| < \frac{2}{|f[x]|^2} \varepsilon$ 即可. 我十分信任您; 您一定可以写出此事的论证的, 对吧?
+\end{proof}
+
+\begin{remark}
+    一般地, 设 $f$ 是 $A$ 上的函数, $x \in A$, 且 $f$ 于 $x$ 连续. 若 $f[x] \neq 0$, 则存在 $x$ 的邻域 $N[x, \delta]$ 使 $t \in A \cap N[x, \delta]$ 时必有
+    \begin{align*}
+        \frac{1}{2} < \frac{f[t]}{f[x]} < \frac{3}{2}.
+    \end{align*}
+    取 $\varepsilon = |f[x]|/2$; 然后,
+    \begin{align*}
+        \bigg| \frac{f[t]}{f[x]} - 1 \bigg| = \frac{|f[t] - f[x]|}{|f[x]|} < \frac{1}{2}.
+    \end{align*}
+    我邀请您补全细节; 注意到 $|a - b| < c$ 相当于 $a - c < b < a + c$.
+\end{remark}
+
+\begin{theorem}
+    设 $f$, $g$ 是 $A$ 上的函数. 设 $x \in A$. 设 $f$, $g$ 都于 $x$ 连续. 设 $f[x] \neq 0$. 则 $g/f$ 也于 $x$ 连续.
+\end{theorem}
+
+\begin{proof}
+    注意到 $g/f = g \cdot f^{-1}$.
+\end{proof}
+
+\begin{theorem}
+    设 $f$: $A \to B$, $g$: $B \to C$. 若 $f$ 于 $x$ 连续, 且 $g$ 于 $f[x]$ 连续, 则 $g \circ f$: $A \to C$ 于 $x$ 连续.
+\end{theorem}
+
+\begin{proof}
+    任取正数 $\varepsilon$. 那么, 存在正数 $\delta^{\prime}$ 使
+    \begin{align*}
+        \text{$|v - f[x]| < \delta^{\prime}$ 且 $v \in B$} \implies |g[v] - g[f[x]]| < \varepsilon.
+    \end{align*}
+    也存在正数 $\delta$ 使
+    \begin{align*}
+        \text{$|t - x| < \delta$ 且 $t \in A$} \implies |f[t] - f[x]| < \delta^{\prime}.
+    \end{align*}
+    显然 $f[t] \in B$. 所以, $|t - x| < \delta$ 且 $t \in A$ 时,
+    \begin{align*}
+         & {|(g \circ f)[t] - (g \circ f)[x]| = |g[f[t]] - g[f[x]]| < \varepsilon.} \qedhere
+    \end{align*}
+\end{proof}
+
+\section{连续函数}
+
+我们已经知道函数于一点连续的意思. 不过, 什么是连续函数呢?
+
+\begin{definition}
+    设 $f$ 是 $A$ 上的函数. 若 $f$ 于 $A$ 的每一点都连续, 则 $f$ 是 ($A$ 上的) \emph{连续函数}.
+\end{definition}
+
+\begin{remark}
+    显然, 若 $B \subset A$, 那么 $f$ 在 $B$ 上的限制 $f_B$ 也是连续函数.
+\end{remark}
+
+利用上节的结论, 我们有下面的二个结论; 我相信您可以迅速地论证它们, 所以我就不证了.
+
+\begin{theorem}
+    设 $f$, $g$ 都是 $A$ 上的连续函数. 则:
+    \begin{enumerate}
+        \item $f \ast g$ 是连续函数, 这里 $\ast$ 是三文字 $+$, $-$, $\cdot$ 的任意一个.
+        \item 若 $f$ 不取零值 (也就是说, $f$ 无根), 则 $g/f$ 是连续函数.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    设 $f$: $A \to B$, $g$: $B \to C$ 都是连续函数. 则 $g \circ f$: $A \to C$ 也是连续函数.
+\end{theorem}
+
+\begin{example}
+    常函数 $c$: $\mathbb{R} \to \{ c \}$ 是连续函数.
+
+    任取一点 $x$. 注意到, 对任意非空集 $T \subset \mathbb{R}$, $c[T] = \{ c \}$. 所以, 任取正数 $\varepsilon$, 对 $x$ 的\emph{任意}邻域 $N[x, \delta]$, 都有 $c[N[x, \delta]] = \{ c \} \subset N[c, \varepsilon] = N[c[x], \varepsilon]$.
+\end{example}
+
+\begin{example}
+    $\iota$: $\mathbb{R} \to \mathbb{R}$ 是连续函数.
+
+    任取一点 $x$. 注意到, 对任意集 $T \subset \mathbb{R}$, $\iota[T] = T$. 所以, 任取正数 $\varepsilon$, 取 $x$ 的 $\varepsilon$ 邻域 $N[x, \varepsilon]$, 即得 $\iota[N[x, \varepsilon]] = N[x, \varepsilon] = N[\iota[x], \varepsilon] \subset N[\iota[x], \varepsilon]$.
+\end{example}
+
+所以, 我们又有下面的结论; 还是老样子, 请您迅速地给出一个论证.
+
+\begin{theorem}
+    每一个形如
+    \begin{align*}
+        \frac{b_0 + b_1 \iota + \dots + b_n \iota^n}{a_0 + a_1 \iota + \dots + a_m \iota^m}
+    \end{align*}
+    (其中 $m$, $n$ 为非负整数, 且 $a_0$, $a_1$, $\dots$, $a_m$ 是不全为零的实数, $b_0$, $b_1$, $\dots$, $b_n$ 是实数) 的函数都是其定义域上的连续函数.
+\end{theorem}
+
+为后面的需要, 我们考虑严单调函数与连续函数的关系.
+
+\begin{definition}
+    设 $f$ 是 $A$ 上的函数. 若任取 $A$ 的相异二元 $x$, $y$, 都有 $(x - y)(f[x] - f[y]) \geq 0$, 则说 $f$ \emph{增} (也说 $f$ 是\emph{增函数}); 若任取 $A$ 的相异二元 $x$, $y$, 都有 $(x - y)(f[x] - f[y]) > 0$, 则说 $f$ \emph{严增} (也说 $f$ 是\emph{严增函数}).
+
+    若 $-f$ 增, 则 $f$ \emph{减} (也说 $f$ 是\emph{减函数}); 若 $-f$ 严增, 则 $f$ \emph{严减} (也说 $f$ 是\emph{严减函数}).
+
+    若 $f$ 增或 $f$ 减, 则 $f$ \emph{单调} (也说 $f$ 是 \emph{单调函数}); 若 $f$ 严增或 $f$ 严减, 则 $f$ \emph{严单调} (也说 $f$ 是 \emph{严单调函数}).
+\end{definition}
+
+简单地, 说 $f$ 增 (严增), 就是说对任意适合 $x \in A$, $y \in A$ 且 $x < y$ 的 $x$, $y$, 必有 $f[x] \leq f[y]$ ($f[x] < f[y]$); 说 $f$ 减 (严减), 就是说对任意适合 $x \in A$, $y \in A$ 且 $x < y$ 的 $x$, $y$, 必有 $f[x] \geq f[y]$ ($f[x] > f[y]$).

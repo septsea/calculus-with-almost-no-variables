@@ -5,7 +5,7 @@
 \section{集}
 
 \begin{definition}
-    \emph{集}是具有某种特定性质的对象汇集而成的一个整体, 其对象称为\emph{元}.
+    \emph{集}是具有某种特定性质的对象汇集而成的一个整体. 称其对象为\emph{元}.
 \end{definition}
 
 \begin{remark}
@@ -147,11 +147,13 @@
         \item $(a, +\infty) = \{ x \mid a < x \}$;
         \item $[a, +\infty) = \{ x \mid a \leq x \}$.
     \end{enumerate}
-    这九类子集统称为\emph{区间}.
+    统称这九类子集为\emph{区间}. $a$ 是区间 $[a, b]$, $[a, b)$, $(a, b)$, $(a, b]$, $(a, +\infty)$, $[a, +\infty)$ 的\emph{左端点}; $b$ 是区间 $[a, b]$, $[a, b)$, $(a, b)$, $(a, b]$, $(-\infty, b]$, $(-\infty, b)$ 的\emph{右端点}; 左端点与右端点都是\emph{端点}.
+
+    有时, 我们认为 $\{ a \}$ 是\emph{退化为一点的区间} $[a, a]$; 我们认为空集是\emph{空区间} $[a, a)$, $(a, a)$, $[a, a)$, $[b, a)$, $(b, a)$, $(b, a]$ 或 $[b, a]$. 退化为一点的区间与空区间都是\emph{退化的区间}.
 \end{definition}
 
 \begin{remark}
-    可以验证, 若 $c$, $d$ 是某区间 $I$ 的任意二个相异元, 且 $c < d$, 则 $[c, d] \subset I$. 反过来, 若 $A \subset \mathbb{R}$, 且任取 $A$ 的二个相异元 $p$, $q$, 必有 $[m, M] \subset A$, 则 $A$ 为区间; 这里 $m$, $M$ 分别是 $p$, $q$ 的较小者与较大者.
+    设 $a$, $b$, $c$ 是实数. 说 $b$ 介于 $a$ 跟 $c$ 之间, 就是说 $a \leq b \leq c$ 或 $c \leq b \leq a$ (简单地, 就是 $(b - a)(b - c) \leq 0$). 这里, 我们临时地模糊区间与退化区间的差异, 统称其为 ``区间''. 那么, 显而易见地, 任给一个区间 $I$, 任取 $I$ 的二个相异实数 $a$, $b$, 则每个介于 $a$ 跟 $b$ 之间的实数必为 $I$ 的元. 反过来, 若 $\mathbb{R}$ 的子集适合 ``任取 $I$ 的二个相异实数, 每个介于 $a$ 跟 $b$ 之间的实数必为 $I$ 的元'', 则 $I$ 是区间. 此事的论证依赖实数的完备性, 故我就不继续展开它了. 若您对此事感兴趣, 可参考算学家张筑生的《数学分析新讲》.
 \end{remark}
 
 \section{关系与函数}
@@ -187,7 +189,7 @@
 \end{example}
 
 \begin{definition}
-    在本书, 我们为 ``什么也不干'' 的函数起一个名字. 具体地说, 设集 $A$, $B$ 非空, 且 $A \subset B$. 我们定义
+    在本书, 我们为 ``什么也不干'' 的函数起一个名字. 具体地说, 设 $A \subset B$. 我们定义
     \begin{align*}
         \text{$\iota_{A,B}$:} \quad
         A & \to B,                       \\
@@ -222,10 +224,6 @@
     可写 $f = g$ 的否定为 $f \neq g$. 具体地说, 若存在 $a \in A$ 使 $f[a] \neq g[a]$, 则说 $f \neq g$.
 \end{definition}
 
-% \begin{remark}
-%     值得注意的是, 我们并没有规定 $f$: $A \to B$ 与 $g$: $C \to D$ 的相等. 我们之后还会提及此事.
-% \end{remark}
-
 \begin{definition}
     设 $R$ 是 $A$ 到 $B$ 的关系. $B$ 到 $A$ 的关系
     \begin{align*}
@@ -259,11 +257,7 @@
 
     既然 $g[f[E]]$ 跟 $(g \circ f)[E]$ 相互包含, 二者必相等.
 
-    或许上面的论证比较枯燥; 或许此事比较显然. 不过, 严谨的算学就是像上面这样, 用定义说话, 而不是想当然. 毕竟, 尽管我们定义了 $a \in A$ 时 $(g \circ f)[a]$ 就是 $g[f[a]]$, 可我们并没有\emph{定义} $(g \circ f)[E]$ 是 $g[f[E]]$. 大算学家 John von Neumann 说过:
-    \begin{quotation}
-        Young man, in mathematics you don{\textquotesingle}t understand things. You just get used to them.
-    \end{quotation}
-    所以, 习惯就好了.
+    或许上面的论证比较枯燥; 或许此事比较显然. 不过, 严谨的算学就是像上面这样, 用定义说话, 而不是想当然. 毕竟, 尽管我们定义了 $a \in A$ 时 $(g \circ f)[a]$ 就是 $g[f[a]]$, 可我们并没有\emph{定义} $(g \circ f)[E]$ 是 $g[f[E]]$. 大算学家 John von Neumann 说过: ``Young man, in mathematics you don{\textquotesingle}t understand things. You just get used to them.'' 所以, 习惯就好了.
 \end{remark}
 
 \begin{remark}
@@ -299,11 +293,11 @@
 \end{definition}
 
 \begin{example}
-    设 $A \subset B$, 且 $A$ 非空. $A$ 到 $B$ 的函数 $\iota_{A,B}$ 总是单函数. 不过, 若 $A \neq B$, 则 $\iota_{A,B}$ 不是满函数.
+    设 $A \subset B$. $A$ 到 $B$ 的函数 $\iota_{A,B}$ 总是单函数. 不过, 若 $A \neq B$, 则 $\iota_{A,B}$ 不是满函数.
 \end{example}
 
 \begin{remark}
-    一般地, 设 $A$, $B$, $C$ 是三个非空集, 且 $B \subset C$. 设 $f$ 是 $A$ 到 $B$ 的函数, $g$ 是 $A$ 到 $C$ 的函数, 且对任意 $a \in A$, $f[a] = g[a]$. 那么, $f$ 是单函数的一个必要与充分条件是: $g$ 是单函数. 若 $f$ 不是满函数, 则 $g$ 也不是.
+    设 $B \subset C$. 设 $f$ 是 $A$ 到 $B$ 的函数, $g$ 是 $A$ 到 $C$ 的函数, 且对任意 $a \in A$, $f[a] = g[a]$. 那么, $f$ 是单函数的一个必要与充分条件是: $g$ 是单函数. 若 $f$ 不是满函数, 则 $g$ 也不是.
 
     若 $f$ 是满函数, 则 $g$ 也是满函数的一个必要与充分条件是: $B = C$.
 \end{remark}
@@ -392,7 +386,7 @@
                   \mathbb{R} & \to \mathbb{R}, \\
                   x          & \mapsto x;
               \end{align*}
-        \item 常数函数:
+        \item 常函数:
               \begin{align*}
                   \text{$c$:} \quad
                   \mathbb{R} & \to \{ c \}, \\
@@ -494,13 +488,13 @@
 \end{example}
 
 \begin{definition}
-    设 $A$, $B$, $C$ 是 $\mathbb{R}$ 的非空子集. 设 $f$: $A \to B$, $g$: $A \to C$. 设 $\ast$ 是文字 $+$, $-$, $\cdot$ 的任意一个. 定义
+    设 $A$, $B$, $C$ 是 $\mathbb{R}$ 的子集. 设 $f$: $A \to B$, $g$: $A \to C$. 设 $\ast$ 是文字 $+$, $-$, $\cdot$ 的任意一个. 定义
     \begin{align*}
         \text{$f \ast g$:} \quad
         A & \to D,                  \\
         x & \mapsto f[x] \ast g[x],
     \end{align*}
-    其中陪域 $D \subset \mathbb{R}$ 可视具体情况待定. 一般地, 若 $\ast$ 是乘号 $\cdot$, 则可被省略. 可写 $0_A - f$ 为 $-f$; 这里 $0_A$ 当然是常数函数 $0$ 在 $A$ 上的限制.
+    其中陪域 $D \subset \mathbb{R}$ 可视具体情况待定. 一般地, 若 $\ast$ 是乘号 $\cdot$, 则可被省略. 可写 $0_A - f$ 为 $-f$; 这里 $0_A$ 当然是常函数 $0$ 在 $A$ 上的限制.
 
     若对任意 $x \in A$, 都有 $f[x] \neq 0$, 则还可定义
     \begin{align*}
@@ -690,5 +684,5 @@
         \mathrm{sin} [\mathrm{arctan}] & = \frac{\iota}{\mathrm{sqrt} [1 + \iota^2]}, \\
         \mathrm{tan} [\mathrm{arcsin}] & = \frac{\iota}{\mathrm{sqrt} [1 - \iota^2]}.
     \end{align*}
-    虽然我已经用 $f[a]$ 表示 $a$ 在 $f$ 下的像了, 我自然地也用 $f[C]$ 表示 $C$ 的每个元在 $f$ 下的像作成的集, 但我的早期工作并没有用 $g[f]$ 表示 $g \circ f$. 这是 Marian 先生提到的记号, 我觉得不错, 就拿来用了.
+    虽然我已经用 $f[a]$ 表示 $a$ 在 $f$ 下的像了, 我自然地也用 $f[C]$ 表示 $C$ 的每个元在 $f$ 下的像作成的集, 但我的早期工作并没有用 $g[f]$ 表示 $g \circ f$. 这是 Marian 提到的记号, 我觉得不错, 就拿来用了.
 \end{remark}

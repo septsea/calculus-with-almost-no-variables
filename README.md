@@ -38,7 +38,7 @@ To compile the `tex` files, try one of the following:
 - Whatever method you like is fine. Just remember to compile them with `XeLaTeX`.
 - Well, I give up providing more suggestions. As long as you can compile it successfully, do whatever you like!
 
-The external fonts that I use are `Source Han Serif CN` and `Sarasa Mono SC Light`. You might want to install them or modify the font settings in `main.tex` first.
+The external fonts that I use are `Source Han Serif CN` and `Sarasa Mono SC`. You might want to install them or modify the font settings in `main.tex` first.
 
 Please feel free to read, modify or redistribute the book, where the *or* is of course an inclusive *or*.
 
