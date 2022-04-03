@@ -7,10 +7,10 @@
 \section{连续的定义}
 
 \begin{definition}
-    设 $x \in \mathbb{R}$. 设 $\delta$ 为正数. 则 $N[x, \delta] = (x - \delta, x + \delta)$ 是 $x$ 的一个\emph{邻域}. 称 $N[x, \delta] - \{ x \} = (x - \delta, x) \cup (x, x + \delta)$ 是 $x$ 的一个\emph{去心邻域}.
+    设 $x \in \mathbb{R}$. 设 $\delta$ 为正数. 则 $N[x; \delta] = (x - \delta, x + \delta)$ 是 $x$ 的一个\emph{邻域}. 称 $N[x; \delta] - \{ x \} = (x - \delta, x) \cup (x, x + \delta)$ 是 $x$ 的一个\emph{去心邻域}.
 \end{definition}
 
-不难看出, $N[x, \delta]$ 就是 $\{ t \mid |t - x| < \delta \}$, 而 $N[x, \delta] - \{ x \}$ 就是 $\{ t \mid 0 < |t - x| < \delta \}$.
+不难看出, $N[x; \delta]$ 就是 $\{ t \mid |t - x| < \delta \}$, 而 $N[x; \delta] - \{ x \}$ 就是 $\{ t \mid 0 < |t - x| < \delta \}$.
 
 下面的不等式十分有用.
 
@@ -33,7 +33,7 @@
 \end{proof}
 
 \begin{definition}
-    设 $f$ 是 $A$ 上的函数. 设 $x \in A$. 若任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $f[A \cap N[x, \delta]] \subset N[f[x], \varepsilon]$, 则说 $f$ 于 $x$ \emph{连续}.
+    设 $f$ 是 $A$ 上的函数. 设 $x \in A$. 若任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $f[A \cap N[x; \delta]] \subset N[f[x]; \varepsilon]$, 则说 $f$ 于 $x$ \emph{连续}.
 \end{definition}
 
 不难看出, $f$ 于 $x$ 连续的一个必要与充分条件是: 任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $|t - x| < \delta$ 且 $t \in A$ 时, 必有 $|f[t] - f[x]| < \varepsilon$.
@@ -123,13 +123,13 @@
 \end{proof}
 
 \begin{remark}
-    一般地, 设 $f$ 是 $A$ 上的函数, $x \in A$, 且 $f$ 于 $x$ 连续. 若 $f[x] \neq 0$, 则存在 $x$ 的邻域 $N[x, \delta]$ 使 $t \in A \cap N[x, \delta]$ 时必有
+    一般地, 设 $f$ 是 $A$ 上的函数, $x \in A$, 且 $f$ 于 $x$ 连续. 若 $f[x] \neq 0$, 则存在 $x$ 的邻域 $N[x; \delta]$ 使 $t \in A \cap N[x; \delta]$ 时必有
     \begin{align*}
         \frac{1}{2} < \frac{f[t]}{f[x]} < \frac{3}{2}.
     \end{align*}
     取 $\varepsilon = |f[x]|/2$; 然后,
     \begin{align*}
-        \bigg| \frac{f[t]}{f[x]} - 1 \bigg| = \frac{|f[t] - f[x]|}{|f[x]|} < \frac{1}{2}.
+        \Bigg| \frac{f[t]}{f[x]} - 1 \Bigg| = \frac{|f[t] - f[x]|}{|f[x]|} < \frac{1}{2}.
     \end{align*}
     我邀请您补全细节; 注意到 $|a - b| < c$ 相当于 $a - c < b < a + c$.
 \end{remark}
@@ -190,13 +190,13 @@
 \begin{example}
     常函数 $c$: $\mathbb{R} \to \{ c \}$ 是连续函数.
 
-    任取一点 $x$. 注意到, 对任意非空集 $T \subset \mathbb{R}$, $c[T] = \{ c \}$. 所以, 任取正数 $\varepsilon$, 对 $x$ 的\emph{任意}邻域 $N[x, \delta]$, 都有 $c[N[x, \delta]] = \{ c \} \subset N[c, \varepsilon] = N[c[x], \varepsilon]$.
+    任取一点 $x$. 注意到, 对任意非空集 $T \subset \mathbb{R}$, $c[T] = \{ c \}$. 所以, 任取正数 $\varepsilon$, 对 $x$ 的\emph{任意}邻域 $N[x; \delta]$, 都有 $c[N[x; \delta]] = \{ c \} \subset N[c; \varepsilon] = N[c[x]; \varepsilon]$.
 \end{example}
 
 \begin{example}
     $\iota$: $\mathbb{R} \to \mathbb{R}$ 是连续函数.
 
-    任取一点 $x$. 注意到, 对任意集 $T \subset \mathbb{R}$, $\iota[T] = T$. 所以, 任取正数 $\varepsilon$, 取 $x$ 的 $\varepsilon$ 邻域 $N[x, \varepsilon]$, 即得 $\iota[N[x, \varepsilon]] = N[x, \varepsilon] = N[\iota[x], \varepsilon] \subset N[\iota[x], \varepsilon]$.
+    任取一点 $x$. 注意到, 对任意集 $T \subset \mathbb{R}$, $\iota[T] = T$. 所以, 任取正数 $\varepsilon$, 取 $x$ 的 $\varepsilon$ 邻域 $N[x; \varepsilon]$, 即得 $\iota[N[x; \varepsilon]] = N[x; \varepsilon] = N[\iota[x]; \varepsilon] \subset N[\iota[x]; \varepsilon]$.
 \end{example}
 
 所以, 我们又有下面的结论; 还是老样子, 请您迅速地给出一个论证.
@@ -216,7 +216,111 @@
 
     若 $-f$ 增, 则 $f$ \emph{减} (也说 $f$ 是\emph{减函数}); 若 $-f$ 严增, 则 $f$ \emph{严减} (也说 $f$ 是\emph{严减函数}).
 
-    若 $f$ 增或 $f$ 减, 则 $f$ \emph{单调} (也说 $f$ 是 \emph{单调函数}); 若 $f$ 严增或 $f$ 严减, 则 $f$ \emph{严单调} (也说 $f$ 是 \emph{严单调函数}).
+    若 $f$ 增或 $f$ 减, 则 $f$ \emph{单调} (也说 $f$ 是\emph{单调函数}); 若 $f$ 严增或 $f$ 严减, 则 $f$ \emph{严单调} (也说 $f$ 是\emph{严单调函数}).
 \end{definition}
 
 简单地, 说 $f$ 增 (严增), 就是说对任意适合 $x \in A$, $y \in A$ 且 $x < y$ 的 $x$, $y$, 必有 $f[x] \leq f[y]$ ($f[x] < f[y]$); 说 $f$ 减 (严减), 就是说对任意适合 $x \in A$, $y \in A$ 且 $x < y$ 的 $x$, $y$, 必有 $f[x] \geq f[y]$ ($f[x] > f[y]$).
+
+\begin{example}
+    设 $a$ 为非零实数, $b$ 为实数. 则 $a\iota + b$ 是 $\mathbb{R}$ 上的严单调函数. 任取二个相异实数 $x$, $y$, 则
+    \begin{align*}
+             & (x - y)((a\iota + b)[x] - (a\iota + b)[y]) \\
+        = {} & (x - y)((ax + b) - (ay + b))               \\
+        = {} & a(x - y)^2.
+    \end{align*}
+    由此可知, $a > 0$ 时 $a\iota + b$ 严增, 而 $a < 0$ 时 $a\iota + b$ 严减.
+
+    可以验证, $(a\iota)^{[-1]} = \frac{1}{a} \iota$, 且 $(\iota + b)^{[-1]} = \iota - b$. 所以
+    \begin{align*}
+        (a\iota + b)^{[-1]}
+        = {} & ((\iota + b) \circ (a\iota))^{[-1]}      \\
+        = {} & (a\iota)^{[-1]} \circ (\iota + b)^{[-1]} \\
+        = {} & \frac{1}{a} \iota \circ (\iota - b)      \\
+        = {} & \frac{1}{a} \iota - \frac{b}{a}.
+    \end{align*}
+    不难看出, $(a\iota + b)^{[-1]}$ 跟 $a\iota + b$ 同严增 (或严减).
+\end{example}
+
+\begin{theorem}
+    设 $f$ 是 $A$ 上的严单调函数. 则 $f$ 是单函数.
+\end{theorem}
+
+\begin{proof}
+    任取 $A$ 的相异二元 $x$, $y$. 则
+    \begin{align*}
+         & f[x] - f[y] = \frac{(x - y)(f[x] - f[y])}{x - y} \neq 0. \qedhere
+    \end{align*}
+\end{proof}
+
+我们知道, 若 $f$: $A \to B$ 是单函数, 且 $f[A] = B$, 则 $f$ 有反函数 $f^{[-1]}$: $B \to A$. 特别地, 适当选取陪域后, 每个严单调函数都有反函数.
+
+\begin{theorem}
+    设 $f$: $A \to B$ 是满的严增 (严减) 函数. 则 $f^{[-1]}$: $B \to A$ 也是满的严增 (严减) 函数.
+\end{theorem}
+
+\begin{proof}
+    依假定, $f$ 是双函数, 故有反函数 $f^{[-1]}$, 且 $f^{[-1]}$ 当然是既满亦单的.
+
+    无妨设 $f$ 严增; $f$ 严减时, 您可类似地论证 $f^{[-1]}$ 亦严减.
+
+    下设 $f$ 严增. 任取 $B$ 的相异二元 $x^{\prime}$, $y^{\prime}$. 令 $x = f^{[-1]} [x^{\prime}]$, $y = f^{[-1]} [y^{\prime}]$. 易见 $x \neq y$, 且 $x^{\prime} = f[x]$, $y^{\prime} = f[y]$. 因 $f$ 严增, 故
+    \begin{align*}
+        (f[x] - f[y])(x - y) = (x - y)(f[x] - f[y]) > 0.
+    \end{align*}
+    从而
+    \begin{align*}
+             & (x^{\prime} - y^{\prime})(f^{[-1]} [x^{\prime}] - f^{[-1]} [y^{\prime}]) \\
+        = {} & (f[x] - f[y])(x - y) > 0. \qedhere
+    \end{align*}
+\end{proof}
+
+下面的结论十分重要.
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$: $I \to J$ 是满的严单调函数. 则 $f$ 是连续函数的一个必要与充分条件是: $J$ 是区间.
+\end{theorem}
+
+\begin{proof}
+    无妨设 $f$ 严增.
+
+    先看必要性. 设 $f$ 连续. 用反证法. 若 $J = f[I]$ 不是区间, 则存在 $J$ 的相异二元 $x^{\prime}$, $y^{\prime}$ 使 $x^{\prime} < y^{\prime}$ 且 $J \cap (x^{\prime}, y^{\prime})$ 为空集. 设 $f[x] = x^{\prime}$; 设 $f[y] = y^{\prime}$. 显然 $x < y$. 任取 $I$ 的大于 $x$ 的元 $u$. 因为 $f$ 严增, 故 $f[u] > f[x] = x^{\prime}$; 因为 $f[u] \notin (x^{\prime}, y^{\prime})$, 故 $f[u] \geq y^{\prime}$. 所以, $f[u] - f[x] \geq y^{\prime} - x^{\prime}$. 因为 $f$ 于 $x$ 连续, 故存在正数 $\delta$ 使 $|t - x| < \delta$ 且 $t \in I$ 时,
+    \begin{align*}
+        |f[t] - f[x]| < y^{\prime} - x^{\prime}.
+    \end{align*}
+    因为 $I$ 是区间, 且 $x$, $y \in I$, 故 $[x, y] \subset I$; 特别地, 这说明, 存在适合条件 $0 < v - x < \delta$ 且 $v \in I$ 的数 $v$. 故
+    \begin{align*}
+        y^{\prime} - x^{\prime} > |f[v] - f[x]| = f[v] - f[x] \geq y^{\prime} - x^{\prime}.
+    \end{align*}
+    这是矛盾.
+
+    再看充分性. 设 $J$ 是区间. 任取 $x \in I$. 我们证明 $f$ 于 $x$ 连续.
+
+    先设 $x$ 是 $I$ 的左端点. 那么, 对每个 $w > x$, $w \in I$, 都有 $f[w] > f[x]$. 于是, $f[x]$ 也是 $J$ 的左端点. 任取正数 $\varepsilon$, 必存在正数 $e < \varepsilon$ 使 $f[x] + e \in J$. 令 $q = f^{[-1]} [f[x] + e]$, 则必有 $x < q$. 从而, 当 $x \leq t < q$ 时, $f[x] \leq f[t] < f[x] + e$. 这么看来, 存在正数 $\delta = q - x$, 当 $t \in N[x; \delta] \cap I = [x, q)$ 时, 必有
+    \begin{align*}
+        |f[t] - f[x]| = f[t] - f[x] < e < \varepsilon.
+    \end{align*}
+    类似地, 当 $x$ 是 $I$ 的右端点时, 您也可用完全类似的套路论证 $f$ 于 $x$ 连续.
+
+    现设 $x$ 既不是 $I$ 的左端点, 也不是 $I$ 的右端点. 这样, 存在正数 $d$ 使 $x - d$, $x + d \in I$. 所以 $f[x - d]$, $f[x + d] \in J$, 且 $f[x - d] < f[x] < f[x + d]$. 故 $f[x]$ 也不是 $J$ 的端点. 所以, 任取正数 $\varepsilon$, 必存在正数 $e < \varepsilon$ 使 $f[x] - e$, $f[x] + e \in J$. 令 $p = f^{[-1]} [f[x] - e]$, $q = f^{[-1]} [f[x] + e]$. 那么 $p < x < q$. 取 $\delta$ 为 $x - p$ 与 $q - x$ 的较小者. 则 $|t - x| < \delta$ 且 $t \in I$ 时,
+    \begin{align*}
+        p \leq x - \delta < t < x + \delta \leq q,
+    \end{align*}
+    从而
+    \begin{align*}
+        f[x] - e = f[p] \leq f[x - \delta] < f[t] < f[x + \delta] \leq f[q] = f[x] + e,
+    \end{align*}
+    即
+    \begin{align*}
+         & {|f[t] - f[x]| \leq e < \varepsilon.} \qedhere
+    \end{align*}
+\end{proof}
+
+由此, 我们可以得到如下关于反函数的定理.
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$: $I \to J$ 是满的严单调函数. 设 $f$ 是连续函数. 则 $f^{[-1]}$: $J \to I$ 也是连续函数.
+\end{theorem}
+
+\begin{proof}
+    设 $f$: $I \to J$ 是满的严单调函数. 因为 $I$ 是区间, 且 $f$ 是连续函数, 故 $J = f[I]$ 也是区间. 因为 $f^{[-1]}$ 也是满的严单调函数, 且 $I = f^{[-1]} [J]$ 是区间, 故 $f^{[-1]}$ 是连续函数.
+\end{proof}
