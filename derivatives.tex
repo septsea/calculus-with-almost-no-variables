@@ -1,9 +1,173 @@
 \chapter{导数}
 
+本章简单地提及导数及其运算.
+
+若无特别说明, 本章的函数的定义域都是区间.
+
 \section{背景}
 
-我们先简单地提一提导数是何物.
-
 \begin{definition}
-    设 $I$ 为区间. 设 $x \in I$. 设 $f$ 为 $I$ 上的函数.
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $x \in I$. 若存在 $x$ 的邻域 $N$, 与 $N \cap I$ 上的函数 $F$, 使
+    \begin{align*}
+        f = f[x] + (\iota - x)F,
+    \end{align*}
+    且 $F$ 于 $x$ 连续, 则说 $f$ 于 $x$ \emph{可导}, 并称 $F[x]$ 为 $f$ 于 $x$ 的\emph{导数}.
 \end{definition}
+
+\begin{remark}
+    传统地, 我们用极限
+    \begin{align*}
+        \lim_{t \to x} {\frac{f[t] - f[x]}{t - x}}
+    \end{align*}
+    是否存在定义 $f$ 是否于 $x$ 可导; 极限存在时, 它的值就是 $f$ 于 $x$ 的导数. 可以证明, 这二个定义是等价的; 不过, 既然我花了不少篇幅讨论连续函数, 我将呈现一种不一样的微分学 (求导学). 我采取的定义来自希腊算学家 Constantin Carath{\'e}odory. 假如您对此事感兴趣, 您可以阅读美国算学家 Stephen Kuhn 的名为 \textit{The Derivative {\'a} la Carath{\'e}odory} 的文章 (不过, 我想说, 标题的 \textit{{\'a} la} 应该是 \textit{{\`a} la}).
+\end{remark}
+
+我们看导数的一些基本性质. 在定义里, 若 $f$ 于 $x$ 可导, 则 $f$ 于 $x$ 的导数似乎不止一个. 不过, 我们即将说明, 导数是唯一的.
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $x \in I$. 设存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F_1$, 使
+    \begin{align*}
+        f = f[x] + (\iota - x) F_1,
+    \end{align*}
+    且 $F_1$ 于 $x$ 连续. 设存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $F_2$, 使
+    \begin{align*}
+        f = f[x] + (\iota - x) F_2,
+    \end{align*}
+    且 $F_2$ 于 $x$ 连续. 则 $F_1 [x] = F_2 [x]$. 也就是说, $f$ 于 $x$ 的导数, 若存在, 则唯一.
+\end{theorem}
+
+\begin{proof}
+    用反证法. 设 $F_1 [x] \neq F_2 [x]$, 则 $\varepsilon = |F_1 [x] - F_2 [x]|$ 是正数. 我们要由此推出矛盾.
+
+    因为 $N_1 \cap I$ 是区间, 且 $F_1$ 于 $x$ 连续, 故存在正数 $\delta_1$, 使 $0 < |t - x| < \delta_1$ 且 $t \in I$ 时, 必有 $|F_1 [t] - F_1 [x]| < {\varepsilon}/{2}$, 即
+    \begin{align*}
+        \Bigg| \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg| < \frac{\varepsilon}{2}.
+    \end{align*}
+    因为 $N_2 \cap I$ 是区间, 且 $F_2$ 于 $x$ 连续, 故存在正数 $\delta_2$, 使 $0 < |t - x| < \delta_2$ 且 $t \in I$ 时, 必有 $|F_2 [t] - F_2 [x]| < {\varepsilon}/{2}$, 即
+    \begin{align*}
+        \Bigg| \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg| < \frac{\varepsilon}{2}.
+    \end{align*}
+    取 $\delta$ 为 $\delta_1$ 与 $\delta_2$ 中的较小者. 则 $0 < |t - x| < \delta$ 且 $t \in I$ 时,
+    \begin{align*}
+        \varepsilon
+        = {}    & |F_1 [x] - F_2 [x]|                                                                                                 \\
+        = {}    & \Bigg| \Bigg( \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg) - \Bigg( \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg) \Bigg| \\
+        \leq {} & \Bigg| \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg| + \Bigg| \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg|               \\
+        < {}    & \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+    \end{align*}
+    这是矛盾.
+\end{proof}
+
+\begin{example}
+    设 $a$, $b$ 为实数. 则 $a\iota + b$ 于其定义域的任意一点都可导. 具体地,
+    \begin{align*}
+        a\iota + b = (a\iota + b)[x] + (\iota - x)a,
+    \end{align*}
+    而 $a$ 是连续函数. 并且, $a\iota + b$ 于任意一点的导数都是 $a$.
+\end{example}
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $x \in I$. 设 $f$ 于 $x$ 可导. 则 $f$ 于 $x$ 连续.
+\end{theorem}
+
+\begin{proof}
+    因为 $f$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N$, 与 $I \cap N$ 上的函数 $F$, 使
+    \begin{align*}
+        f = f[x] + (\iota - x)F,
+    \end{align*}
+    且 $F$ 于 $x$ 连续.
+
+    因为 $\iota - x$ 于 $x$ 连续, 故 $(\iota - x)F$ 于 $x$ 连续; 因为 $f[x]$ 于 $x$ 连续, 故 $f$ 于 $x$ 连续.
+\end{proof}
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$, $g$ 为 $I$ 上的函数. 设 $x \in I$. 设 $f$, $g$ 都于 $x$ 可导. 则:
+    \begin{itemize}
+        \item $f + g$ 于 $x$ 可导, 且
+              \begin{align*}
+                  \text{($f + g$ 于 $x$ 的导数)} = \text{($f$ 于 $x$ 的导数)} + \text{($g$ 于 $x$ 的导数)}.
+              \end{align*}
+        \item 设 $k$ 为常数. 则 $kf$ 于 $x$ 可导, 且
+              \begin{align*}
+                  \text{($kf$ 于 $x$ 的导数)} = k \cdot \text{($f$ 于 $x$ 的导数)}.
+              \end{align*}
+        \item $fg$ 于 $x$ 可导, 且
+              \begin{align*}
+                  \text{($fg$ 于 $x$ 的导数)} = \text{($f$ 于 $x$ 的导数)} \cdot g[x] + f[x] \cdot \text{($g$ 于 $x$ 的导数)}.
+              \end{align*}
+        \item 若 $f[x] \neq 0$, 则 $g/f$ 于 $x$ 可导, 且
+              \begin{align*}
+                  \text{(${g}/{f}$ 于 $x$ 的导数)} = \frac{\text{($g$ 于 $x$ 的导数)} \cdot f[x] - g[x] \cdot \text{($f$ 于 $x$ 的导数)}}{f^2 [x]}.
+              \end{align*}
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    因为 $f$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N_1$, 与 $I \cap N_1$ 上的函数 $F$, 使
+    \begin{align*}
+        f = f[x] + (\iota - x)F,
+    \end{align*}
+    且 $F$ 于 $x$ 连续. 类似地, 因为 $g$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N_2$, 与 $I \cap N_2$ 上的函数 $G$, 使
+    \begin{align*}
+        g = g[x] + (\iota - x)G,
+    \end{align*}
+    且 $G$ 于 $x$ 连续. 取 $N = N_1 \cap N_2$. 这里, 为方便, 无妨滥用记号, 视 $F$, $G$ 分别是 $F$, $G$ 在 $N$ 上的限制. 则上述二式在 $I \cap N$ 上仍成立. 并且, $f$, $g$ 于 $x$ 的导数分别为 $F[x]$, $G[x]$.
+
+    因为
+    \begin{align*}
+        f + g
+        = {} & (f[x] + (\iota - x)F) + (g[x] + (\iota - x)G) \\
+        = {} & (f[x] + g[x]) + (\iota - x)(F + G)            \\
+        = {} & (f + g)[x] + (\iota - x)(F + G),
+    \end{align*}
+    且 $F + G$ 于 $x$ 连续, 故 $f + g$ 于 $x$ 可导, 且导数为 $(F + G)[x] = F[x] + G[x]$.
+
+    因为
+    \begin{align*}
+        kf
+        = {} & k(f[x] + (\iota - x)F)     \\
+        = {} & kf[x] + k(\iota - x)F      \\
+        = {} & (kf)[x] + (\iota - x)(kF),
+    \end{align*}
+    且 $kF$ 于 $x$ 连续, 故 $kf$ 于 $x$ 可导, 且导数为 $(kF)[x] = k \cdot F[x]$.
+
+    因为
+    \begin{align*}
+        fg
+        = {} & (f[x] + (\iota - x)F)(g[x] + (\iota - x)G)                                \\
+        = {} & f[x]g[x] + f[x](\iota - x)G + (\iota - x)Fg[x] + (\iota - x)F(\iota - x)G \\
+        = {} & (fg)[x] + (F \cdot g[x] + f[x] \cdot G + FG(\iota - x))(\iota - x),
+    \end{align*}
+    且 $h = F \cdot g[x] + f[x] \cdot G + FG(\iota - x)$ 于 $x$ 连续, 故 $fg$ 于 $x$ 可导, 且导数为 $h[x] = F[x]g[x] + f[x]G[x]$.
+
+    最后一个等式需要一点儿技巧. 首先, 既然 $f[x] \neq 0$, 且 $f$ 于 $x$ 连续, 故存在 $x$ 的邻域 $M$, 使 $t \in M \cap I$ 时,
+    \begin{align*}
+        |f[t] - f[x]| < \frac{|f[x]|}{2},
+    \end{align*}
+    从而
+    \begin{align*}
+        |f[x]| = |f[t] - (f[t] - f[x])| \leq |f[t]| + |f[t] - f[x]| < |f[t]| + \frac{|f[x]|}{2},
+    \end{align*}
+    也就是
+    \begin{align*}
+        |f[t]| > |f[x]| - \frac{|f[x]|}{2} = \frac{|f[x]|}{2}.
+    \end{align*}
+    所以, 在 $M$ 上, $f \neq 0$. 从而, 在 $(M \cap N) \cap I$ 上,
+    \begin{align*}
+        f^{-1}
+        = {} & f^{-1} [x] + \Bigg( \frac{1}{f} - \frac{1}{f[x]} \Bigg)           \\
+        = {} & f^{-1} [x] - \frac{f - f[x]}{f[x] f}                              \\
+        = {} & f^{-1} [x] - \frac{(\iota - x)F}{f[x] f}                          \\
+        = {} & f^{-1} [x] + (\iota - x) \cdot \Bigg( {-\frac{F}{f[x] f}} \Bigg).
+    \end{align*}
+    因为 $-F/(f[x]f)$ 于 $x$ 连续, 故 $f^{-1}$ 于 $x$ 可导, 且导数为 $-F[x]/(f^2 [x])$.
+
+    注意到 $g/f = g \cdot f^{-1}$, 故 $g/f$ 于 $x$ 可导, 且
+    \begin{align*}
+             & \text{(${g}/{f}$ 于 $x$ 的导数)}                                                                                        \\
+        = {} & \text{$gf^{-1}$ 于 $x$ 的导数}                                                                                          \\
+        = {} & \text{($g$ 于 $x$ 的导数)} \cdot f^{-1} [x] + g[x] \cdot \text{($f^{-1}$ 于 $x$ 的导数)}                                \\
+        = {} & \text{($g$ 于 $x$ 的导数)} \cdot \frac{1}{f[x]} + g[x] \cdot \Bigg({-\frac{\text{($f$ 于 $x$ 的导数)}}{f[x] f[x]}} \Bigg) \\
+        = {} & \frac{\text{($g$ 于 $x$ 的导数)} \cdot f[x] - g[x] \cdot \text{($f$ 于 $x$ 的导数)}}{f^2 [x]}. \qedhere
+    \end{align*}
+\end{proof}

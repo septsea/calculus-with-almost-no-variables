@@ -324,3 +324,153 @@
 \begin{proof}
     设 $f$: $I \to J$ 是满的严单调函数. 因为 $I$ 是区间, 且 $f$ 是连续函数, 故 $J = f[I]$ 也是区间. 因为 $f^{[-1]}$ 也是满的严单调函数, 且 $I = f^{[-1]} [J]$ 是区间, 故 $f^{[-1]}$ 是连续函数.
 \end{proof}
+
+最后, 我不加论证地给出一些常见的连续函数. 您可以在任意一本分析教材里找到论证.
+\begin{itemize}
+    \item $\mathrm{exp}$: $\mathbb{R} \to (0, +\infty)$ 是满的严增函数, 也是连续函数. 这样, 其反函数 $\mathrm{ln}$: $(0, +\infty) \to \mathbb{R}$ 也是满的严增函数 (当然也连续).
+    \item $\mathrm{sin}$: $\mathbb{R} \to [-1, 1]$ 是满的连续函数. 记 $\mathrm{sin}$ 在 $[-\frac{2\pi}{4}, \frac{2\pi}{4}]$ 上的限制为 $s$. 则 $s$ 是满的严增函数. 故其反函数 $\mathrm{arcsin}$: $[-1, 1] \to [-\frac{2\pi}{4}, \frac{2\pi}{4}]$ 也是满的严增函数 (当然也连续).
+    \item $\mathrm{tan}$: $\{ x \mid \mathrm{cos}[x] \neq 0 \} \to \mathbb{R}$ 是满的连续函数. 记 $\mathrm{tan}$ 在 $(-\frac{2\pi}{4}, \frac{2\pi}{4})$ 上的限制为 $t$. 则 $t$ 是满的严增函数. 故其反函数 $\mathrm{arctan}$: $\mathbb{R} \to (-\frac{2\pi}{4}, \frac{2\pi}{4})$ 也是满的严增函数 (当然也连续).
+    \item 设 $n$ 是正偶数. 则 $\iota^n$: $[0, +\infty) \to [0, +\infty)$ 是满的严增函数, 也是连续函数. 这样, 其反函数 $\mathrm{rt}_n$: $[0, +\infty) \to [0, +\infty)$ 也是满的严增函数 (当然也连续). 一般写 $\mathrm{rt}_n [x]$ 为 $\sqrt[n]{x}$; 一般写 $\sqrt[2]{x}$ 为 $\sqrt{x}$; 一般写 $\mathrm{rt}_2$ 为 $\mathrm{sqrt}$.
+    \item 设 $n$ 是正奇数. 则 $\iota^n$: $\mathbb{R} \to \mathbb{R}$ 是满的严增函数, 也是连续函数. 这样, 其反函数 $\mathrm{rt}_n$: $\mathbb{R} \to \mathbb{R}$ 也是满的严增函数 (当然也连续). 一般写 $\mathrm{rt}_n [x]$ 为 $\sqrt[n]{x}$; 一般写 $\sqrt[1]{x}$ 为 $x$; 一般写 $\mathrm{rt}_1$ 为 $\iota$.
+    \item $\mathrm{abs}$: $\mathbb{R} \to [0, +\infty)$ 是连续函数.
+\end{itemize}
+
+\section{连续函数的积分}
+
+我简单地介绍一下连续函数的积分.
+
+传统地, 一本算学分析 (或高等算学) 教材会先讲导数 (微分学), 再讲如何反求导 (不定积分), 然后才是积分 (定积分). 不过, 为论证连续函数一定有 ``反导'', 就需要 (连续函数的) 积分的知识. 所以, 逻辑地, 我选择先说连续函数的积分论. 这里, 我就不加证明地列举本书用到的关于积分的结论. 如果您对这些结论的论证感兴趣, 您可以参考算学家梅加强的《数学分析》.
+
+\begin{theorem}
+    设 $f$ 是区间 $I$ 上的连续函数. 设 $a$, $b \in I$, 且 $a < b$. 作数列
+    \begin{align*}
+        \text{$A$:} \quad
+        \mathbb{N} & \to \mathbb{R},                                                                                                        \\
+        n          & \mapsto \begin{cases}
+                                 0,                                                                                             & n = 0;    \\
+                                 {\displaystyle \sum_{i = 0}^{n - 1} {\frac{b - a}{n} f\bigg[ a + \frac{i}{n} (b - a) \bigg]}}, & n \geq 1.
+                             \end{cases}
+    \end{align*}
+    则存在唯一的实数 $\alpha$, 使对任意正数 $\varepsilon$, 存在非负整数 $N$, 当 $n > N$ 时, 有 $|A[n] - \alpha| < \varepsilon$.
+
+    我们称 $\alpha$ 为 $f$ 在 $[a, b]$ 上的\emph{积分}, 并记 $\alpha$ 为
+    \begin{align*}
+        \int_{a}^{b} {f}.
+    \end{align*}
+\end{theorem}
+
+\begin{remark}
+    传统地, 我们记上面的 $\alpha$ 为
+    \begin{align*}
+        \int_{a}^{b} {f(x) \,\mathrm{d}x}.
+    \end{align*}
+    我并没有说老记号不好; 只不过, 我会展现一种不需要 ``变量 $x$'' 的积分法 (如何无变量地计算积分), 故我在此使用新记号. 本注的目的是告诉您传统的记号跟本书的记号的区别.
+\end{remark}
+
+\begin{example}
+    设 $k$ 为常函数. 则不难看出,
+    \begin{align*}
+        \int_{a}^{b} {k} = (b - a)k.
+    \end{align*}
+\end{example}
+
+现在, 我们看积分的一些基本性质. 不过, 我们先作一个约定.
+
+\begin{definition}
+    设 $f$ 是区间 $I$ 上的连续函数. 设 $a$, $b \in I$, 且 $a < b$. 规定
+    \begin{align*}
+        \int_{a}^{a} {f} = 0, \qquad \int_{b}^{a} {f} = -\int_{a}^{b} {f}.
+    \end{align*}
+\end{definition}
+
+\begin{theorem}
+    设 $f$, $g$ 是区间 $I$ 上的连续函数. 设 $a$, $b \in I$. 设 $k \in \mathbb{R}$. 则
+    \begin{align*}
+        \int_{a}^{b} {(f + g)} & = \int_{a}^{b} {f} + \int_{a}^{b} {g}, \\
+        \int_{a}^{b} {kf}      & = k \int_{a}^{b} {f}.
+    \end{align*}
+\end{theorem}
+
+\begin{definition}
+    设 $\ast$ 是 $\mathbb{R}$ 到 $\mathbb{R}$ 的关系. 若 $(a, b) \in {\ast}$, 我们写 $a \ast b$. (比如说, $>$ 确定了关系 $\{ (x, y) \mid \text{$x$ 高于 $y$} \}$. 我们一般不写 $(a, b) \in {>}$, 而写 $a > b$.)
+
+    设 $A$ 是 $\mathbb{R}$ 的子集. 设 $f$, $g$ 都是 $A$ 上的函数. 若对任意 $t \in A$, 都有 $f[t] \ast g[t]$, 则我们写 $f \ast g$.
+\end{definition}
+
+\begin{theorem}
+    设 $f$, $g$ 是区间 $I$ 上的连续函数. 设 $a$, $b \in I$, 且 $a < b$. 设 $f \leq g$. 则
+    \begin{align*}
+        \int_{a}^{b} {f} \leq \int_{a}^{b} {g}.
+    \end{align*}
+\end{theorem}
+
+\begin{definition}
+    我们可简单地写 $\mathrm{abs} \circ f$ 为 $|f|$; 类似地, 我们也可简单地写 $\mathrm{sqrt} \circ f$ 为 $\sqrt{f}$.
+\end{definition}
+
+\begin{example}
+    设 $f$ 是区间 $I$ 上的连续函数. 设 $a$, $b \in I$, 且 $a < b$. 不难验证 $-|f| \leq f \leq |f|$. 故
+    \begin{align*}
+        \int_{a}^{b} {(-|f|)} \leq \int_{a}^{b} {f} \leq \int_{a}^{b} {|f|},
+    \end{align*}
+    也就是
+    \begin{align*}
+        \Bigg| \int_{a}^{b} {f} \Bigg| \leq \int_{a}^{b} {|f|}.
+    \end{align*}
+    不难看出, 对任意 $a$, $b \in I$,
+    \begin{align*}
+        \Bigg| \int_{a}^{b} {f} \Bigg| \leq \Bigg| \int_{a}^{b} {|f|} \Bigg|.
+    \end{align*}
+\end{example}
+
+\begin{theorem}
+    设 $f$ 是区间 $I$ 上的连续函数. 设 $a$, $b$, $c \in I$. 则
+    \begin{align*}
+        \int_{a}^{c} {f} = \int_{a}^{b} {f} + \int_{b}^{c} {f}.
+    \end{align*}
+\end{theorem}
+
+下面的结论很重要; 之后会用到.
+
+\begin{theorem}
+    设 $f$ 是区间 $I$ 上的连续函数. 设 $x \in I$. 作函数
+    \begin{align*}
+        \text{$F$:} \quad
+        I & \to \mathbb{R},                                                       \\
+        t & \mapsto \begin{cases}
+                        f[x],                                             & t = x;    \\
+                        {\displaystyle \frac{1}{t - x} \int_{x}^{t} {f}}, & t \neq x.
+                    \end{cases}
+    \end{align*}
+    则 $F$ 于 $x$ 连续.
+\end{theorem}
+
+\begin{proof}
+    任取正数 $\varepsilon$. 我们的目标是, 找到正数 $\delta$, 使 $|t - x| < \delta$ 且 $t \in I$ 时, $|F[t] - F[x]| < \varepsilon$. 这相当于: 找到正数 $\delta$, 使 $0 < |t - x| < \delta$ 且 $t \in I$ 时,
+    \begin{align*}
+        \Bigg| \frac{1}{t - x} \int_{x}^{t} {f} - f[x] \Bigg| < \varepsilon.
+    \end{align*}
+    这不难. 首先, 注意到
+    \begin{align*}
+        f[x](t - x) = \int_{x}^{t} {f[x]},
+    \end{align*}
+    故
+    \begin{align*}
+        \frac{1}{t - x} \int_{x}^{t} {f} - f[x] = \frac{1}{t - x} \int_{x}^{t} {(f - f[x])}.
+    \end{align*}
+    取低于 $\varepsilon$ 的正数 $e$. 因为 $f$ 于 $x$ 连续, 故存在正数 $d$, 使 $|t - x| < d$ 且 $t \in I$ 时,
+    \begin{align*}
+        |f[t] - f[x]| < e.
+    \end{align*}
+    所以
+    \begin{align*}
+        \Bigg| \int_{x}^{t} {(f - f[x])} \Bigg| \leq \Bigg| \int_{x}^{t} {|f - f[x]|} \Bigg| \leq \Bigg| \int_{x}^{t} {e} \Bigg| = |t - x|e.
+    \end{align*}
+    也就是说, $0 < |t - x| < d$ 且 $t \in I$ 时,
+    \begin{align*}
+        {\Bigg| \frac{1}{t - x} \int_{x}^{t} {f} - f[x] \Bigg|}
+        = {}    & \frac{1}{|t - x|} \Bigg| \int_{x}^{t} {(f - f[x])} \Bigg| \\
+        \leq {} & \frac{1}{|t - x|} \cdot |t - x|e                          \\
+        = {}    & e < \varepsilon. \qedhere
+    \end{align*}
+\end{proof}
