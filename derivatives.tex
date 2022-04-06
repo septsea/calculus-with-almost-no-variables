@@ -164,8 +164,8 @@
 
     注意到 $g/f = g \cdot f^{-1}$, 故 $g/f$ 于 $x$ 可导, 且
     \begin{align*}
-             & \text{(${g}/{f}$ 于 $x$ 的导数)}                                                                                          \\
-        = {} & \text{($gf^{-1}$ 于 $x$ 的导数)}                                                                                          \\
+             & \text{(${g}/{f}$ 于 $x$ 的导数)}                                                                                      \\
+        = {} & \text{($gf^{-1}$ 于 $x$ 的导数)}                                                                                      \\
         = {} & \text{($g$ 于 $x$ 的导数)} \cdot f^{-1} [x] + g[x] \cdot \text{($f^{-1}$ 于 $x$ 的导数)}                                  \\
         = {} & \text{($g$ 于 $x$ 的导数)} \cdot \frac{1}{f[x]} + g[x] \cdot \Bigg({-\frac{\text{($f$ 于 $x$ 的导数)}}{f[x] f[x]}} \Bigg) \\
         = {} & \frac{\text{($g$ 于 $x$ 的导数)} \cdot f[x] - g[x] \cdot \text{($f$ 于 $x$ 的导数)}}{f^2 [x]}. \qedhere
@@ -261,7 +261,7 @@
     设 $f$ 是区间 $I$ 上的函数. 若 $f$ 于 $I$ 的每一点都可导, 则定义函数
     \begin{align*}
         \text{$\mathrm{D}[f]$:} \quad
-        I & \to K,                              \\
+        I & \to K,                          \\
         x & \mapsto \text{($f$ 于 $x$ 的导数)},
     \end{align*}
     其中陪域 $K$ 可视情况而定 (除非特别说明, 我们不在意陪域). 我们称 $\mathrm{D}[f]$ 为 $f$ 的\emph{导函数} (亦可简称其为 $f$ 的\emph{导数}).
@@ -301,6 +301,14 @@
         \mathrm{D} [g \circ f] = (\mathrm{D}g \circ f) \cdot \mathrm{D}f.
     \end{align*}
 \end{theorem}
+
+\begin{remark}
+    有时, 我们也写 $g \circ f$ 为 $g[f]$; 相应地, 也可写链规则为
+    \begin{align*}
+        \mathrm{D} [g[f]] = \mathrm{D}g[f] \cdot \mathrm{D}f.
+    \end{align*}
+    我们约定 $\mathrm{D}g[f]$ 表示 $(\mathrm{D}g)[f]$; 这跟 $\mathrm{D}g \circ f$ 表示 $(\mathrm{D}g) \circ f$ 是一致的. 不过, 由于 $\mathrm{D}g[f]$ 比 $\mathrm{D}g \circ f$ 紧凑, 我们省去了一对圆括号.
+\end{remark}
 
 \begin{theorem}
     设 $I$, $J$ 为区间. 设 $f$: $I \to J$ 严单调, 且有反函数 $f^{[-1]}$: $J \to I$. 设 $f$ 是可导函数, 且 $\mathrm{D}f \neq 0$. 则 $f^{[-1]}$ 也是可导函数, 且
@@ -401,3 +409,54 @@
         \item $\mathrm{D}\, \mathrm{sqrt} = \iota^{-1} \circ (2\,\mathrm{sqrt})$.
     \end{itemize}
 \end{theorem}
+
+\begin{example}
+    设 $f$, $g$ 是区间 $I$ 上的可导函数, 且 $f > 0$. 求 $\mathrm{D}[f^g]$.
+
+    事实上, $f^g$ 就是 $\mathrm{e}^{g(\mathrm{ln} \circ f)}$, 也就是 $\mathrm{exp} \circ (g(\mathrm{ln} \circ f)) = \mathrm{exp} \circ (g\, \mathrm{ln}[f])$. 所以
+    \begin{align*}
+        \mathrm{D}[f^g]
+        = {} & \mathrm{D}[\mathrm{exp} \circ (g\, \mathrm{ln}[f])]                    \\
+        = {} & ({\mathrm{D}\,\mathrm{exp}} \circ (g\, \mathrm{ln}[f]))
+        \cdot \mathrm{D}[g\, \mathrm{ln}[f]]                                          \\
+        = {} & (\mathrm{exp} \circ (g\, \mathrm{ln}[f]))
+        \cdot (\mathrm{D}g \cdot \mathrm{ln}[f] + g \cdot \mathrm{D}[\mathrm{ln}[f]]) \\
+        = {} & f^g \cdot \mathrm{D}g \cdot \mathrm{ln}[f]
+        + f^g \cdot g \cdot (\mathrm{D}\,\mathrm{ln} \circ f) \cdot \mathrm{D}f       \\
+        = {} & f^g \, \mathrm{ln}[f] \, \mathrm{D}g
+        + g f^{g - 1}\,\mathrm{D}f.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    设
+    \begin{align*}
+        \text{$f$:} \quad
+        [0, +\infty) & \to \mathbb{R},                                                    \\
+        x            & \to \mathrm{ln} \Bigg[ x^2 \mathrm{e}^{x} + \sqrt{1 + x^3} \Bigg].
+    \end{align*}
+    求 $\mathrm{D}f$.
+
+    本问题定义 $f$ 时, 使用了带变量的记号. 为了方便地计算 $f$ 的导数, 我们不妨先无变量地表达 $f$:
+    \begin{align*}
+        g & = \iota^2 \cdot \mathrm{exp} + \mathrm{sqrt} \circ (1 + \iota^3), \\
+        f & = \mathrm{ln} \circ g.
+    \end{align*}
+    从而
+    \begin{align*}
+        \mathrm{D}f
+        = {} & \mathrm{D}[\mathrm{ln} \circ g]                                        \\
+        = {} & (\mathrm{D}\,\mathrm{ln} \circ g) \cdot \mathrm{D}g                    \\
+        = {} & g^{-1} \cdot \mathrm{D}[\iota^2 \cdot \mathrm{exp}]
+        + g^{-1} \cdot \mathrm{D}[\mathrm{sqrt} \circ (1 + \iota^3)]                  \\
+        = {} & g^{-1} \cdot (\mathrm{D}\,\iota^2 \cdot \mathrm{exp}
+        + \iota^2 \cdot \mathrm{D}\,\mathrm{exp})                                     \\
+             & \qquad + g^{-1} \cdot ((\mathrm{D}\,\mathrm{sqrt} \circ (1 + \iota^3))
+        \cdot \mathrm{D}[1 + \iota^3])                                                \\
+        = {} & g^{-1} \cdot (2\iota + \iota^2) \cdot \mathrm{exp}
+        + g^{-1} \cdot \frac{1}{2\sqrt{1 + \iota^3}} \cdot 3\iota^2                   \\
+        = {} & \frac{\iota\,(2 + \iota)\,\mathrm{exp}
+            + \dfrac{3\iota^2}{2\sqrt{1 + \iota^3}}}
+        {\iota^2 \,\mathrm{exp} + \sqrt{1 + \iota^3}}.
+    \end{align*}
+\end{example}

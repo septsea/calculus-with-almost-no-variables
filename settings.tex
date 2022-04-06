@@ -13,6 +13,23 @@
 % partial=upright makes \partial stand up
 \usepackage[math-style=ISO,bold-style=ISO,mathrm=sym,mathbf=sym,partial=upright,warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
+\fancyhead[RO]{\sffamily\thepage}
+\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
+\fancyhead[LE]{\sffamily\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyfoot[C]{\sffamily\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
 \allowdisplaybreaks[3]
 \AtBeginDocument{
     % Standing-up-straight pi
@@ -98,7 +115,7 @@
 \setmathfont{XITS Math}[StylisticSet=8]
 \setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
 \setmathfont{STIX Two Math}[range={"2218-"2218}]
-\setsansfont{Fira Sans}[BoldFont=Fira Sans SemiBold]
+\setsansfont{Fira Sans Light}[BoldFont=Fira Sans SemiBold]
 \setmonofont{Sarasa Mono SC Light}
 
 \setCJKmainfont[ItalicFont=Sarasa Mono SC Light,BoldFont=Sarasa Mono SC Semibold]{Source Han Serif CN}
@@ -111,10 +128,10 @@
 \def\qedsymbol{证毕.}
 
 \renewcommand\thmcontinues[1]{%
-    \ifcsname hyperref\endcsname
-        \hyperref[#1]{续页}
-    \else
-        续页
-    \fi
-    {}\pageref{#1}%
+\ifcsname hyperref\endcsname
+    \hyperref[#1]{续页}
+\else
+    续页
+\fi
+{}\pageref{#1}%
 }

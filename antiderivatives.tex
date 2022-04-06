@@ -1,0 +1,153 @@
+\chapter{不定积分}
+
+上一章, 我们接触了导数; 这一章, 我们来考虑导数的 ``反操作''.
+
+具体地, 设 $I$ 为区间, 且 $f$ 是 $I$ 上的函数. 上一章的要点是: 已知 $f$, 求 $\mathrm{D}f$; 这一章的要点是: 已知 $I$ 上的函数 $g$ 适合 $\mathrm{D}f = g$, 求 $f$.
+
+\section{原函数与不定积分}
+
+设 $I$ 为区间. 不难看出, $I$ 上的常函数的导数是 $0$ (在 $I$ 上的限制). 不过, 重要地, 此事反过来也对:
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的可导函数. 若 $\mathrm{D}f = 0$, 则 $f$ 为常函数.
+\end{theorem}
+
+此事的论证可见于一般的分析教材, 所以我就不证了 (或许, 当我变强的时候, 我就能\emph{在我的书里}给出\emph{我自己的论证}了).
+
+此事的一个重要的转述如下:
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f_1$, $f_2$ 为 $I$ 上的可导函数. 若 $\mathrm{D}{f_1} = \mathrm{D}{f_2}$, 则存在常函数 $c$, 使 $f_2 = f_1 + c$.
+\end{theorem}
+
+\begin{proof}
+    考虑 $h = f_2 - f_1$. 那么 $\mathrm{D}h = 0$. 从而 $h$ 是常函数.
+\end{proof}
+
+由此, 我们作如下定义.
+
+\begin{definition}
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 若存在 $I$ 上的可导函数 $F$ 使 $\mathrm{D}F = f$, 则说 $F$ 是 $f$ 的一个\emph{原函数}.
+\end{definition}
+
+\begin{definition}
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $f$ 有一个原函数. 那么, 称 $f$ 的\emph{全体}原函数作成的集为 $f$ 的\emph{不定积分}, 即
+    \begin{align*}
+        \int {f} = \{ g \mid \text{$g$ 是 $f$ 的原函数} \}.
+    \end{align*}
+\end{definition}
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $F$ 是 $f$ 的原函数. 则
+    \begin{align*}
+        \int {f} = \{ F + c \mid \text{$c$ 是 $I$ 上的常函数} \}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    设 $G$ 是 $f$ 的一个原函数. 则 $G = F + c$, 其中 $c$ 为某个常函数. 故
+    \begin{align*}
+        \int {f} \subset \{ F + c \mid \text{$c$ 是 $I$ 上的常函数} \}.
+    \end{align*}
+    另一方面, 若 $c^{\prime}$ 是常函数, 显然有 $\mathrm{D}[F + c^{\prime}] = \mathrm{D}F = f$. 所以
+    \begin{align*}
+         & {\int {f} \supset \{ F + c \mid \text{$c$ 是 $I$ 上的常函数} \}}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    因为 $\mathrm{D}\, \mathrm{exp} = \mathrm{exp}$, 故
+    \begin{align*}
+        \int {\mathrm{exp}} = \{ \mathrm{exp} + c \mid \text{$c$ 是 $\mathbb{R}$ 上的常函数} \}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    因为 $\mathrm{D}\, [-\mathrm{cos}] = \mathrm{sin}$, 故
+    \begin{align*}
+        \int {\mathrm{sin}} = \{ -\mathrm{cos} + c \mid \text{$c$ 是 $\mathbb{R}$ 上的常函数} \}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    因为 $\mathrm{D}\, \mathrm{sin} = \mathrm{cos}$, 故
+    \begin{align*}
+        \int {\mathrm{cos}} = \{ \mathrm{sin} + c \mid \text{$c$ 是 $\mathbb{R}$ 上的常函数} \}.
+    \end{align*}
+\end{example}
+
+至此, 我们已经知道什么是不定积分. 不过, 我们也可以看到, 当前的表达不定积分的方式比较复杂. 所以, 我们很需要一种简写法; 我们将在下一节讨论此事.
+
+我们知道, 若区间 $I$ 上的函数有原函数, 那自然地有不定积分. 什么样的函数有原函数呢? 下面的结论给出了此问题的\emph{部分}解答; 不过, 就算只是 ``部分'', 对本书而言, 也足够了.
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$ 是 $I$ 上的连续函数. 则存在 $I$ 上的可导函数 $F$, 使 $\mathrm{D}F = f$.
+\end{theorem}
+
+\begin{proof}
+    固定 $a \in I$. 作函数
+    \begin{align*}
+        \text{$F$:} \quad
+        I & \to \mathbb{R},           \\
+        t & \mapsto \int_{a}^{t} {f}.
+    \end{align*}
+    任取 $x \in I$. 从而对任意 $t \in I$,
+    \begin{align*}
+        F[t] = \int_{a}^{x} {f} + \int_{x}^{t} {f} = F[x] + (t - x) Q [t],
+    \end{align*}
+    其中
+    \begin{align*}
+        \text{$Q$:} \quad
+        I & \to \mathbb{R},                                                       \\
+        t & \mapsto \begin{cases}
+                        f[x],                                             & t = x;    \\
+                        {\displaystyle \frac{1}{t - x} \int_{x}^{t} {f}}, & t \neq x.
+                    \end{cases}
+    \end{align*}
+    取 $x$ 的一个邻域 $N$, 使 $I \subset N$. 那么, $N \cap I = I$. 因为
+    \begin{align*}
+        F = F[x] + (\iota - x) Q,
+    \end{align*}
+    且 $Q$ 于 $x$ 连续 (定理~\ref{theorem:newton-leibniz-prerequisite}), 故 $F$ 于 $x$ 可导, 且 $F$ 于 $x$ 的导数为
+    \begin{align*}
+         & Q [x] = f[x]. \qedhere
+    \end{align*}
+\end{proof}
+
+由此可得微积分的一个重要定理. 不过, 这不是本章的重点讨论对象.
+
+\begin{restatable}[Newton-Leibniz]{theorem}{NewtonLeibniz} \label{theorem:NewtonLeibniz}
+    设 $I$ 为区间. 设 $f$ 是 $I$ 上的连续函数. 设 $F$ 是 $f$ 的原函数. 则对任意 $a$, $b \in I$,
+    \begin{align*}
+        \int_{a}^{b} {f} = F[b] - F[a].
+    \end{align*}
+\end{restatable}
+
+\begin{proof}
+    固定 $c \in I$. 作函数
+    \begin{align*}
+        \text{$G$:} \quad
+        I & \to \mathbb{R},           \\
+        t & \mapsto \int_{c}^{t} {f}.
+    \end{align*}
+    那么 $G$ 是 $f$ 的原函数, 且
+    \begin{align*}
+        \int_{a}^{b} {f}
+        = \int_{a}^{c} {f} + \int_{c}^{b} {f}
+        = -\int_{c}^{a} {f} + \int_{c}^{b} {f}
+        = G[b] - G[a].
+    \end{align*}
+    既然 $F$ 也是 $f$ 的原函数, 那必定存在常函数 $\ell$, 使 $G = F + \ell$. 所以
+    \begin{align*}
+        \int_{a}^{b} {f}
+        = {} & G[b] - G[a]                         \\
+        = {} & (F + \ell)[b] - (F + \ell)[a]       \\
+        = {} & (F[b] + \ell[b]) - (F[a] + \ell[a]) \\
+        = {} & (F[b] + \ell) - (F[a] + \ell)       \\
+        = {} & F[b] - F[a]. \qedhere
+    \end{align*}
+\end{proof}
+
+\section{函数集的演算}
+
+To be continued.
