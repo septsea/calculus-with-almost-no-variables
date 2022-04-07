@@ -152,7 +152,7 @@
     \begin{align*}
         |f[t]| > |f[x]| - \frac{|f[x]|}{2} = \frac{|f[x]|}{2}.
     \end{align*}
-    所以, 在 $M$ 上, $f \neq 0$. 从而, 在 $(M \cap N) \cap I$ 上,
+    所以, 在 $M$ 上, $f$ 不取零值. 从而, 在 $(M \cap N) \cap I$ 上,
     \begin{align*}
         f^{-1}
         = {} & f^{-1} [x] + \Bigg( \frac{1}{f} - \frac{1}{f[x]} \Bigg)           \\
@@ -226,7 +226,7 @@
     \begin{align*}
         f = f[f^{[-1]} [y]] + (\iota - f^{[-1]} [y])F,
     \end{align*}
-    且 $F$ 于 $f^{[-1]} [y]$ 连续. 依假定, $f$ 于 $f^{[-1]} [y]$ 的导数 $F[f^{[-1]} [y]] \neq 0$. 所以, 存在 $f^{[-1]} [y]$ 的邻域 $N_2$, 使在 $N_2 \cap (N_1 \cap I)$ 上, $F \neq 0$. 取 $N = N_2 \cap N_1$, 则 $N$ 也是 $f^{[-1]} [y]$ 的邻域, 且在 $N \cap I$ 上, 不但有 $F \neq 0$, 还有
+    且 $F$ 于 $f^{[-1]} [y]$ 连续. 依假定, $f$ 于 $f^{[-1]} [y]$ 的导数 $F[f^{[-1]} [y]] \neq 0$. 所以, 存在 $f^{[-1]} [y]$ 的邻域 $N_2$, 使在 $N_2 \cap (N_1 \cap I)$ 上, $F$ 不取零值. 取 $N = N_2 \cap N_1$, 则 $N$ 也是 $f^{[-1]} [y]$ 的邻域, 且在 $N \cap I$ 上, 不但 $F$ 不取零值, 且
     \begin{align*}
         f = y + (\iota - f^{[-1]} [y])F.
     \end{align*}
@@ -239,7 +239,7 @@
     \begin{align*}
         f^{[-1]} = f^{[-1]} [y] + (\iota - y) \cdot \frac{1}{F \circ f^{[-1]}}.
     \end{align*}
-    因为 $f^{[-1]}$ 于 $y$ 连续, 而 $F$ 于 $f^{[-1]} [y]$ 连续, 故 $F \circ f^{[-1]}$ 于 $y$ 连续; 因为 (在 $M \cap J$ 上) $F \neq 0$, 故 $1/(F \circ f^{[-1]})$ 亦于 $y$ 连续. 所以, $f^{[-1]}$ 于 $y$ 可导, 且导数为 $1/F[f^{[-1]} [y]]$.
+    因为 $f^{[-1]}$ 于 $y$ 连续, 而 $F$ 于 $f^{[-1]} [y]$ 连续, 故 $F \circ f^{[-1]}$ 于 $y$ 连续; 因为 (在 $M \cap J$ 上) $F$ 不取零值, 故 $1/(F \circ f^{[-1]})$ 亦于 $y$ 连续. 所以, $f^{[-1]}$ 于 $y$ 可导, 且导数为 $1/F[f^{[-1]} [y]]$.
 \end{proof}
 
 最后, 我给出一个十分有用的事实; 不过, 由于没有足够多的工具, 我就不论证了.
@@ -288,7 +288,7 @@
               \begin{align*}
                   \mathrm{D} [fg] = \mathrm{D} f \cdot g + f \cdot \mathrm{D} g.
               \end{align*}
-        \item 设 $f \neq 0$. 则 $g/f$ 也是 $I$ 上的可导函数, 且
+        \item 设 $f$ 不取零值. 则 $g/f$ 也是 $I$ 上的可导函数, 且
               \begin{align*}
                   \mathrm{D}\, \frac{g}{f} = \frac{\mathrm{D} g \cdot f - g \cdot \mathrm{D} f}{f^2}.
               \end{align*}
@@ -311,7 +311,7 @@
 \end{remark}
 
 \begin{theorem}
-    设 $I$, $J$ 为区间. 设 $f$: $I \to J$ 严单调, 且有反函数 $f^{[-1]}$: $J \to I$. 设 $f$ 是可导函数, 且 $\mathrm{D}f \neq 0$. 则 $f^{[-1]}$ 也是可导函数, 且
+    设 $I$, $J$ 为区间. 设 $f$: $I \to J$ 严单调, 且有反函数 $f^{[-1]}$: $J \to I$. 设 $f$ 是可导函数, 且 $\mathrm{D}f$ 不取零值. 则 $f^{[-1]}$ 也是可导函数, 且
     \begin{align*}
         \mathrm{D} f^{[-1]} = \frac{1}{\mathrm{D}f \circ f^{[-1]}}.
     \end{align*}
