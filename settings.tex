@@ -1,5 +1,7 @@
 \documentclass[UTF8,fontset=none,zihao=-4,a4paper,leqno]{ctexbook}
-\ctexset{today=big}
+
+% Add "pass" to retain the old page margin settings
+\usepackage[pass]{geometry}
 
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -7,7 +9,7 @@
 \usepackage{mathtools}
 \usepackage{thmtools}
 \usepackage{thm-restate}
-\usepackage[hidelinks,hyperindex]{hyperref}
+\usepackage[hidelinks,hyperindex,breaklinks]{hyperref}
 % Add hyperlinks to the table of contents
 \usepackage{bookmark}
 % partial=upright makes \partial stand up
@@ -32,7 +34,6 @@
 
 \allowdisplaybreaks[3]
 \AtBeginDocument{
-    % Standing-up-straight pi
     \let\umathpi\pi
     \renewcommand\pi{\symup\umathpi}
     \let\umathiota\iota
@@ -50,13 +51,6 @@
 \setlist[enumerate,1]{label=(\arabic*),ref=(\arabic*)}
 \setlist[description]{style=nextline,leftmargin=2\parindent}
 
-\makeatletter
-\providecommand{\openrighton}{}
-\renewcommand{\openrighton}{\@openrighttrue}
-\providecommand{\openrightoff}{}
-\renewcommand{\openrightoff}{\@openrightfalse}
-\makeatother
-
 \declaretheoremstyle[
     spaceabove=2ex,
     spacebelow=2ex,
@@ -67,7 +61,7 @@
     headindent=\parindent,
     headpunct={},
     postheadspace=1em
-]{myStyle}
+]{TheoremStyle}
 
 \declaretheoremstyle[
     spaceabove=2ex,
@@ -80,26 +74,27 @@
     headpunct={},
     postheadspace=1em,
     qed=\qedsymbol
-]{proofStyle}
+]{ProofStyle}
 
-\declaretheorem[style=myStyle,name=定理,numberwithin=chapter]{theorem}
-\declaretheorem[style=myStyle,name=定义,sibling=theorem]{definition}
-\declaretheorem[style=myStyle,name=定义,numbered=no]{definition*}
-\declaretheorem[style=myStyle,name=命题,sibling=theorem]{proposition}
-\declaretheorem[style=myStyle,name=引理,sibling=theorem]{lemma}
-\declaretheorem[style=myStyle,name=公理,sibling=theorem]{axiom}
-\declaretheorem[style=myStyle,name=推论,sibling=theorem]{corollary}
-\declaretheorem[style=myStyle,name=例,sibling=theorem]{example}
-\declaretheorem[style=myStyle,name=注,sibling=theorem]{remark}
-\declaretheorem[style=myStyle,name=注,numbered=no]{remark*}
-\declaretheorem[style=myStyle,name=猜想,sibling=theorem]{conjecture}
+\declaretheorem[style=TheoremStyle,name=定理,numberwithin=chapter]{theorem}
+\declaretheorem[style=TheoremStyle,name=定义,sibling=theorem]{definition}
+\declaretheorem[style=TheoremStyle,name=定义,numbered=no]{definition*}
+\declaretheorem[style=TheoremStyle,name=命题,sibling=theorem]{proposition}
+\declaretheorem[style=TheoremStyle,name=引理,sibling=theorem]{lemma}
+\declaretheorem[style=TheoremStyle,name=公理,sibling=theorem]{axiom}
+\declaretheorem[style=TheoremStyle,name=推论,sibling=theorem]{corollary}
+\declaretheorem[style=TheoremStyle,name=例,sibling=theorem]{example}
+\declaretheorem[style=TheoremStyle,name=注,sibling=theorem]{remark}
+\declaretheorem[style=TheoremStyle,name=注,numbered=no]{remark*}
+\declaretheorem[style=TheoremStyle,name=猜想,sibling=theorem]{conjecture}
 
 % Undefine the proof environment provided by `amsthm`
 \makeatletter
 \let\proof\@undefined
 \let\endproof\@undefined
 \makeatother
-\declaretheorem[style=proofStyle,name=证,numbered=no]{proof}
+\declaretheorem[style=ProofStyle,name=证,numbered=no]{proof}
+\def\qedsymbol{证毕.}
 
 \let\emph\relax
 \DeclareTextFontCommand{\emph}{\bfseries}
@@ -115,23 +110,42 @@
 \setmathfont{XITS Math}[StylisticSet=8]
 \setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
 \setmathfont{STIX Two Math}[range={"2218-"2218}]
-\setsansfont{Fira Sans Light}[BoldFont=Fira Sans SemiBold]
-\setmonofont{Sarasa Mono SC Light}
+\setsansfont{Fira Sans}[
+    UprightFont = * Light,
+    BoldFont = * SemiBold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * SemiBold Italic,
+]
+\setmonofont{Sarasa Mono SC}[
+    UprightFont = * Light,
+    BoldFont = * Semibold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * Semibold Italic,
+]
 
-\setCJKmainfont[ItalicFont=Sarasa Mono SC Light,BoldFont=Sarasa Mono SC Semibold]{Source Han Serif CN}
-\setCJKsansfont{Sarasa Mono SC Light}
-\setCJKmonofont{Sarasa Mono SC Light}
+\setCJKmainfont{Source Han Serif CN}[
+    UprightFont = Source Han Serif CN,
+    BoldFont = Sarasa Mono SC Semibold,
+    ItalicFont = Sarasa Mono SC Light Italic,
+    BoldItalicFont = Sarasa Mono SC Semibold Italic,
+]
+\setCJKsansfont{Sarasa Mono SC}[
+    UprightFont = * Light,
+    BoldFont = * Semibold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * Semibold Italic,
+]
+\setCJKmonofont{Sarasa Mono SC}[
+    UprightFont = * Light,
+    BoldFont = * Semibold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * Semibold Italic,
+]
 
-% \usepackage{makeidx}
-% \makeindex
-
-\def\qedsymbol{证毕.}
-
-\renewcommand\thmcontinues[1]{%
-\ifcsname hyperref\endcsname
-    \hyperref[#1]{续页}
-\else
-    续页
-\fi
-{}\pageref{#1}%
-}
+% The following code makes it easier to input a version number
+% converging to 2pi.
+%
+% Usage: \CalculusVersion[n], where n is a positive integer
+% less than 1100.
+\usepackage{readarray}
+\readrecordarray{ApproximationsTo2Pi.txt}\CalculusVersion

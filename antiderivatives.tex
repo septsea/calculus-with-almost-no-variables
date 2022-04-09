@@ -31,7 +31,7 @@
 \end{definition}
 
 \begin{definition}
-    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $f$ 有一个原函数. 那么, 称 $f$ 的\emph{全体}原函数作成的集为 $f$ 的\emph{不定积分}, 即
+    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $f$ 有一个原函数. 那么, 称 $f$ 的\emph{全体}原函数作成的\emph{集}为 $f$ 的\emph{不定积分}, 即
     \begin{align*}
         \int {f} = \{ g \mid \text{$g$ 是 $f$ 的原函数} \}.
     \end{align*}
@@ -150,4 +150,304 @@
 
 \section{函数集的演算}
 
-To be continued.
+上节, 我们正式地定义了区间 $I$ 上的函数 $f$ 的不定积分是 $f$ 的全体原函数作成的集. 随后, 我们知道, 若 $\mathrm{D}F = f$, 则
+\begin{align*}
+    \int {f} = \{ F + c \mid \text{$c$ 是 $I$ 上的常函数} \}.
+\end{align*}
+不过, 此表达似乎不是很简洁. 很少有人愿意每次写不定积分都要写上形如 ``$c$ 是 $I$ 上的常函数'' 这样的话. 并且, 这种表达方式也不利于我们表达不定积分跟不定积分的关系.
+
+\begin{example}
+    设 $f$, $g$ 都是区间 $I$ 上的函数, 且不定积分存在. 我们看 $f + g$ 是否有不定积分. 为回答这个问题, 无妨设 $F$, $G$ 分别是 $f$, $g$ 的原函数. 那么 $\mathrm{D}[F + G] = f + g$. 从而, $f + g$ 确实有不定积分
+    \begin{align*}
+        A = \int {(f + g)} = \{ F + G + c \mid \text{$c$ 是 $I$ 上的常函数} \}.
+    \end{align*}
+    记
+    \begin{align*}
+        B = \Bigg\{ u + v \,\,\Bigg|\,\, \text{$u \in \int {f}$, 且 $v \in \int {g}$} \Bigg\}.
+    \end{align*}
+    我们证明: $A = B$.
+
+    任取 $F + G + c \in A$. 那么 $F \in \int {f}$, 且 $G + c \in \int {g}$. 所以 $F + G + c \in B$. 这说明, $A \subset B$.
+
+    任取 $u + v \in B$, 其中 $u \in \int {f}$, 且 $v \in \int {g}$. 那么存在常函数 $d_1$, $d_2$ 使 $u = F + d_1$, $v = G + d_2$. 所以 $u + v = F + G + (d_1 + d_2)$. 二个常函数的和仍为常函数, 故 $u + v \in A$. 这说明, $A \supset B$.
+
+    我们该怎样描述 $\int {(f + g)}$, $\int {f}$ 与 $\int {g}$ 的关系? 您可能在其他的分析教材里见过形如
+    \begin{align*}
+        \int {(f + g)} = \int {f} + \int {g}
+    \end{align*}
+    的文字. 不过, 上式右端的 ``$+$'' 是什么意思? 或者, 具体地, 焊接二个集的 $+$ 是什么意思呢?
+\end{example}
+
+上例告诉我们, 我们很需要为函数集定义新的运算; 更确切地, 我们很需要搬函数的运算到函数集上.
+
+\begin{definition}
+    设 $A$ 为集. 若任取 $A$ 的元 $f$, $f$ 是一个函数, 就称 $A$ 为\emph{函数集}.
+
+    设 $P$, $Q$ 为二个集. 若函数集 $A$ 的每个元都是 $P$ 上的函数, 就说 $A$ 是 $P$ 上的函数集. 若函数集 $A$ 的每个元都是 $P$ 到 $Q$ 的函数 (定义域为 $P$, 陪域为 $Q$), 则说 $A$ 是 $P$ 到 $Q$ 的函数集. 此时, 我们也说, 函数集 $A$ 的定义域为 $P$, 陪域为 $Q$.
+\end{definition}
+
+\begin{definition}
+    设 $A$ 是 $P$ 到 $Q$ 的函数集, $B$ 是 $R$ 到 $S$ 的函数集, 且任取 $A$ 的元 $a$, $a$ 的值域是 $R$ 的子集. 于是, 任取 $B$ 的元 $b$, $b \circ a$: $P \to S$ 有意义. 定义
+    \begin{align*}
+        B \circ A = \{ b \circ a \mid \text{$b \in B$, $a \in A$} \}.
+    \end{align*}
+    不难看出, $B \circ A$ 就是 $P$ 到 $S$ 的函数集.
+\end{definition}
+
+函数集的复合也有结合律.
+
+\begin{theorem}
+    设 $A$ 是 $P$ 到 $Q$ 的函数集, $B$ 是 $R$ 到 $S$ 的函数集, $C$ 是 $T$ 到 $U$ 的函数集. 设任取 $A$ 的元 $a$, $a$ 的值域是 $R$ 的子集; 设任取 $B$ 的元 $b$, $b$ 的值域是 $S$ 的子集. 则
+    \begin{align*}
+        C \circ (B \circ A) = (C \circ B) \circ A.
+    \end{align*}
+    所以, 我们可简单地记上式的任意一侧为 $C \circ B \circ A$.
+\end{theorem}
+
+此事的论证不难; 不过, 我希望您能适应这种论证方式; 这样, 您就完全可类似地论证其他的关于函数集的运算律.
+
+\begin{proof}
+    取 $f \in C \circ (B \circ A)$. 于是, 存在 $a \in A$, $b \in B$, $c \in C$ 使 $f = c \circ (b \circ a)$. 因为函数的复合适合结合律, 故
+    \begin{align*}
+         & f = c \circ (b \circ a) = (c \circ b) \circ a \in (C \circ B) \circ A.
+    \end{align*}
+    再取 $g \in (C \circ B) \circ A$. 于是, 存在 $a^{\prime} \in A$, $b^{\prime} \in B$, $c^{\prime} \in C$ 使 $g = (c^{\prime} \circ b^{\prime}) \circ a^{\prime}$. 因为函数的复合适合结合律, 故
+    \begin{align*}
+         & g = (c^{\prime} \circ b^{\prime}) \circ a^{\prime} = c^{\prime} \circ (b^{\prime} \circ a^{\prime}) \in C \circ (B \circ A). \qedhere
+    \end{align*}
+\end{proof}
+
+就像为函数集引入复合那样, 对 $\mathbb{R}$ 的子集到 $\mathbb{R}$ 的子集的函数集, 我们还可引入 $+$, $-$, $\cdot$, $/$, $\text{\textasciicircum}$ 等运算.
+
+\begin{definition}
+    设 $P$, $Q$, $S$ 是 $\mathbb{R}$ 的子集. 设 $A$ 是 $P$ 到 $Q$ 的函数集, $B$ 是 $P$ 到 $S$ 的函数集. 设 $\ast$ 为三文字 $+$, $-$, $\cdot$ 的任意一个. 定义
+    \begin{align*}
+        A \ast B = \{ a \ast b \mid \text{$a \in A$, $b \in B$} \},
+    \end{align*}
+    其中 $A \ast B$ 的陪域可按需要决定. 一般地, 我们可写 $\{ 0 \} - B$ 为 $-B$, 写 $A \cdot B$ 为 $AB$.
+
+    若任取函数集 $A$ 的元 $a$, 任取 $p \in P$, 都有 $a[p] \neq 0$, 则定义
+    \begin{align*}
+        \frac{B}{A} = \Bigg\{ \frac{b}{a} \,\Bigg|\,  \text{$b \in B$, $a \in A$} \Bigg\},
+    \end{align*}
+    其中陪域可按需要决定.
+
+    若对任意 $a \in A$, $b \in B$, $p \in P$, ${a[p]}^{b[p]}$ 有意义, 则还可定义
+    \begin{align*}
+        A^B = \{ a^b \mid \text{$a \in A$, $b \in B$} \},
+    \end{align*}
+    其中陪域可按需要决定.
+\end{definition}
+
+现在, 我邀请您证明函数集的如下性质. 我就不证明了; 因为我想, 我已经告诉您怎么论证了.
+
+\begin{theorem}
+    设 $P$ 是 $\mathbb{R}$ 的子集. 设 $A$, $B$, $C$ 都是 $P$ 到 (某个) $\mathbb{R}$ 的子集的函数集. 则
+    \begin{align*}
+        \begin{array}{ll}
+            A + B = B + A,             & AB = BA,            \\
+            (A + B) + C = A + (B + C), & (AB)C = A(BC),      \\
+            A(B + C) = AB + AC,        & (A + B)C = AC + BC.
+        \end{array}
+    \end{align*}
+\end{theorem}
+
+\begin{theorem}
+    设 $P$ 是 $\mathbb{R}$ 的子集. 任取函数集 $L$ 的元 $\ell$, $\ell$ 的值域都是 $P$ 的子集. 设 $A$, $B$ 是 $P$ 上的函数集. 设 $\ast$ 是五文字 $+$, $-$, $\cdot$, $/$, $\text{\textasciicircum}$ 的任意一个. 则
+    \begin{align*}
+        (A \ast B) \circ L = (A \circ L) \ast (B \circ L).
+    \end{align*}
+\end{theorem}
+
+尽管函数集跟函数有类似的运算律, 不过, 这并不是说, 函数的每一个运算律都可被搬到函数集上.
+
+\begin{example}
+    设 $P \subset \mathbb{R}$. 设 $0$ 是 $P$ 上的恒取零值的函数. 那么, 不难看出, 对任意 $p \in P$:
+    \begin{itemize}
+        \item $p + 0 = p$;
+        \item 存在 $q \in P$, 使 $p + q = 0$ (取 $q$ 为 $-p$ 即可).
+    \end{itemize}
+    由此, 我们不难推出: 若 $p$, $q$, $r \in P$, 且 $q + p = r + p$, 则 $q = r$; 在等式二侧同时加 $-p$, 利用结合律, 再利用 $0$ 的性质即知. 我们姑且称这个性质为函数的加法的消去律.
+
+    函数集的加法也有消去律吗? 一般来说, 没有. 取 $A = \{ 1 \}$; 取 $B$, $C$ 为
+    \begin{align*}
+        \{ 0, 1, -1, 2, -2, 3, -3, 4, -4, \dots \},
+    \end{align*}
+    这里的 $0$, $1$, $-1$, $\dots$ 都是 $P$ 上的常函数. 那么, 不难验证, $A + C = B + C = C$. 可是, $A \neq B$.
+\end{example}
+
+现在我们考虑一类特殊的函数集; 这也是不定积分的演算重点考察的对象.
+
+我们先为一种特殊的函数集引入方便的记号.
+
+设 $P \subset \mathbb{R}$. 考虑 $P$ 上的函数. 任取实数 $c$, 我们总可以作一个 $P$ 上的常函数
+\begin{align*}
+    \text{$c$:} \quad
+    P & \to \{ c \}, \\
+    t & \mapsto c.
+\end{align*}
+反过来, 任取 $P$ 上的一个 (实的) 常函数 $f$, 我们也总能找到一个实数 $c$, 使任取 $t \in P$, 都有 $f[t] = c$. 并且, 不同的实数 (常函数) 对应着不同的常函数 (实数). 我们记全体实数作成的集为 $\mathbb{R}$; 所以, 我们也无妨记全体 $P$ 上的 (实的) 常函数作成的集为 $\mathbb{R}_{P}$. 我们曾说, 除非有必要, 我们不严格区分函数及其限制; 也就是说, 在语境明确的时候, 我们也可写 $\mathbb{R}_{P}$ 为 $\mathbb{R}$.
+
+下面的几条性质十分重要.
+
+\begin{theorem}
+    设 $\mathbb{R}_{P}$ 为 $P$ 上的全体常函数作成的集. 则 $\mathbb{R}_{P} + \mathbb{R}_{P} = \mathbb{R}_{P}$.
+\end{theorem}
+
+\begin{proof}
+    任取 $f \in \mathbb{R}_{P} + \mathbb{R}_{P}$. 那么, 存在 $f_1$, $f_2 \in \mathbb{R}_{P}$, 使 $f = f_1 + f_2$. 因为二个常函数的和还是常函数, 故 $f \in \mathbb{R}_{P}$. 反过来, 任取 $g \in \mathbb{R}_{P}$. 因为 $g = g + 0$, 且 $0 \in \mathbb{R}_{P}$, 故 $g \in \mathbb{R}_{P} + \mathbb{R}_{P}$.
+\end{proof}
+
+\begin{theorem}
+    设 $\mathbb{R}_{P}$ 为 $P$ 上的全体常函数作成的集.
+    \begin{itemize}
+        \item 若 $d \in \mathbb{R}_{P}$, 则 $\{ d \} + \mathbb{R}_{P} = \mathbb{R}_{P}$.
+        \item 若 $k \in \mathbb{R}_{P}$, 且 $k \neq 0$, 则 $\{ k \} \cdot \mathbb{R}_{P} = \mathbb{R}_{P}$.
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    我在此处论证关于加的等式. 任取 $f \in \{ d \} + \mathbb{R}_{P}$. 那么, 存在 $e \in \mathbb{R}_{P}$ 使 $f = d + e$. 因为二个常函数的和还是常函数, 故 $f \in \mathbb{R}_{P}$. 反过来, 任取 $g \in \mathbb{R}_{P}$. 因为 $g = d + (g - d)$, 且 $g - d \in \mathbb{R}_{P}$, 故 $g \in \{ d \} + \mathbb{R}_{P}$.
+
+    论证关于乘的等式的方法是类似的. 不过, 要注意一些细节. $k \neq 0$ 的意思是 $k$ 跟 $0$ 作为\emph{函数}不相等; 所以, 是\emph{存在} $p \in P$, 使 $k[p] \neq 0[p]$. 不过, 因为 $k$ 跟 $0$ 都是\emph{常函数}, 故 $k \neq 0$ (实数的不相等). 所以 $k$ 有倒数 $k^{-1}$, 且 $k^{-1}$ 也是常函数.
+\end{proof}
+
+\begin{theorem}
+    设 $\mathbb{R}_{P}$ 为 $P$ 上的全体常函数作成的集. 设函数集 $A$ 的每一个函数的值域都是 $P$ 的子集. 则 $\mathbb{R}_{P} \circ A = \mathbb{R}_{P}$.
+\end{theorem}
+
+\begin{proof}
+    注意到对任意 $a \in A$, $k \in \mathbb{R}_{P}$, 必有 $k \circ a = k$.
+\end{proof}
+
+设 $I$ 是区间. 设 $f$ 是 $I$ 上的函数. 设 $F$ 是 $f$ 的一个原函数. 那么, 我们就可以简单地写
+\begin{align*}
+    \int {f} = \{ F \} + \mathbb{R}.
+\end{align*}
+您可能会觉得写 $\{ F \}$ 较繁. 所以, 我们再简化一下记号.
+
+\begin{example}
+    我假定您学过高中算学里的立体几何.
+
+    在高中, 您一开始就学了集与集的关系、运算. 自然地, 我们视平面为\emph{点集} (每一个元都是点的集), 也视直线为\emph{点集}. 那么, 点 $P$ 在直线 $\ell$ 上, 就是 $P \in \ell$; 点 $P$ 不在直线 $\ell$ 上, 就是 $P \notin \ell$. 类似地, 点 $P$ 在平面 $\Pi$ 内, 就是 $P \in \Pi$; 点 $P$ 不在平面 $\Pi$ 内, 就是 $P \notin \Pi$.
+
+    现在, 我们任取一个平面 $\Pi$ 与一条直线 $\ell$. 您也知道, 下面的三事, 有且只有一件能发生:
+    \begin{itemize}
+        \item $\ell$ 上的每一个点都是 $\Pi$ 的点. 我们可简单地记此事为 $\ell \subset \Pi$.
+        \item $\ell$ 上的每一个点都不是 $\Pi$ 的点. 我们说, $\ell \cap \Pi$ 是空集.
+        \item 存在唯一的一点 $P$, 使 $P \in \ell$, 且 $P \in \Pi$. 高中算学会这么写: $\ell \cap \Pi = P$.
+    \end{itemize}
+    Well. 正如您所见, 按道理, 我们应当写 $\ell \cap \Pi = \{ P \}$; 毕竟, 我们说, 平面跟直线都是\emph{点集}. 可是, 我们省略了 $\{ \, \}$. 也就是说, 我们简单地写刚好有一个元的集 $\{ a \}$ 为 $a$. 不重要地, 高中算学一开始讲集时, 用 $A \subseteq B$ 表达 ``$A$ 是 $B$ 的子集'', 用 $A \subsetneqq B$ 表达 ``$A$ 是 $B$ 的真子集''; where are you, $\subset$?
+
+    当然了, 也不是每个高中算学老师都是 ``盲人''. 假如您对此事感兴趣, 您可以参考阮龙培的《关于立体几何应用集合论符号的几点看法》与吴长庆的《立体几何使用 ``集合语言'' 的准确性》. 我承认, 这些文章都比我老.
+\end{example}
+
+借此机会, 我说一说我的观点吧. 我的有限的语言知识告诉我, 土话跟胡话都有不少多义词. 这里, ``多义'' 并不是指有 ``很大的区别'' 的解释, 而是说这些含义 ``相似'', 但又不完全一样 (我加了引号, 因为我不知道怎么用行话表达我的想法). 就拿 ``曲线'' (胡话: curve) 为例吧. 在中学, 我们一般视曲线为点集. 所以, 我们说, (平面的) 曲线有隐方程 $F[x, y] = 0$, 也有参数方程 $x = f[t]$, $y = g[t]$, $t \in A$ ($A$ 就是所谓的 ``参数区间''). 这么看来, 曲线就是全体适合隐方程 (或参数方程) 的 $(x, y)$ 作成的集. 在算学分析 (或高等算学) 里, 您可能也学过怎么用积分算曲线的长. 这个时候, 曲线的方程可能更重要; 这是因为, 曲线的 ``几何性质'' 似乎对曲线的长的公式的推导没有帮助. 我们计算曲线的长时, 一般都要求 ``曲线的参数方程'' 的导数连续——这其实涉及到方程的分析性质了. (假如您对此事感兴趣, 您可以参考美国算学家 Walter Rudin 的教材 \textit{Principles of Mathematical Analysis, 3rd ed}.)
+
+目前, 算学家都是人; 不过, 人类, 似乎生来就想着偷懒. 所以说, 算学家也不例外. 算学家一方面追求严谨; 另一方面, 假如记号不是很简洁, 算学家自己写起来都费劲. 所以, 算学家会说: ``在本书 (或本文、本节、本章), 为方便, 我们约定文字 (表达式、符号) $\times \times \times$ 表示……'' 不过, 我觉得, 可以先给出 ``稍繁琐的写法'', 再给 ``简单的写法''; 这或许能让学生体会到简单的写法为什么方便. 可惜, 我看了好几本新的高中算学书, 都是一开始用 $\subseteq$ 表子集, 而在立体几何里 ``借用'' $\subset$ 表直线的每一点都在平面内; 没有一本 (高中算学) 教材说 ``为方便, 我们用 $\subset$ 表子集, 并省去刚好有一个元的集 $\{ a \}$ 外的花括号''.
+
+好了, 我就说这么多吧. 严格地, 这算是 ``私货'' 了; 可是, 这是一本告诉他人我 (与一些算学家) 的想法的微积分读物. 假如我不带 ``私货'', 那我要带什么呢? 或许, 我不如不写这本书.
+
+现在, 请允许我正式地作出这样的约定: 在不引起混淆时, 我们可写恰含一个元的集 $\{ a \}$ 为 $a$. 所以, 像 $a \in a$, $a \subset \{ a \}$ 的表达都是可被接受的.
+
+设 $I$ 是区间. 设 $f$ 是 $I$ 上的函数. 设 $F$ 是 $f$ 的一个原函数. 那么, 我们就可以简单地写
+\begin{align*}
+    \int {f} = F + \mathbb{R}.
+\end{align*}
+代 $f$ 以 $\mathrm{D}F$, 就有
+\begin{align*}
+    \int {\mathrm{D}F} = F + \mathbb{R}.
+\end{align*}
+不严格地, 若忽视常函数, 那么不定积分 ``抵消了'' 导数. 反过来呢?
+
+\begin{definition}
+    设 $I$ 是区间. 设 $A$ 是 $I$ 上的函数集, 且 $A$ 的每个元都是可导函数. 我们说, $A$ 是 $I$ 上的\emph{可导函数集}. 定义
+    \begin{align*}
+        \mathrm{D} [A] = \{ \mathrm{D}a \mid a \in A \}.
+    \end{align*}
+    有时, 我们也可简单地写 $\mathrm{D}[A]$ 为 $\mathrm{D}A$.
+\end{definition}
+
+\begin{example}
+    不难看出, $\mathrm{D} \mathbb{R} = \{ 0 \} = 0$.
+\end{example}
+
+设 $I$ 是区间. 设 $f$ 是 $I$ 上的函数. 设 $F$ 是 $f$ 的一个原函数. 那么
+\begin{align*}
+    \mathrm{D} \Bigg[ \int {f} \Bigg]
+    = {} & \mathrm{D} [\{ F + c \mid \text{$c \in \mathbb{R}$} \}] \\
+    = {} & \{ \mathrm{D}[F + c] \mid \text{$c \in \mathbb{R}$} \}  \\
+    = {} & \{ f \mid \text{$c \in \mathbb{R}$} \}                  \\
+    = {} & \{ f \}  = f.
+\end{align*}
+所以, 不严格地, 我们也可以说, 导数 ``抵消了'' 不定积分.
+
+\begin{definition}
+    设 $P \subset \mathbb{R}$. 设 $A$ 为 $P$ 上的函数集. 若存在 $a \in A$ 使 $P = \{ a \} + \mathbb{R} = a + \mathbb{R}$, 就说 $A$ 是 $P$ 上的\emph{至多相差常函数的函数集}.
+\end{definition}
+
+\begin{remark}
+    或许这样的函数集有更好的名字; 不过, 我姑且这么叫吧.
+\end{remark}
+
+\begin{theorem}
+    设 $P \subset \mathbb{R}$. 设 $f$, $g$ 是 $P$ 上的函数.
+    \begin{itemize}
+        \item 若 $g$ 是 $P$ 上的函数, 则
+              \begin{align*}
+                  (f + \mathbb{R}) + (g + \mathbb{R}) = (f + g) + \mathbb{R}.
+              \end{align*}
+        \item 若 $g$ 是 $P$ 上的函数, 则
+              \begin{align*}
+                  f + (g + \mathbb{R}) = (f + g) + \mathbb{R}.
+              \end{align*}
+              特别地, 取 $g$ 为常函数 $c$, 则
+              \begin{align*}
+                  f + \mathbb{R} = f + (c + \mathbb{R}) = (f + c) + \mathbb{R}.
+              \end{align*}
+        \item 若 $k \in \mathbb{R}$, 且 $k \neq 0$, 则
+              \begin{align*}
+                  k(f + \mathbb{R}) = kf + \mathbb{R}.
+              \end{align*}
+        \item 若函数 $h$ 的值域是 $P$ 的子集, 则
+              \begin{align*}
+                  (f + \mathbb{R}) \circ h = f \circ h + \mathbb{R}.
+              \end{align*}
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    利用函数集的运算律与 $\mathbb{R}$ 的性质, 有
+    \begin{align*}
+        (f + \mathbb{R}) + (g + \mathbb{R})
+        = {} & (\{ f \} + \mathbb{R}) + (\{ g \} + \mathbb{R}) \\
+        = {} & ((\{ f \} + \mathbb{R}) + \{ g \}) + \mathbb{R} \\
+        = {} & (\{ f \} + (\mathbb{R} + \{ g \})) + \mathbb{R} \\
+        = {} & (\{ f \} + (\{ g \} + \mathbb{R})) + \mathbb{R} \\
+        = {} & ((\{ f \} + \{ g \}) + \mathbb{R}) + \mathbb{R} \\
+        = {} & (\{ f + g \} + \mathbb{R}) + \mathbb{R}         \\
+        = {} & \{ f + g \} + (\mathbb{R} + \mathbb{R})         \\
+        = {} & (f + g) + \mathbb{R}.
+    \end{align*}
+    类似地,
+    \begin{align*}
+        f + (g + \mathbb{R})
+        = {} & \{ f \} + (\{ g \} + \mathbb{R}) \\
+        = {} & (\{ f \} + \{ g \}) + \mathbb{R} \\
+        = {} & (f + g) + \mathbb{R}.
+    \end{align*}
+    若 $k \neq 0$, 则 $\{ k \} \cdot \mathbb{R} = \mathbb{R}$. 从而
+    \begin{align*}
+        k(f + \mathbb{R})
+        = {} & \{ k \} ( \{ f \} + \mathbb{R} )     \\
+        = {} & \{ k \} \{ f \} + \{ k \} \mathbb{R} \\
+        = {} & kf + \mathbb{R}.
+    \end{align*}
+    最后一个也不难:
+    \begin{align*}
+        (f + \mathbb{R}) \circ h
+        = {} & (\{ f \} + \mathbb{R}) \circ \{ h \}             \\
+        = {} & \{ f \} \circ \{ h \} + \mathbb{R} \circ \{ h \} \\
+        = {} & ( f \circ h ) + \mathbb{R}. \qedhere
+    \end{align*}
+\end{proof}

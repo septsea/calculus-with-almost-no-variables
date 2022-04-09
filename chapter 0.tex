@@ -1,12 +1,45 @@
-\pagenumbering{roman}
+\pagenumbering{alph}
 \setcounter{page}{1}
 
-\title{几乎无变量的微积分}
-\author{纳纳米}
-\date{\today}
-\maketitle
+\def\CalculusSubtitle{\pageref{calculus:LastPage}~分快速上手}
+
+% The title page is inspired by "The Not So Short
+% Introduction to LaTeX2e"
+\begin{titlepage}
+    \newlength{\centeroffset}
+    \setlength{\centeroffset}{-0.5\oddsidemargin}
+    \addtolength{\centeroffset}{0.5\evensidemargin}
+    %\addtolength{\textwidth}{-\centeroffset}
+    \thispagestyle{empty}
+    \vspace*{\stretch{1}}
+    \noindent\hspace*{\centeroffset}\makebox[0pt][l]{\begin{minipage}{\textwidth}
+            \sffamily
+            \flushright
+            {\Huge\bfseries 几乎无变量的微积分}
+            \noindent\rule[-1ex]{\textwidth}{5pt}\\[2.5ex]
+            \hfill\itshape{\Large \CalculusSubtitle}
+        \end{minipage}}
+
+    \vspace{\stretch{1}}
+    \noindent\hspace*{\centeroffset}\makebox[0pt][l]{\begin{minipage}{\textwidth}
+            \sffamily
+            \flushright
+            \textbf{纳纳米}
+            \\[1ex]
+            版本~\CalculusVersion[1], \today
+        \end{minipage}}
+
+    %\addtolength{\textwidth}{\centeroffset}
+    \vspace{\stretch{2}}
+\end{titlepage}
+
+\restoregeometry
+\clearpage
+\thispagestyle{empty}
 
 \cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{1}
 \tableofcontents
 
 \include{preface}
@@ -14,5 +47,3 @@
 \cleardoublepage
 \setcounter{page}{1}
 \pagenumbering{arabic}
-
-\citestyle{numbers}

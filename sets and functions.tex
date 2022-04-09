@@ -8,10 +8,6 @@
     \emph{集}是具有某种特定性质的对象汇集而成的一个整体. 称其对象为\emph{元}.
 \end{definition}
 
-% \begin{remark}
-%     事实上, 很多说汉语的算学家似乎更喜欢说 ``集合'' 而不是 ``集'', 尤其当 ``集'' 前无限定词时. 这多半是因为所谓 ``汉语'' 其实是现代汉语, 而现代汉语喜 ``双音节词''. 比方说, 曾表示 ``人的脸色'' 的 ``颜色'' 被用来指胡话的 color; 单独的 ``色'' 似乎是胡话的 erotic. 当然了, 我的汉语也不好, 我是语言的门外汉. 总之, 大家视 ``集'' 为一个跟胡话的 set 同义的文字即可; 类似地, 视 ``元'' 为一个跟胡话的 element 同义的文字即可.
-% \end{remark}
-
 \begin{remark}
     事实上, 集与元是所谓的 ``原始概念''. 我们至多\emph{描述}集或元是什么; 我们无法\emph{定义}集或元.
 \end{remark}
@@ -86,24 +82,20 @@
     类似地, 可定义多个集的交与并.
 \end{definition}
 
-\begin{example}[label={example:EvenAndOdd}]
+\begin{example}
     设 $E$ 是全体偶数作成的集; 设 $O$ 是全体奇数作成的集. 不难看出, $E \cap O$ 为空集, 而 $E \cup O$ 恰为全体整数作成的集.
 \end{example}
 
 \begin{definition}
     设 $A$, $B$ 是集. 定义
     \begin{align*}
-        A - B = \{ x \mid \text{$x \in A$, $x \notin B$} \}.
+        A \setminus B = \{ x \mid \text{$x \in A$, $x \notin B$} \}.
     \end{align*}
 \end{definition}
 
 \begin{remark}
     值得注意的是, 我们没说 $B \subset A$.
 \end{remark}
-
-\begin{example}[continues={example:EvenAndOdd}]
-    不难看出, $E - O$ 跟 $O - E$ 都是空集, 故 $E - O = O - E$. 不过, 这个 $-$ 不是减法, 故当然不能由此推出 ``$E + E = O + O$'', 更不能推出 $E = O$.
-\end{example}
 
 \begin{definition}
     设 $A$, $B$ 是集. 定义
@@ -567,7 +559,7 @@
     \begin{array}{ll}
         f + g = g + f,             & fg = gf,            \\
         (f + g) + h = f + (g + h), & (fg)h = f(gh),      \\
-        f(g + h) = fg + fg,        & (f + g)h = fh + gh.
+        f(g + h) = fg + fh,        & (f + g)h = fh + gh.
     \end{array}
 \end{align*}
 这里 $f$, $g$, $h$ 都是 $A$ 上的函数.
@@ -594,13 +586,6 @@
         \mathrm{cos}^2 + \mathrm{sin}^2 = 1.
     \end{align*}
 \end{example}
-
-% \begin{example}
-%     对任意实数 $x$, 都有 $\mathrm{exp} {[x]} \cdot \mathrm{exp} {[-x]} = 1$. 所以
-%     \begin{align*}
-%         \mathrm{exp} \, ({\mathrm{exp}} \circ {-\iota}) = 1.
-%     \end{align*}
-% \end{example}
 
 \begin{example}
     我们可写 ``二倍角公式'' 为
