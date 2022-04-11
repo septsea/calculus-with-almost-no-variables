@@ -104,7 +104,7 @@
                         {\displaystyle \frac{1}{t - x} \int_{x}^{t} {f}}, & t \neq x.
                     \end{cases}
     \end{align*}
-    取 $x$ 的一个邻域 $N$, 使 $I \subset N$. 那么, $N \cap I = I$. 因为
+    取 $x$ 的一个邻域 $N$. 所以, 在 $N \cap I$ 上, 有
     \begin{align*}
         F = F[x] + (\iota - x) Q,
     \end{align*}
@@ -391,7 +391,7 @@
 \end{remark}
 
 \begin{theorem}
-    设 $P \subset \mathbb{R}$. 设 $f$, $g$ 是 $P$ 上的函数.
+    设 $P \subset \mathbb{R}$. 设 $f$ 是 $P$ 上的函数.
     \begin{itemize}
         \item 若 $g$ 是 $P$ 上的函数, 则
               \begin{align*}
@@ -451,3 +451,608 @@
         = {} & ( f \circ h ) + \mathbb{R}. \qedhere
     \end{align*}
 \end{proof}
+
+\section{不定积分的演算}
+
+现在, 我们研究怎么算不定积分.
+
+\begin{theorem}
+    设 $I$ 是区间. 设 $F$ 是 $I$ 上的可导函数. 则
+    \begin{align*}
+        \int {\mathrm{D}F} = F + \mathbb{R}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    我已经证过它了.
+\end{proof}
+
+这或许是最基本的计算法了. 一般来说, ``简单的'' 函数的不定积分都可以这么求出来.
+
+\begin{example}
+    设 $I$ 是某个不含 $0$ 的区间. 求 $\int {\iota^{-1}}$.
+
+    我们知道, $\mathrm{D}[\mathrm{ln} \circ \mathrm{abs}] = \iota^{-1}$. 所以
+    \begin{align*}
+        \int {\iota^{-1}} = \mathrm{ln} \circ \mathrm{abs} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{theorem}
+    设 $I$ 是区间. 设 $f$, $g$ 是 $I$ 上的函数. 设 $f$, $g$ 都有不定积分.
+    \begin{itemize}
+        \item $f + g$ 也有不定积分, 且
+              \begin{align*}
+                  \int {(f + g)} = \int {f} + \int {g}.
+              \end{align*}
+        \item 设 $k \in \mathbb{R}$, 且 $k \neq 0$. 则 $kf$ 也有不定积分, 且
+              \begin{align*}
+                  \int {kf} = k \int{f}.
+              \end{align*}
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    设 $F$, $G$ 分别是 $f$, $g$ 的原函数. 那么
+    \begin{align*}
+        \int {f} = F + \mathbb{R}, \quad \int {g} = G + \mathbb{R}.
+    \end{align*}
+    因为 $\mathrm{D}[F + G] = f + g$, 故
+    \begin{align*}
+        \int {(f + g)}
+        = {} & (F + G) + \mathbb{R}                \\
+        = {} & (F + \mathbb{R}) + (G + \mathbb{R}) \\
+        = {} & \int {f} + \int {g}.
+    \end{align*}
+    类似地, 因为 $\mathrm{D}[kF] = kf$, 且 $k \neq 0$, 故
+    \begin{align*}
+         & {\int {kf}} = kF + \mathbb{R} = k(F + \mathbb{R}) = k\int {f}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{remark}
+    注意到 $\int {0} = \mathbb{R}$. 所以, 对任意 $k \in \mathbb{R}$,
+    \begin{align*}
+        \int {kf} = k\int {f} + \mathbb{R}.
+    \end{align*}
+\end{remark}
+
+\begin{example}
+    设 $A$ 是 $P \subset \mathbb{R}$ 上的函数集. 那么, 不难验证, $-A = (-1)A$. 所以, 特别地, 有
+    \begin{align*}
+        \int {(f - g)}
+        = {} & \int {(f + (-1)g)}      \\
+        = {} & \int {f} + \int {(-1)g} \\
+        = {} & \int {f} + (-1)\int {g} \\
+        = {} & \int {f} - \int {g}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+         & \int {\mathrm{cos}} = \int {\mathrm{D}\,\mathrm{sin}} = \mathrm{sin} + \mathbb{R},                                               \\
+         & \int {\mathrm{sin}} = \int {(-1)\mathrm{D}\,\mathrm{cos}} = (-1)\int {\mathrm{D}\,\mathrm{cos}} = -\mathrm{cos} + \mathbb{R},    \\
+         & \int {\mathrm{exp}} = \int {\mathrm{D}\,\mathrm{exp}} = \mathrm{exp} + \mathbb{R},                                               \\
+         & \int {\iota^n} = \int {\frac{1}{n+1} \mathrm{D}\,\iota^{n+1}} = \frac{\iota^{n+1}}{n+1} + \mathbb{R} \quad \text{($n \neq -1$)}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {(3\,\mathrm{cos} - 4\,\mathrm{sin} + 5\,\mathrm{exp})}
+        = {} & \int {(3\,\mathrm{cos} - 4\,\mathrm{sin})} + \int {5\,\mathrm{exp}}                              \\
+        = {} & \int {3\,\mathrm{cos}} - \int {4\,\mathrm{sin}} + \int {5\,\mathrm{exp}}                         \\
+        = {} & 3\int {\mathrm{cos}} - 4\int {\mathrm{sin}} + 5\int {\mathrm{exp}}                               \\
+        = {} & 3(\mathrm{sin} + \mathbb{R}) - 4(-\mathrm{cos} + \mathbb{R}) + 5(\mathrm{exp} + \mathbb{R})      \\
+        = {} & (3\,\mathrm{sin} + \mathbb{R}) + (4\,\mathrm{cos} + \mathbb{R}) + (5\,\mathrm{exp} + \mathbb{R}) \\
+        = {} & ((3\,\mathrm{sin} + 4\,\mathrm{cos}) + \mathbb{R}) + (5\,\mathrm{exp} + \mathbb{R})              \\
+        = {} & 3\,\mathrm{sin} + 4\,\mathrm{cos} + 5\,\mathrm{exp} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+         & \int {\frac{1}{\mathrm{cos}^2}} = \int {(1 + \mathrm{tan}^2)} = \int {\mathrm{D}\,\mathrm{tan}} = \mathrm{tan} + \mathbb{R}, \\
+         & \int {\frac{1}{1 + \iota^2}} = \int {\mathrm{D}\,\mathrm{arctan}} = \mathrm{arctan} + \mathbb{R},                            \\
+         & \int {\frac{1}{\sqrt{1 - \iota^2}}} = \int {\mathrm{D}\,\mathrm{arcsin}} = \mathrm{arcsin} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {\mathrm{tan}^2}
+        = {} & \int {(1 + \mathrm{tan}^2) - 1}                    \\
+        = {} & \int {(1 + \mathrm{tan}^2)} - \int {1}             \\
+        = {} & (\mathrm{tan} + \mathbb{R}) - (\iota + \mathbb{R}) \\
+        = {} & \mathrm{tan} - \iota + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {\frac{\iota^4}{1 + \iota^2}}
+        = {} & \int {\frac{\iota^4 - 1 + 1}{1 + \iota^2}}                                                           \\
+        = {} & \int {\Bigg( \iota^2 - 1 + \frac{1}{1 + \iota^2} \Bigg)}                                             \\
+        = {} & \int {\iota^2} - \int {1} + \int {\frac{1}{1 + \iota^2}}                                             \\
+        = {} & \Bigg( \frac{\iota^3}{3} + \mathbb{R} \Bigg) - (\iota + \mathbb{R}) + (\mathrm{arctan} + \mathbb{R}) \\
+        = {} & \frac{\iota^3}{3} - \iota + \mathrm{arctan} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{theorem}
+    设 $I$, $J$ 为区间. 设 $g$ 是 $J$ 上的函数, 且有不定积分. 设 $f$: $I \to J$ 是可导函数. 则 $(g \circ f)\, \mathrm{D}f$ 也有不定积分, 且
+    \begin{align*}
+        \int {(g \circ f)\, \mathrm{D}f} = \Bigg( \int {g} \Bigg) \circ f.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    设 $G$ 是 $g$ 的原函数. 则
+    \begin{align*}
+        \mathrm{D}[G \circ f] = (\mathrm{D}G \circ f)\, \mathrm{D}f = (g \circ f)\, \mathrm{D}f.
+    \end{align*}
+    从而
+    \begin{align*}
+        \int {(g \circ f)\, \mathrm{D}f}
+        = {} & G \circ f + \mathbb{R}                   \\
+        = {} & (G + \mathbb{R}) \circ f                 \\
+        = {} & \Bigg( \int {g} \Bigg) \circ f. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{remark}
+    作为对比, 我们看看怎么用传统的记号表示此事.
+
+    设 $I$, $J$ 为区间. 设 $g$ 是 $J$ 上的函数, 且有不定积分
+    \begin{align*}
+        \int {g(x)\,\mathrm{d}x} = G(x) + C.
+    \end{align*}
+    设 $f$: $I \to J$ 是可导函数. 则 $(g \circ f)\, f^{\prime}$ 也有不定积分
+    \begin{align*}
+        \int {g(f(t))f^{\prime}(t)\,\mathrm{d}t} = G(f(t)) + C.
+    \end{align*}
+
+    一般称这种计算不定积分的方法为 ``第一\emph{换元} (积分) 法''; 不过, 我认为, 可以称其为 ``第一\emph{复合} (积分) 法'', 因为 (表面上) 我代 ``换元'' 以 ``复合''. 事实上, 传统的记号跟我在本书用的新记号表达的仍为同一件事. 所谓 ``第一换元法'' 的本质还是复合与链规则, 只不过, 传统的记号似乎不太允许 ``$x = f(x)$'' 的写法, 故换一个文字是有必要的.
+\end{remark}
+
+\begin{example}
+    设 $g$ 有不定积分. 设 $a$, $b \in \mathbb{R}$, 且 $a \neq 0$. 则
+    \begin{align*}
+        \int {g \circ (a\iota + b)}
+        = {} & \int {\frac{1}{a}\, (g \circ (a\iota + b))\,\mathrm{D}[a\iota + b]}         \\
+        = {} & \int {\Bigg( \frac{g}{a} \circ (a\iota + b) \Bigg)\,\mathrm{D}[a\iota + b]} \\
+        = {} & \Bigg( \int {\frac{g}{a}} \Bigg) \circ (a\iota + b)                         \\
+        = {} & \Bigg( \frac{1}{a} \int {g} \Bigg) \circ (a\iota + b).
+    \end{align*}
+\end{example}
+
+\begin{example}
+    设 $a$, $b$, $c \in \mathbb{R}$, 且 $a \neq 0$. 则
+    \begin{align*}
+        \int {\frac{c}{a\iota + b}}
+        = {} & \Bigg( \frac{1}{a} \int {\frac{c}{\iota}} \Bigg) \circ (a\iota + b)                       \\
+        = {} & \Bigg( \frac{c}{a} \int {\frac{1}{\iota}} + \mathbb{R} \Bigg) \circ (a\iota + b)          \\
+        = {} & \Bigg( \frac{c}{a}\,\mathrm{ln} \circ \mathrm{abs} + \mathbb{R} \Bigg) \circ (a\iota + b) \\
+        = {} & \frac{c}{a}\, \mathrm{ln} \circ \mathrm{abs} \circ (a\iota + b) + \mathbb{R}.
+    \end{align*}
+    类似地, 若 $n \neq -1$, 则
+    \begin{align*}
+        \int {c(a\iota + b)^n}
+        = {} & \Bigg( \frac{1}{a} \int {c\iota^n} \Bigg) \circ (a\iota + b)                                \\
+        = {} & \Bigg( \frac{c}{a} \int {\iota^n} + \mathbb{R} \Bigg) \circ (a\iota + b)                    \\
+        = {} & \Bigg( \frac{c}{a} \cdot \frac{\iota^{n + 1}}{n + 1} + \mathbb{R} \Bigg) \circ (a\iota + b) \\
+        = {} & \frac{c(a\iota + b)^{n + 1}}{a(n + 1)} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    以后, 若
+    \begin{align*}
+        k\int {g} = kG + \mathbb{R},
+    \end{align*}
+    我们可直接写
+    \begin{align*}
+        \Bigg( k\int {g} \Bigg) \circ f = kG \circ f + \mathbb{R}.
+    \end{align*}
+\end{remark}
+
+\begin{example}
+    利用三角公式, 有
+    \begin{align*}
+        \int {\mathrm{cos}\,\mathrm{sin}}
+        = {} & \int {\frac{1}{2}\, \mathrm{sin} \circ {2\iota}}                           \\
+        = {} & \Bigg( \frac{1}{2} \int {\frac{1}{2}\, \mathrm{sin}} \Bigg) \circ {2\iota} \\
+        = {} & \Bigg( \frac{1}{4} \int {\mathrm{sin}} \Bigg) \circ {2\iota}               \\
+        = {} & {-\frac{1}{4}}\, \mathrm{cos} \circ {2\iota} + \mathbb{R}.
+    \end{align*}
+    当然, 我们也可以这么解:
+    \begin{align*}
+        \int {\mathrm{cos}\,\mathrm{sin}}
+        = {} & \int {\mathrm{sin}\, \mathrm{D}\,\mathrm{sin}} \\
+        = {} & \Bigg( \int {\iota} \Bigg) \circ \mathrm{sin}  \\
+        = {} & \frac{1}{2}\, \mathrm{sin}^2 + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    设 $a \in \mathbb{R}$, 且 $a > 0$. 则
+    \begin{align*}
+        \int {\frac{1}{\sqrt{a^2 - \iota^2}}}
+        = {} & \int {\frac{1/a}{\sqrt{1 - (\iota/a)^2}}}                                               \\
+        = {} & \Bigg( \frac{1}{1/a} \int {\frac{1/a}{\sqrt{1 - \iota^2}}} \Bigg) \circ \frac{\iota}{a} \\
+        = {} & \mathrm{arcsin} \circ \frac{\iota}{a} + \mathbb{R}.
+    \end{align*}
+    类似地,
+    \begin{align*}
+        \int {\frac{1}{a^2 + \iota^2}}
+        = {} & \int {\frac{1/a^2}{1 + (\iota/a)^2}}                                               \\
+        = {} & \Bigg( \frac{1}{1/a} \int {\frac{1/a^2}{1 + \iota^2}} \Bigg) \circ \frac{\iota}{a} \\
+        = {} & \frac{1}{a}\,\mathrm{arctan} \circ \frac{\iota}{a} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {\mathrm{tan}}
+        = {} & \int {\frac{\mathrm{sin}}{\mathrm{cos}}}                             \\
+        = {} & \int {\frac{-\mathrm{D}\,\mathrm{cos}}{\mathrm{cos}}}                \\
+        = {} & \Bigg( \int {\frac{-1}{\iota}} \Bigg) \circ \mathrm{cos}             \\
+        = {} & {-\,\mathrm{ln}} \circ \mathrm{abs} \circ \mathrm{cos} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {\frac{\mathrm{cos}}{\mathrm{sin}}}
+        = {} & \int {\frac{\mathrm{D}\,\mathrm{sin}}{\mathrm{sin}}}            \\
+        = {} & \mathrm{ln} \circ \mathrm{abs} \circ \mathrm{sin} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    设 $a \in \mathbb{R}$, 且 $a \neq 0$. 则
+    \begin{align*}
+        \int {\frac{1}{\iota^2 - a^2}}
+        = {} & \int {\frac{1}{(\iota - a)(\iota + a)}}                                \\
+        = {} & \int {\frac{(\iota + a) - (\iota - a)}{2a(\iota - a)(\iota + a)}}      \\
+        = {} & \int {\Bigg( \frac{1}{2a(\iota - a)} - \frac{1}{2a(\iota + a)} \Bigg)} \\
+        = {} & \int {\frac{1}{2a(\iota - a)}} - \int {\frac{1}{2a(\iota + a)}}        \\
+        = {} & \Bigg(\int {\frac{1}{2a\iota}}\Bigg) \circ (\iota - a)
+        - \Bigg(\int {\frac{1}{2a\iota}}\Bigg) \circ (\iota + a)                      \\
+        = {} & \frac{1}{2a}\,\mathrm{ln} \circ \mathrm{abs} \circ (\iota - a)
+        - \frac{1}{2a}\,\mathrm{ln} \circ \mathrm{abs} \circ (\iota + a)
+        + \mathbb{R}                                                                  \\
+        = {} & \frac{1}{2a}\,\mathrm{ln} \Bigg[ \frac{\mathrm{abs} \circ (\iota - a)}
+        {\mathrm{abs} \circ (\iota + a)} \Bigg] + \mathbb{R}                          \\
+        = {} & \frac{1}{2a}\,\mathrm{ln} \circ \mathrm{abs} \circ
+        \frac{\iota - a}{\iota + a} + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {\frac{1}{\mathrm{cos}}}
+        = {} & \int {\frac{\mathrm{cos}}{\mathrm{cos}^2}}                               \\
+        = {} & \int {\frac{\mathrm{D}\,\mathrm{sin}}{1 - \mathrm{sin}^2}}               \\
+        = {} & \Bigg( \int {\frac{1}{1 - \iota^2}} \Bigg) \circ \mathrm{sin}            \\
+        = {} & -\frac{1}{2 \cdot 1}\,\mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{\iota - 1}{\iota + 1} \circ \mathrm{sin} + \mathbb{R}               \\
+        = {} & -\frac{1}{2}\,\mathrm{ln} \circ
+        \frac{1 - \mathrm{sin}}{1 + \mathrm{sin}} + \mathbb{R}                          \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{1 + \mathrm{sin}}{1 - \mathrm{sin}}
+        + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    \begin{align*}
+        \int {\frac{1}{\mathrm{sin}}}
+        = {} & \int {\frac{1}{\mathrm{cos} \circ (2\pi/4 - \iota)}}                     \\
+        = {} & \Bigg( \frac{1}{-1} \int {\frac{1}{\mathrm{cos}}} \Bigg)
+        \circ \bigg( \frac{2\pi}{4} - \iota \bigg)                                      \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ
+        \frac{1 - \mathrm{sin}}{1 + \mathrm{sin}} \circ
+        \bigg( \frac{2\pi}{4} - \iota \bigg) + \mathbb{R}                               \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{1 - \mathrm{cos}}{1 + \mathrm{cos}}
+        + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{theorem}
+    设 $I$, $J$ 为区间. 设 $g$ 是 $J$ 上的函数. 设 $f$: $I \to J$ 是严单调的可导函数, 且 $\mathrm{D}f$ 不取零值. 若 $(g \circ f)\,\mathrm{D}f$ 有不定积分, \emph{则 $g$ 也有不定积分}, 且
+    \begin{align*}
+        \int {g} = \Bigg( \int {(g \circ f)\,\mathrm{D}f} \Bigg) \circ f^{[-1]}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    因为 $f$: $I \to J$ 是严单调的可导函数, 且 $\mathrm{D}f$ 不取零值, 故 $f^{[-1]}$ 也是严单调的可导函数. 设 $G$ 是 $(g \circ f)\,\mathrm{D}f$ 的一个原函数. 则
+    \begin{align*}
+        \mathrm{D}[G \circ f^{[-1]}]
+        = {} & (\mathrm{D}G \circ f^{[-1]})\, \mathrm{D}f^{[-1]}                                                         \\
+        = {} & ((g \circ f)\circ f^{[-1]}) \cdot (\mathrm{D}f \circ f^{[-1]}) \cdot \frac{1}{\mathrm{D}f \circ f^{[-1]}} \\
+        = {} & (g \circ (f \circ f^{[-1]})) \cdot 1                                                                      \\
+        = {} & g \circ \iota = g.
+    \end{align*}
+    从而
+    \begin{align*}
+        \int {g}
+        = {} & G \circ f^{[-1]} + \mathbb{R}                                          \\
+        = {} & (G + \mathbb{R}) \circ f^{[-1]}                                        \\
+        = {} & \Bigg( \int {(g \circ f)\,\mathrm{D}f} \Bigg) \circ f^{[-1]}. \qedhere
+    \end{align*}
+\end{proof}
+
+上述结论有一个变体; 请您仔细比较二者的细微区别.
+
+\begin{theorem}
+    设 $I$, $J$ 为区间. \emph{设 $J$ 上的函数 $g$ 有不定积分.} 设 $f$: $I \to J$ 可导. 设 $e$: $J \to I$ 适合 $f \circ e = \iota$. 则
+    \begin{align*}
+        \int {g} = \Bigg( \int {(g \circ f)\,\mathrm{D}f} \Bigg) \circ e.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    因为 $J$ 上的函数 $g$ 有不定积分, 且 $f$: $I \to J$ 是 $I$ 上的可导函数, 故 $(g \circ f)\, \mathrm{D}f$ 有不定积分, 且
+    \begin{align*}
+        \Bigg( \int {g} \Bigg) \circ f = \int {(g \circ f)\,\mathrm{D}f}.
+    \end{align*}
+    从而
+    \begin{align*}
+        \int {g}
+        = {} & \Bigg( \int {g} \Bigg) \circ \{ \iota \}                        \\
+        = {} & \Bigg( \int {g} \Bigg) \circ \{ f \circ e \}                    \\
+        = {} & \Bigg( \int {g} \Bigg) \circ (\{f\} \circ \{ e \})              \\
+        = {} & \Bigg( \Bigg( \int {g} \Bigg) \circ f \Bigg) \circ \{ e \}      \\
+        = {} & \Bigg( \int {(g \circ f)\,\mathrm{D}f} \Bigg) \circ e. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    设 $a \in \mathbb{R}$, 且 $a > 0$. 求
+    \begin{align*}
+        \int {\frac{1}{\sqrt{a^2 + \iota^2}}}.
+    \end{align*}
+
+    记 $g = \sqrt{a^2 + \iota^2}$: $\mathbb{R} \to [a, +\infty)$. 不难看出, 求解 $\int {g^{-1}}$ 的最大障碍就是 $\mathrm{sqrt}$ (它一定存在, 因为 $g^{-1}$ 是连续函数). 所以, 我们想一个办法消去根号. 什么东西跟 $g$ 的复合可以不带 $\mathrm{sqrt}$ 呢? 联想到三角恒等式 $1 + \mathrm{tan}^2 = \mathrm{cos}^{-2}$, 故我们可考虑令 $f = a\,\mathrm{tan}$: $(-2\pi/4, 2\pi/4) \to \mathbb{R}$. 则
+    \begin{align*}
+        (g^{-1} \circ f)\,\mathrm{D}f
+        = {} & \frac{a (1 + \mathrm{tan}^2)}{\sqrt{a^2 + a^2 \mathrm{tan}^2}} \\
+        = {} & \sqrt{1 + \mathrm{tan}^2}                                      \\
+        = {} & \frac{1}{\mathrm{cos}}.
+    \end{align*}
+    接下来就是要找一个 $e$: $\mathbb{R} \to (-2\pi/4, 2\pi/4)$, 使 $f \circ e = \iota$. 事实上, 这样的 $e$ 并不难找, 因为
+    \begin{align*}
+        f^{[-1]}
+        = {} & (a\iota \circ \mathrm{tan})^{[-1]}        \\
+        = {} & \mathrm{tan}^{[-1]} \circ (a\iota)^{[-1]} \\
+        = {} & \mathrm{arctan} \circ \frac{\iota}{a},
+    \end{align*}
+    故我们取 $e$ 为 $f$ 的反函数, 即有 $f \circ e = \iota$. 故
+    \begin{align*}
+        \int {\frac{1}{\sqrt{a^2 + \iota^2}}}
+        = {} & \Bigg( \int {\frac{1}{\mathrm{cos}}} \Bigg) \circ
+        \Bigg( \mathrm{arctan} \circ \frac{\iota}{a} \Bigg)                     \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ
+        \frac{1 + \mathrm{sin}}{1 - \mathrm{sin}} \circ
+        \Bigg( \mathrm{arctan} \circ \frac{\iota}{a} \Bigg) + \mathbb{R}        \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{1 + \iota}{1 - \iota} \circ
+        (\mathrm{sin} \circ \mathrm{arctan}) \circ \frac{\iota}{a}
+        + \mathbb{R}                                                            \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \Bigg(\frac{1 + \iota}{1 - \iota}
+        \circ \frac{\iota}{\sqrt{1 + \iota^2}} \Bigg) \circ \frac{\iota}{a}
+        + \mathbb{R}                                                            \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{\sqrt{1 + \iota^2} + \iota}
+        {\sqrt{1 + \iota^2} - \iota} \circ \frac{\iota}{a} + \mathbb{R}         \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{\big( \sqrt{1 + \iota^2}
+            + \iota \big)^2}
+        {\big( \sqrt{1 + \iota^2} - \iota \big)
+            \big( \sqrt{1 + \iota^2} + \iota \big)}
+        \circ \frac{\iota}{a} + \mathbb{R}                                      \\
+        = {} & \bigg( \frac{1}{2}\,\mathrm{ln} \circ \iota^2 \bigg) \circ
+        \big( \iota + \sqrt{1 + \iota^2} \big) \circ \frac{\iota}{a}
+        + \mathbb{R}                                                            \\
+        = {} & \mathrm{ln} \circ \mathrm{abs} \circ
+        \big( \iota + \sqrt{1 + \iota^2} \big) \circ \frac{\iota}{a}
+        + \mathbb{R}                                                            \\
+        = {} & \mathrm{ln} \circ \big( \iota + \sqrt{1 + \iota^2} \big)
+        \circ \frac{\iota}{a} + \mathbb{R}                                      \\
+        = {} & \mathrm{ln} \circ \Bigg( \frac{\iota + \sqrt{a^2 + \iota^2}}{a}
+        \Bigg) + \mathbb{R}                                                     \\
+        = {} & \mathrm{ln} \circ \big( \iota + \sqrt{a^2 + \iota^2}
+        \big) - \mathrm{ln} [a] + \mathbb{R}                                    \\
+        = {} & \mathrm{ln} \circ \big( \iota + \sqrt{a^2 + \iota^2}
+        \big) + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    设 $a \in \mathbb{R}$, 且 $a > 0$. 求
+    \begin{align*}
+        \int {\frac{1}{\sqrt{\iota^2 - a^2}}}.
+    \end{align*}
+
+    我们先设 $g = \mathrm{sqrt}^{-1} \circ (\iota^2 - a^2)$: $(a, +\infty) \to (0, +\infty)$. 假如我们算出 $g$ 的不定积分是 $G + \mathbb{R}$, 那么我们可以由此立得 $h = \mathrm{sqrt}^{-1} \circ (\iota^2 - a^2)$: $(-\infty, a) \to (0, +\infty)$ 的不定积分. 这是因为
+    \begin{align*}
+        h = g \circ (-\iota),
+    \end{align*}
+    故
+    \begin{align*}
+        \int {h}
+        = {} & \Bigg( \frac{1}{-1} \int {g} \Bigg) \circ (-\iota) \\
+        = {} & {-G} \circ (-\iota) + \mathbb{R}.
+    \end{align*}
+
+    对于 $g$, 我们考虑 $f = a/\iota$: $(a, +\infty) \to (0, 1)$. 不难看出, $f \circ f = \iota$, 故
+    \begin{align*}
+        \int {\frac{1}{\sqrt{\iota^2 - a^2}}}
+        = {} & \Bigg( \int {\frac{\mathrm{D}f}{\sqrt{f^2 - a^2}}}
+        \Bigg) \circ f                                                   \\
+        = {} & \Bigg( \int {\frac{-1}{\iota\,\sqrt{1 - \iota^2}}} \Bigg)
+        \circ \frac{a}{\iota}.
+    \end{align*}
+
+    现在, 我们想办法计算
+    \begin{align*}
+        \int {\frac{-1}{\iota\,\sqrt{1 - \iota^2}}}.
+    \end{align*}
+    因为 $\mathrm{sin}$: $(0, 2\pi/4) \to (0, 1)$ 可导, 且 $\mathrm{sin} \circ \mathrm{arcsin} = \iota$, 故
+    \begin{align*}
+        \int {\frac{-1}{\iota\,\sqrt{1 - \iota^2}}}
+        = {} & \Bigg( \int {\frac{-\mathrm{D}\,\mathrm{sin}
+        }{\mathrm{sin}\,\mathrm{cos}}} \Bigg) \circ \mathrm{arcsin}              \\
+        = {} & \Bigg( \int {\frac{-1}{\mathrm{sin}}} \Bigg)
+        \circ \mathrm{arcsin}                                                    \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{1 + \iota}{1 - \iota}
+        \circ (\mathrm{cos} \circ \mathrm{arcsin}) + \mathbb{R}                  \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{1 + \iota}{1 - \iota}
+        \circ \sqrt{1 - \iota^2} + \mathbb{R}                                    \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{1 + \sqrt{1 - \iota^2}}
+        {1 - \sqrt{1 - \iota^2}} + \mathbb{R}                                    \\
+        = {} & \frac{1}{2}\,\mathrm{ln} \circ \frac{\big( 1 + \sqrt{1 - \iota^2}
+            \big)^2}
+        {\big( 1 + \sqrt{1 - \iota^2} \big) \big( 1 - \sqrt{1 - \iota^2} \big)}
+        + \mathbb{R}                                                             \\
+        = {} & \bigg( \frac{1}{2}\,\mathrm{ln} \circ \iota^2 \bigg)
+        \circ \frac{1 + \sqrt{1 - \iota^2}}{\iota} + \mathbb{R}                  \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{1 + \sqrt{1 - \iota^2}}{\iota} + \mathbb{R}.
+    \end{align*}
+    所以
+    \begin{align*}
+        \int {\frac{1}{\sqrt{\iota^2 - a^2}}}
+        = {} & \Bigg( \int {\frac{-1}{\iota\,\sqrt{1 - \iota^2}}} \Bigg)
+        \circ \frac{a}{\iota}                                            \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \Bigg( \frac{1 + \sqrt{1 - \iota^2}}{\iota} \circ \frac{a}{\iota}
+        \Bigg) + \mathbb{R}                                              \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{\iota + \sqrt{\iota^2 - a^2}}{a} + \mathbb{R}.
+    \end{align*}
+    这算出了 $g = \mathrm{sqrt}^{-1} \circ (\iota^2 - a^2)$: $(a, +\infty) \to (0, +\infty)$ 的不定积分. 由此可知 $h = \mathrm{sqrt}^{-1} \circ (\iota^2 - a^2)$: $(-\infty, -a) \to (0, +\infty)$ 的不定积分是
+    \begin{align*}
+        \int {\frac{1}{\sqrt{\iota^2 - a^2}}}
+        = {} & {-\mathrm{ln}} \circ \mathrm{abs}
+        \circ \frac{\iota + \sqrt{\iota^2 - a^2}}{a} \circ (-\iota)
+        + \mathbb{R}                                          \\
+        = {} & {-\mathrm{ln}} \circ \mathrm{abs}
+        \circ \frac{-\iota + \sqrt{(-\iota)^2 - a^2}}{a}
+        + \mathbb{R}                                          \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{a}{-\iota + \sqrt{\iota^2 - a^2}}
+        + \mathbb{R}                                          \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{a \big(\iota + \sqrt{\iota^2 - a^2} \big)}
+        {\big(-\iota + \sqrt{\iota^2 - a^2} \big)
+        \big(\iota + \sqrt{\iota^2 - a^2} \big)} + \mathbb{R} \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{\iota + \sqrt{\iota^2 - a^2}}{-a}
+        + \mathbb{R}                                          \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{\iota + \sqrt{\iota^2 - a^2}}{a}
+        + \mathbb{R}.
+    \end{align*}
+
+    综上, 若区间 $J$ 不包含 $[-a, a]$, 则
+    \begin{align*}
+        \int {\frac{1}{\sqrt{\iota^2 - a^2}}}
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \frac{\iota + \sqrt{\iota^2 - a^2}}{a}
+        + \mathbb{R}                          \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \big( \iota + \sqrt{\iota^2 - a^2} \big)
+        - \mathrm{ln}[|a|] + \mathbb{R}       \\
+        = {} & \mathrm{ln} \circ \mathrm{abs}
+        \circ \big( \iota + \sqrt{\iota^2 - a^2} \big)
+        + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    设 $a \in \mathbb{R}$, 且 $a > 0$. 则
+    \begin{align*}
+        \int {\frac{1}{\iota^2 \pm a^2}} = \mathrm{ln} \circ \mathrm{abs} \circ \big( \iota + \sqrt{\iota^2 \pm a^2} \big) + \mathbb{R}.
+    \end{align*}
+\end{remark}
+
+我再介绍一个解不定积分的法则.
+
+\begin{theorem}
+    设 $I$ 为区间, $f$, $g$ 都是 $I$ 上的可导函数. 若 $g\mathrm{D}f$ 有不定积分, 则 $f\mathrm{D}g$ 也有不定积分, 且
+    \begin{align*}
+        \int {f\mathrm{D}g} = fg - \int {g\mathrm{D}f}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    设 $H$ 是 $g\mathrm{D}f$ 的一个原函数. 则
+    \begin{align*}
+        \mathrm{D}[fg - H]
+        = {} & \mathrm{D}f \cdot g + f \cdot \mathrm{D}g - \mathrm{D}H \\
+        = {} & g\mathrm{D}f + f\mathrm{D}g - g\mathrm{D}f              \\
+        = {} & f\mathrm{D}g.
+    \end{align*}
+    从而
+    \begin{align*}
+        \int {f\mathrm{D}g}
+        = {} & (fg - H) + \mathbb{R}              \\
+        = {} & fg - (H + \mathbb{R})              \\
+        = {} & fg - \int {g\mathrm{D}f}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    设整数 $m \neq 0$. 则
+    \begin{align*}
+        \int {\iota^{m - 1} \, \mathrm{ln}}
+        = {} & \int {\mathrm{ln}\, \mathrm{D}\,\frac{\iota^{m}}{m}} \\
+        = {} & \mathrm{ln}\, \frac{\iota^{m}}{m}
+        - \int {\frac{\iota^{m}}{m}\,\mathrm{D}\,\mathrm{ln}}       \\
+        = {} & \frac{\iota^{m}\,\mathrm{ln}}{m}
+        - \int {\frac{\iota^{m - 1}}{m}}                            \\
+        = {} & \frac{\iota^{m}}{m^2}
+        (m\,\mathrm{ln} - 1) + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    \begin{align*}
+        \int {\frac{\mathrm{ln}}{\iota}}
+        = {} & \int {\mathrm{ln}\,\mathrm{D}\,\mathrm{ln}}  \\
+        = {} & \Bigg( \int {\iota} \Bigg) \circ \mathrm{ln} \\
+        = {} & \frac{1}{2}\, \mathrm{ln}^2 + \mathbb{R}.
+    \end{align*}
+\end{remark}
+
+\begin{example}
+    设 $I$, $J$ 为区间. 设 $f$: $I \to J$ 是严单调的可导函数, 且 $\mathrm{D}f$ 不取零值. 所以, $f^{[-1]}$ 也是严单调的可导函数. 从而
+    \begin{align*}
+        \int {f^{[-1]}}
+        = {} & \int {f^{[-1]}\, \mathrm{D}\,\iota}                            \\
+        = {} & f^{[-1]}\,\iota - \int {\iota\,\mathrm{D}f^{[-1]}}             \\
+        = {} & \iota f^{[-1]} - \int {(f \circ f^{[-1]})\,\mathrm{D}f^{[-1]}} \\
+        = {} & \iota f^{[-1]} - \Bigg( \int {f} \Bigg) \circ f^{[-1]}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    我们可轻松地求解 $\mathrm{arcsin}$ 的不定积分:
+    \begin{align*}
+        \int {\mathrm{arcsin}}
+        = {} & \iota\, \mathrm{arcsin} - \Bigg( \int {\mathrm{sin}} \Bigg) \circ \mathrm{arcsin} \\
+        = {} & \iota\, \mathrm{arcsin} + \mathrm{cos} \circ \mathrm{arcsin} + \mathbb{R}         \\
+        = {} & \iota\, \mathrm{arcsin} + \mathrm{sqrt} \circ (1 - \iota^2) + \mathbb{R}.
+    \end{align*}
+    类似地,
+    \begin{align*}
+        \int {\mathrm{arctan}}
+        = {} & \iota\, \mathrm{arctan} - \Bigg( \int {\mathrm{tan}} \Bigg) \circ \mathrm{arctan}                                  \\
+        = {} & \iota\, \mathrm{arctan} - \mathrm{ln} \circ \mathrm{abs} \circ \mathrm{cos} \circ \mathrm{arctan} + \mathbb{R}     \\
+        = {} & \iota\, \mathrm{arctan} + \mathrm{ln} \circ \mathrm{abs} \circ \mathrm{sqrt}^{-1} \circ (1 + \iota^2) + \mathbb{R} \\
+        = {} & \iota\, \mathrm{arctan} + \mathrm{ln} \circ \mathrm{sqrt}^{-1} \circ (1 + \iota^2) + \mathbb{R}                    \\
+        = {} & \iota\, \mathrm{arctan} - \mathrm{ln} \circ \mathrm{sqrt} \circ (1 + \iota^2) + \mathbb{R}                         \\
+        = {} & \iota\, \mathrm{arctan} - \frac{1}{2}\,\mathrm{ln} \circ (1 + \iota^2) + \mathbb{R}.
+    \end{align*}
+\end{example}
+
+原则上, 我还可以再举一些例; 不过, 我感觉, 学而不思则罔, 思而不学则殆. 再者, 我假定您学过微积分, 所以您可以自行找高等算学 (或算学分析) 教材上的问题练习. 当然, 请试用我在本书讲的 ``无变量不定积分法''.

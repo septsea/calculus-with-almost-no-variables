@@ -1,0 +1,483 @@
+\chapter{积分}
+
+本章讨论如何\emph{计算}积分; 这里的 ``积分'' 是 ``定积分'', 虽然我觉得 ``定'' 有些多余.
+
+我暂且用一会儿传统的记号, 告诉您我在本章会写什么东西吧.
+
+具体地, 设 $f$ 是区间 $I$ 上的连续函数, 且 $a$, $b \in I$. 积分论告诉我们, $f$ 在 $[a, b]$ 上的 积分 (或者, $f$ 在 $[b, a]$ 上的积分的相反数)
+\begin{align*}
+    \alpha = \int_{a}^{b} {f(x)\,\mathrm{d}x}
+\end{align*}
+存在. 所以, 我们可以专心地思考怎么算出结果 (而不必担心结果是否存在); 本章就告诉您一些计算积分的方法.
+
+当然, 我还是会使用
+\begin{align*}
+    \int_{a}^{b} {f}
+\end{align*}
+表示 $\alpha$; 毕竟, 这是本书的一个大主题.
+
+\section{不定积分与积分}
+
+我们在上一章 ``乘热打铁地'' 证明了当时没用到的定理:
+
+\NewtonLeibniz*
+
+原则上, 我们可以用这个定理计算很多积分了.
+
+\begin{example}
+    因为 $\mathrm{cos}$ 的一个原函数是 $\mathrm{sin}$, 故
+    \begin{align*}
+        \int_{0}^{2\pi/4} {\mathrm{cos}} = \mathrm{sin} [2\pi/4] - \mathrm{sin} [0] = 1.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    因为 $\mathrm{exp}$ 的一个原函数是 $\mathrm{exp}$, 故
+    \begin{align*}
+        \int_{0}^{1} {\mathrm{exp}} = \mathrm{exp} [1] - \mathrm{exp} [0] = \mathrm{e} - 1.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    因为 $1/(1 + \iota^2)$ 的一个原函数是 $\mathrm{arctan}$, 故
+    \begin{align*}
+        \int_{-1}^{1} {\frac{1}{1 + \iota^2}} = \mathrm{arctan} [1] - \mathrm{arctan} [-1] = \frac{2\pi}{4}.
+    \end{align*}
+\end{example}
+
+不过, 我们不妨先探索不定积分跟积分的联系. 在建立一定的联系后, 我们可以更有条理地算积分.
+
+定理~\ref{theorem:NewtonLeibniz} 是 Newton-Leibniz 公式的一个经典说法; 它描述了\emph{原函数}与\emph{积分}的关系. 自然地, 就有这样的问题: 有没有\emph{直接}描述\emph{不定积分}跟\emph{积分}的关系的说法呢?
+
+姑且从传统的记号说起. 或许, 您还能想起来, 用传统的记号, 可写上述三个积分的计算为
+\begin{align*}
+    \int_{0}^{2\pi/4} {\cos {x}\,\mathrm{d}x}   & = {\sin {x}} \,\Bigg|_{0}^{2\pi/4} = 1,             \\
+    \int_{0}^{1} {\exp {x}\,\mathrm{d}x}        & = {\exp {x}} \,\Bigg|_{0}^{1} = \mathrm{e} - 1,     \\
+    \int_{-1}^{1} {\frac{\mathrm{d}x}{1 + x^2}} & = {\arctan {x}} \,\Bigg|_{-1}^{1} = \frac{2\pi}{4}.
+\end{align*}
+这里, ${\exp {x}}\, \bigg|_{0}^{1}$ 就是 $\exp {1} - \exp {0}$ (或者, 按本书的记号, $\mathrm{exp}[1] - \mathrm{exp}[0]$) 的省略. 所以, 我们也可定义一个类似的记号.
+
+\begin{definition}
+    设 $f$ 是 $P \subset \mathbb{R}$ 上的函数. 设 $a$, $b \in P$. 定义
+    \begin{align*}
+        \big[ f \big]_{a}^{b} = f[b] - f[a].
+    \end{align*}
+    姑且称其为 ``bracket 运算'' (土话: 方括号运算).
+\end{definition}
+
+传统的记号在函数 $f(x)$ (这里, 为对照, 使用经典的函数记号) 的右侧画单条长竖线; 为清晰起见, 我用一对方括号包围函数 $f$. 毕竟, 形如
+\begin{align*}
+    1 + f(x)\,\Bigg|_{a}^{b}
+\end{align*}
+的文字是有歧义的: 这是 $1 + (f(b) - f(a))$ 还是 $(1 + f(b)) - (1 + f(a))$ 呢?
+
+\begin{theorem}
+    设 $f$, $g$ 都是 $P \subset \mathbb{R}$ 上的函数. 设 $a$, $b \in P$. Bracket 运算适合如下性质:
+    \begin{itemize}
+        \item 二个函数的和的 bracket 等于二个函数的 bracket 的和, 即
+              \begin{align*}
+                  \big[ f + g \big]_{a}^{b} = \big[ f \big]_{a}^{b} + \big[ g \big]_{a}^{b}.
+              \end{align*}
+        \item 设 $k$ 为 $P$ 上的常函数. 则
+              \begin{align*}
+                  \big[ k \big]_{a}^{b} = 0.
+              \end{align*}
+        \item 设 $k$ 为 $P$ 上的常函数. 则
+              \begin{align*}
+                  \big[ kf \big]_{a}^{b} = k \cdot \big[ f \big]_{a}^{b}.
+              \end{align*}
+        \item 设 $Q \subset \mathbb{R}$ 上的函数 $h$ 的值域是 $P$ 的子集. 设 $c$, $d \in Q$. 则
+              \begin{align*}
+                  \big[ f \circ h \big]_{c}^{d} = \big[ f \big]_{h[c]}^{h[d]}.
+              \end{align*}
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    按定义论证这四条即可.
+
+    $[ f + g ]_{a}^{b}$, 按定义, 就是 $(f + g)[b] - (f + g)[a]$. 不过, 我们知道, $(f + g)[b] = f[b] + g[b]$; 类似地, $(f + g)[a] = f[a] + g[a]$. 所以, 二者的差就是
+    \begin{align*}
+        (f[b] + g[b]) - (f[a] + g[a])
+        = (f[b] - f[a]) + (g[b] - g[a])
+        = \big[ f \big]_{a}^{b} + \big[ g \big]_{a}^{b}.
+    \end{align*}
+
+    $[ k ]_{a}^{b}$, 按定义, 就是 $k[b] - k[a]$. 可是, $k[b] = k[a] = k$, 故 $[ k ]_{a}^{b} = 0$.
+
+    $[ kf ]_{a}^{b}$, 按定义, 就是 $(kf)[b] - (kf)[a]$. 不过, $(kf)[b] = k[b] \cdot f[b] = k \cdot f[b]$; 类似地, $(kf)[a] = k \cdot f[a]$. 所以
+    \begin{align*}
+        k \cdot f[b] - k \cdot f[a] = k \cdot (f[b] - f[a]) = k \cdot \big[ f \big]_{a}^{b}.
+    \end{align*}
+
+    最后一个或许是最容易的:
+    \begin{align*}
+        \big[ f \circ h \big]_{c}^{d}
+        = {} & (f \circ h)[d] - (f \circ h)[c]       \\
+        = {} & f[h[d]] - f[h[c]]                     \\
+        = {} & \big[ f \big]_{h[c]}^{h[d]}. \qedhere
+    \end{align*}
+\end{proof}
+
+利用 bracket 运算, 我们可 ``换汤不换药'' 地改写 Newton-Leibniz 公式:
+
+\begin{theorem}[Newton-Leibniz]
+    设 $I$ 为区间. 设 $f$ 是 $I$ 上的连续函数. 设 $F$ 是 $f$ 的原函数. 则对任意 $a$, $b \in I$,
+    \begin{align*}
+        \int_{a}^{b} {f} = \big[ F \big]_{a}^{b}.
+    \end{align*}
+\end{theorem}
+
+的确, 这个改写只是用 ``新鲜的'' bracket 运算包装了函数在二点的差. 不过, 这还只是一小步; 我马上就要迈一大步了.
+
+我刚定义了函数的 bracket 运算; 那么函数集有没有 bracket 运算呢?
+
+这问题, 其实是废话: 有就是有, 没有就是没有. 的确, 我刚才只是定义了函数的 bracket 运算, 而没有定义函数集的 bracket 运算. 不过这是大问题吗? 我现在就定义它.
+
+\begin{definition}
+    设 $A$ 是 $P \subset \mathbb{R}$ 上的函数集. 设 $a$, $b \in P$. 定义
+    \begin{align*}
+        \big[ A \big]_{a}^{b}
+        = {} & \bigg\{ \big[ f \big]_{a}^{b} \,\bigg|\, f \in A \bigg\} \\
+        = {} & \{ f[b] - f[a] \mid f \in A \}.
+    \end{align*}
+\end{definition}
+
+不难看出, bracket 运算变函数集为数集 (实数集的子集). 所以, 为研究函数集的 bracket 运算的性质, 我们要定义数集的运算.
+
+\begin{definition}
+    设 $P$, $Q$ 为 $\mathbb{R}$ 的子集. 设 $\ast$ 是三文字 $+$, $-$, $\cdot$ 的任意一个. 定义
+    \begin{align*}
+        P \ast Q = \{ p \ast q \mid \text{$p \in P$, $q \in Q$} \}.
+    \end{align*}
+    老样子, 可写 $P \cdot Q$ 为 $PQ$, 写 $\{ 0 \} - P$ 为 $-P$.
+
+    若 $P$ 的每一个元都不是零, 还可定义
+    \begin{align*}
+        \frac{Q}{P} = \Bigg\{ \frac{q}{p} \,\Bigg|\,  \text{$q \in Q$, $p \in P$} \Bigg\}.
+    \end{align*}
+
+    若对任意 $p \in P$, $q \in Q$, $a^b$ 有意义, 则还可定义
+    \begin{align*}
+        P^Q = \{ p^q \mid \text{$p \in P$, $q \in Q$} \}.
+    \end{align*}
+\end{definition}
+
+不意外地, 我们有如下性质.
+
+\begin{theorem}
+    设 $P$, $Q$, $S$ 都是 $\mathbb{R}$ 的子集. 则
+    \begin{align*}
+        \begin{array}{ll}
+            P + Q = Q + P,             & PQ = QP,            \\
+            (P + Q) + S = P + (Q + S), & (PQ)S = P(QS),      \\
+            P(Q + S) = PQ + PS,        & (P + Q)S = PS + QS.
+        \end{array}
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    我不证了; 这跟函数集的相关性质太相似了. 还是老套路: 证明左边是右边的子集, 且右边是左边的子集. 您肯定得用到 $\mathbb{R}$ 的运算律.
+\end{proof}
+
+由此, 我们就有如下的函数集的 bracket 运算律:
+
+\begin{theorem}
+    设 $A$, $B$ 都是 $P \subset \mathbb{R}$ 上的函数集. 设 $a$, $b \in P$.
+    \begin{itemize}
+        \item 二个函数集的和的 bracket 等于二个函数集的 bracket 的和, 即
+              \begin{align*}
+                  \big[ A + B \big]_{a}^{b} = \big[ A \big]_{a}^{b} + \big[ B \big]_{a}^{b}.
+              \end{align*}
+        \item 设函数集 $C$ 的每一个元都是 $P$ 上的常函数. 则
+              \begin{align*}
+                  \big[ C \big]_{a}^{b} = \{ 0 \}.
+              \end{align*}
+        \item 设 $k$ 为 $P$ 上的常函数. 则
+              \begin{align*}
+                  \big[ \{ k \} A \big]_{a}^{b} = \{ k \} \cdot \big[ A \big]_{a}^{b}.
+              \end{align*}
+        \item 设 $Q \subset \mathbb{R}$ 上的函数 $h$ 的值域是 $P$ 的子集. 设 $c$, $d \in Q$. 则
+              \begin{align*}
+                  \big[ A \circ \{ h \} \big]_{c}^{d} = \big[ A \big]_{h[c]}^{h[d]}.
+              \end{align*}
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    还是老套路: 相互包含. 由于我已经建立了函数的 bracket 运算律, 所以您的论证应该不会太长.
+\end{proof}
+
+在上一章, 我曾说, 在不引起混淆时, 可写恰含一个元的集 $\{ a \}$ 为 $a$. 现在我又要采用这个约定了.
+
+\begin{theorem}
+    设 $P \subset \mathbb{R}$. 设 $f$ 是 $P$ 上的函数. 设 $\mathbb{R}_P$ 是 $P$ 上的所有 (实的) 常函数作成的集 (当然, 也可简单地写其为 $\mathbb{R}$). 设 $a$, $b \in P$. 则
+    \begin{align*}
+        \big[ f + \mathbb{R} \big]_{a}^{b} = \big[ f \big]_{a}^{b}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    直接验证; 不过, 您还是要注意一些细节的.
+    \begin{align*}
+        \big[ f + \mathbb{R} \big]_{a}^{b}
+        = {} & \big[ \{f\} + \mathbb{R} \big]_{a}^{b}                     \\
+        = {} & \big[ \{f\} \big]_{a}^{b} + \big[ \mathbb{R} \big]_{a}^{b} \\
+        = {} & \big[ \{f\} \big]_{a}^{b} + \{ 0 \}                        \\
+        = {} & \big[ \{f\} \big]_{a}^{b}                                  \\
+        = {} & \big[ f \big]_{a}^{b}. \qedhere
+    \end{align*}
+\end{proof}
+
+下面的命题更直接地焊接了不定积分与积分.
+
+\begin{restatable}[Newton-Leibniz]{theorem}{NewNewtonLeibniz}
+    设 $I$ 为区间. 设 $f$ 是 $I$ 上的连续函数. 则对任意 $a$, $b \in I$,
+    \begin{align*}
+        \int_{a}^{b} {f} = \Bigg[ \int {f} \Bigg]_{a}^{b}.
+    \end{align*}
+\end{restatable}
+
+\begin{remark}
+    严谨地 (但不重要地), 我们应当写
+    \begin{align*}
+        \Bigg\{ \int_{a}^{b} {f} \Bigg\} = \Bigg[ \int {f} \Bigg]_{a}^{b}.
+    \end{align*}
+\end{remark}
+
+\begin{proof}
+    因为 $f$ 是 $I$ 上的连续函数, 故 $f$ 有一个原函数 $F$, 且 $\int {f} = F + \mathbb{R}$. 从而
+    \begin{align*}
+         & \Bigg[ \int {f} \Bigg]_{a}^{b}
+        = \big[ F + \mathbb{R} \big]_{a}^{b}
+        = \big[ F \big]_{a}^{b}
+        = \int_{a}^{b} {f}. \qedhere
+    \end{align*}
+\end{proof}
+
+\section{计算积分}
+
+在上一节, 我们得到了新的 Newton-Leibniz 公式:
+
+\NewNewtonLeibniz*
+
+这将是本节的重点; 毕竟, 在大多数场合, \emph{具体}计算积分时, 还是要用它.
+
+我们先从积分论\emph{借}三个公式. 它们比 Newton-Leibniz 公式更基础; 或者说, 在论证 Newton-Leibniz 公式时, 我们已经用到它们了.
+
+\LinearityOfInegrals*
+
+\AdditivityOfIntervalsOfIntegrals*
+
+我们曾建立了不定积分的运算律; 现在, 我们试建立积分的更多的运算律.
+
+先定义一个术语.
+
+\begin{definition}
+    设 $I$ 为区间. 设 $f$ 是 $I$ 上的可导函数. 若 $\mathrm{D}f$ 还是 $I$ 上的连续函数, 则说 $f$ \emph{连导}.
+\end{definition}
+
+\begin{theorem}
+    设 $I$, $J$ 为\emph{区间}. 设 $g$ 是 $J$ 上的\emph{连续函数}. 设 $f$: $I \to J$ \emph{连导}. 设 $a$, $b \in I$. 则
+    \begin{align*}
+        \int_{a}^{b} {(g \circ f)\,\mathrm{D}f} = \int_{f[a]}^{f[b]} {g}.
+    \end{align*}
+\end{theorem}
+
+请您注意上述定理的\emph{被强调的词}; 为保证积分有意义 (请注意, 在本书, 我们只讨论\emph{连续函数}的积分论), 我要求函数的性质好一些; 不过, 这并不是很影响实际应用.
+
+\begin{proof}
+    因为 $f$ 连导, 故 $f$ 跟 $\mathrm{D}f$ 都是连续函数. 因为 $g$ 是连续函数, 故 $h = (g \circ f)\,\mathrm{D}f$ 也是连续函数. 所以, 可用 Newton-Leibniz 公式计算 $h$ 的积分. 于是
+    \begin{align*}
+        \int_{a}^{b} {(g \circ f)\,\mathrm{D}f}
+        = {} & \Bigg[ \int {(g \circ f)\,\mathrm{D}f} \Bigg]_{a}^{b} \\
+        = {} & \Bigg[ \Bigg( \int {g} \Bigg) \circ f \Bigg]_{a}^{b}  \\
+        = {} & \Bigg[ \int {g} \Bigg]_{f[a]}^{f[b]}                  \\
+        = {} & \int_{f[a]}^{f[b]} {g}. \qedhere
+    \end{align*}
+\end{proof}
+
+我们无妨再看一遍命题的论证. 首先, 我们明确 $(g \circ f)\,\mathrm{D}f$ 是连续函数, 故可用 Newton-Leibniz 公式计算积分; 然后, 我们用不定积分的运算律转化为 $g$ 的积分 (因为 $g$ 是连续函数).
+
+其实, 在实际的计算中, 我们\emph{并不需要}每一次都变不定积分的 bracket 运算为积分. 一般地, 我们用 Newton-Leibniz 公式算积分. 为书写方便, 我们一般用长竖线 (当然, 在本书, 用 bracket 运算) 代替函数在二点的值的差. 因为本书定义了函数集的 bracket 运算, 故我们可直接变积分为函数集的 bracket. 在方括号内, 就是我们已经熟知的不定积分. 所以, 不定积分与 bracket 运算就能解决大多数积分问题. (当然, Newton-Leibniz 公式也不是万能的.)
+
+\begin{example}
+    我拿简单的 $\mathrm{sin}\, \mathrm{cos}$ 举例吧.
+    \begin{align*}
+        \int_{0}^{2\pi/4} {\mathrm{sin}\,\mathrm{cos}}
+        = {} & \int_{0}^{2\pi/4} {\mathrm{sin}\,\mathrm{D}\,\mathrm{sin}}
+        = \int_{\sin[0]}^{\sin[2\pi/4]} {\iota}                                    \\
+        = {} & \Bigg[ \int {\iota} \Bigg]_{\mathrm{sin}[0]}^{\mathrm{sin}[2\pi/4]}
+        = \Bigg[ \frac{\iota^2}{2} \Bigg]_{0}^{1}
+        = \frac{1}{2}.
+    \end{align*}
+
+    若充分利用 bracket 运算的性质, 我们可以这么写:
+    \begin{align*}
+        \int_{0}^{2\pi/4} {\mathrm{sin}\,\mathrm{cos}}
+        = {} & \Bigg[ \int {\mathrm{sin}\,\mathrm{cos}} \Bigg]_{0}^{2\pi/4}             \\
+        = {} & \Bigg[ \int {\mathrm{sin}\,\mathrm{D}\,\mathrm{sin}} \Bigg]_{0}^{2\pi/4}
+        = \Bigg[ \Bigg( \int {\iota} \Bigg) \circ \mathrm{sin} \Bigg]_{0}^{2\pi/4}      \\
+        = {} & \Bigg[ \int {\iota} \Bigg]_{\mathrm{sin}[0]}^{\mathrm{sin}[2\pi/4]}      \\
+        = {} & \Bigg[ \frac{\iota^2}{2} + \mathbb{R} \Bigg]_{0}^{1}
+        = \Bigg[ \frac{\iota^2}{2} \Bigg]_{0}^{1}
+        = \frac{1}{2}.
+    \end{align*}
+    当然, 因为 $\mathbb{R}$ 的 bracket 为 $0$, 故计算积分时不必写出来.
+\end{example}
+
+\begin{theorem}
+    设 $I$, $J$ 为\emph{区间}. 设 $J$ 上的函数 $g$ \emph{连续}. 设 $f$: $I \to J$ \emph{连导}. 设 $e$: $J \to I$ 适合 $f \circ e = \iota$. 任取 $c$, $d \in J$. 则
+    \begin{align*}
+        \int_{c}^{d} {g} = \int_{e[c]}^{e[d]} {(g \circ f)\,\mathrm{D}f}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    注意到 $g$ 与 $(g \circ f)\,\mathrm{D}f$ 都是连续函数. 所以
+    \begin{align*}
+        \int_{c}^{d} {g}
+        = {} & \Bigg[ \int {g} \Bigg]_{c}^{d}                          \\
+        = {} & \Bigg[ \Bigg( \int {(g \circ f)\,\mathrm{D}f} \Bigg)
+        \circ e \Bigg]_{c}^{d}                                         \\
+        = {} & \Bigg[ \int {(g \circ f)\,\mathrm{D}f} \Bigg]
+        _{e[c]}^{e[d]}                                                 \\
+        = {} & \int_{e[c]}^{e[d]} {(g \circ f)\,\mathrm{D}f}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    计算
+    \begin{align*}
+        \int_{-1}^{1} {\mathrm{sqrt} \circ (1 - \iota^2)}.
+    \end{align*}
+
+    设 $J = [-1, 1]$. 设 $g = \mathrm{sqrt} \circ (1 - \iota^2)$ 为 $J$ 上的函数. 为计算此积分, 我们无妨考虑找一个合适的\emph{区间} $I$, 与一个 $I$ 到 $J$ 的连导函数 $f$, 使 $(g \circ f)\,\mathrm{D}f$ 简单一些; 当然, 还要找一个 $J$ 到 $I$ 的函数 $e$, 使 $f \circ e = \iota$. 我们无妨取 $I = [-2\pi/4, 2\pi/4]$, $f = \mathrm{sin}$. 那么, $\mathrm{D}f = \mathrm{cos}$, 且 $g \circ f = \mathrm{cos}$. 并且, 不难看出, 取 $e = \mathrm{arcsin}$, 即得 $f \circ e = \iota$. 故
+    \begin{align*}
+        \int_{-1}^{1} {\mathrm{sqrt} \circ (1 - \iota^2)}
+        = {} & \Bigg[ \int {\mathrm{sqrt} \circ (1 - \iota^2)} \Bigg]_{-1}^{1}   \\
+        = {} & \Bigg[ \Bigg( \int {(\mathrm{sqrt} \circ (1 - \iota^2)
+                \circ \mathrm{sin})\,\mathrm{D}\,\mathrm{sin}} \Bigg)
+        \circ \mathrm{arcsin} \Bigg]_{-1}^{1}                                    \\
+        = {} & \Bigg[ \int {\mathrm{cos}^2} \Bigg]
+        _{\mathrm{arcsin}[-1]}^{\mathrm{arcsin}[1]}                              \\
+        = {} & \Bigg[ \int {\frac{1 + \mathrm{cos}}{2} \circ {2\iota}} \Bigg]
+        _{-2\pi/4}^{2\pi/4}                                                      \\
+        = {} & \Bigg[ \Bigg( \int {\frac{1}{2} \cdot \frac{1 + \mathrm{cos}}{2}}
+        \Bigg) \circ {2\iota} \Bigg]_{-2\pi/4}^{2\pi/4}                          \\
+        = {} & \Bigg[ \int {\frac{1 + \mathrm{cos}}{4}}
+        \Bigg]_{2\iota[-2\pi/4]}^{2\iota[2\pi/4]}                                \\
+        = {} & \Bigg[ \frac{\iota + \mathrm{sin}}{4}
+        \Bigg]_{-2\pi/2}^{2\pi/2}                                                \\
+        = {} & \frac{2\pi/2 + 0}{4} - \frac{-2\pi/2 + 0}{4}                      \\
+        = {} & \frac{2\pi}{4}.
+    \end{align*}
+\end{example}
+
+\begin{theorem}
+    设 $I$ 为\emph{区间}, $f$, $g$ 都是 $I$ 上的\emph{连导}函数. 设 $a$, $b \in I$. 则
+    \begin{align*}
+        \int_{a}^{b} {f\mathrm{D}g} = \big[ fg \big]_{a}^{b} - \int_{a}^{b} {g\mathrm{D}f}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    $f\mathrm{D}g$ 与 $g\mathrm{D}f$ 都是连续函数. 从而
+    \begin{align*}
+        \int_{a}^{b} {f\mathrm{D}g}
+        = {} & \Bigg[ \int {f\mathrm{D}g} \Bigg]_{a}^{b}
+        = \Bigg[ fg - \int {g\mathrm{D}f} \Bigg]_{a}^{b}                          \\
+        = {} & \big[ fg \big]_{a}^{b} - \Bigg[ \int {g\mathrm{D}f} \Bigg]_{a}^{b}
+        = \big[ fg \big]_{a}^{b} - \int_{a}^{b} {f\mathrm{D}g}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    计算
+    \begin{align*}
+        \int_{0}^{2\pi/2} {\mathrm{sin}\, \mathrm{exp}}.
+    \end{align*}
+
+    注意到 $\mathrm{D}\,\mathrm{exp} = \mathrm{exp}$. 所以
+    \begin{align*}
+        \int_{0}^{2\pi/2} {\mathrm{sin}\, \mathrm{exp}}
+        = {} & \int_{0}^{2\pi/2} {\mathrm{sin}\, \mathrm{D}\,\mathrm{exp}}     \\
+        = {} & \big[ \mathrm{sin}\,\mathrm{exp} \big]_{0}^{2\pi/2}
+        - \int_{0}^{2\pi/2} {\mathrm{exp}\, \mathrm{D}\,\mathrm{sin}}          \\
+        = {} & 0 - \int_{0}^{2\pi/2} {\mathrm{cos}\, \mathrm{exp}}             \\
+        = {} & {-\int_{0}^{2\pi/2} {\mathrm{cos}\, \mathrm{D}\, \mathrm{exp}}} \\
+        = {} & {-\big[ \mathrm{cos}\,\mathrm{exp} \big]}_{0}^{2\pi/2}
+        + \int_{0}^{2\pi/2} {\mathrm{exp}\, \mathrm{D}\,\mathrm{cos}}          \\
+        = {} & (1 + \mathrm{exp} [2\pi/2])
+        - \int_{0}^{2\pi/2} {\mathrm{sin}\, \mathrm{exp}}.
+    \end{align*}
+    由此可知
+    \begin{align*}
+        \int_{0}^{2\pi/2} {\mathrm{sin}\, \mathrm{exp}} = \frac{1 + \mathrm{exp} [2\pi/2]}{2}.
+    \end{align*}
+\end{example}
+
+最后, 我再讲一个小技巧吧.
+
+\begin{theorem}
+    设 $I$ 为区间. 设 $f$ 是 $I$ 上的连续函数. 设 $a$, $b \in I$. 则
+    \begin{align*}
+        \int_{a}^{b} {f}
+        = {} & \int_{a}^{b} {f \circ (a + b - \iota)}
+        = \frac{1}{2} \int_{a}^{b} {(f + f \circ (a + b - \iota))}.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    我们证明前一个等号成立即可; 至于后一个等号, 利用 ``二个相等的数的平均数跟其相等'' 即可.
+    \begin{align*}
+        \int_{a}^{b} {f \circ (a + b - \iota)}
+        = {} & \int_{a}^{b} {-f \circ (a + b - \iota) \cdot (-1)}                    \\
+        = {} & \int_{a}^{b} {(-f \circ (a + b - \iota))\,\mathrm{D} (a + b - \iota)} \\
+        = {} & \int_{(a + b - \iota)[a]}^{(a + b - \iota)[b]} {-f}                   \\
+        = {} & {-\int_{b}^{a} {f}}
+        = \int_{a}^{b} {f}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    计算
+    \begin{align*}
+        \int_{0}^{2\pi/2} {\frac{\iota \, \mathrm{sin}}{2 - \mathrm{sin}^2}}.
+    \end{align*}
+
+    设
+    \begin{align*}
+        f = \frac{\iota \, \mathrm{sin}}{2 - \mathrm{sin}^2}.
+    \end{align*}
+    按照以往的经验, 您可能会试着先找 $f$ 的不定积分. 注意, $f$ 甚至可以是 $\mathbb{R}$ 上的连续函数, 所以 $f$ 的不定积分\emph{一定存在}. 只不过, 您是否能顺利地写出来, 就是另一个问题. 我承认, 我自己也写不出初等函数 $F$, 使 $\mathrm{D}F = f$.
+
+    既然找原函数不太行, 那就试着用小技巧. 注意到
+    \begin{align*}
+        \mathrm{sin} = \mathrm{sin} \circ \bigg( \frac{2\pi}{2} - \iota \bigg),
+    \end{align*}
+    故
+    \begin{align*}
+        f \circ \bigg(0 + \frac{2\pi}{2} - \iota \bigg) = \frac{(2\pi/2 - \iota) \, \mathrm{sin}}{2 - \mathrm{sin}^2}.
+    \end{align*}
+    从而
+    \begin{align*}
+        g
+        = {} & f + f \circ \bigg(0 + \frac{2\pi}{2} - \iota \bigg)          \\
+        = {} & \frac{2\pi}{2} \cdot \frac{\mathrm{sin}}{2 - \mathrm{sin}^2}
+        = \frac{2\pi}{2} \cdot \frac{\mathrm{sin}}{1 + (-\mathrm{cos})^2}.
+    \end{align*}
+    所以
+    \begin{align*}
+        \int_{0}^{2\pi/2} {f}
+        = {} & \frac{1}{2} \cdot \int_{0}^{2\pi/2} {g}                          \\
+        = {} & \frac{1}{2} \cdot \frac{2\pi}{2} \int_{0}^{2\pi/2}
+        {\frac{\mathrm{D}[-\mathrm{cos}]}{1 + (-\mathrm{cos})^2}}               \\
+        = {} & \frac{2\pi}{4} \cdot
+        \int_{-\mathrm{cos}[0]}^{-\mathrm{cos}[2\pi/2]}
+        {\frac{1}{1 + \iota^2}}                                                 \\
+        = {} & \frac{2\pi}{4} \cdot \int_{-1}^{1} {\mathrm{D}\,\mathrm{arctan}} \\
+        = {} & \frac{2\pi}{4} \cdot \frac{2\pi}{4}
+        = \frac{(2\pi)^2}{16}.
+    \end{align*}
+\end{example}
