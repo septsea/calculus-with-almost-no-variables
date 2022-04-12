@@ -169,16 +169,15 @@
     设 $P$, $Q$, $S$ 都是 $\mathbb{R}$ 的子集. 则
     \begin{align*}
         \begin{array}{ll}
-            P + Q = Q + P,             & PQ = QP,            \\
-            (P + Q) + S = P + (Q + S), & (PQ)S = P(QS),      \\
-            P(Q + S) = PQ + PS,        & (P + Q)S = PS + QS.
+            P + Q = Q + P,             & PQ = QP,       \\
+            (P + Q) + S = P + (Q + S), & (PQ)S = P(QS).
         \end{array}
     \end{align*}
 \end{theorem}
 
-\begin{proof}
-    我不证了; 这跟函数集的相关性质太相似了. 还是老套路: 证明左边是右边的子集, 且右边是左边的子集. 您肯定得用到 $\mathbb{R}$ 的运算律.
-\end{proof}
+% \begin{proof}
+%     我不证了; 这跟函数集的相关性质太相似了. 还是老套路: 证明左边是右边的子集, 且右边是左边的子集. 您肯定得用到 $\mathbb{R}$ 的运算律.
+% \end{proof}
 
 由此, 我们就有如下的函数集的 bracket 运算律:
 
@@ -308,8 +307,8 @@
         = {} & \int_{0}^{2\pi/4} {\mathrm{sin}\,\mathrm{D}\,\mathrm{sin}}
         = \int_{\sin[0]}^{\sin[2\pi/4]} {\iota}                                    \\
         = {} & \Bigg[ \int {\iota} \Bigg]_{\mathrm{sin}[0]}^{\mathrm{sin}[2\pi/4]}
-        = \Bigg[ \frac{\iota^2}{2} \Bigg]_{0}^{1}
-        = \frac{1}{2}.
+        = \Bigg[ \frac{\iota^2}{2} \Bigg]_{0}^{1}                                  \\
+        = {} & \frac{1}{2}.
     \end{align*}
 
     若充分利用 bracket 运算的性质, 我们可以这么写:

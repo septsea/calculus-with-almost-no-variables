@@ -246,8 +246,7 @@
     \begin{align*}
         \begin{array}{ll}
             A + B = B + A,             & AB = BA,            \\
-            (A + B) + C = A + (B + C), & (AB)C = A(BC),      \\
-            A(B + C) = AB + AC,        & (A + B)C = AC + BC.
+            (A + B) + C = A + (B + C), & (AB)C = A(BC).
         \end{array}
     \end{align*}
 \end{theorem}
@@ -436,13 +435,9 @@
         = {} & (\{ f \} + \{ g \}) + \mathbb{R} \\
         = {} & (f + g) + \mathbb{R}.
     \end{align*}
-    若 $k \neq 0$, 则 $\{ k \} \cdot \mathbb{R} = \mathbb{R}$. 从而
-    \begin{align*}
-        k(f + \mathbb{R})
-        = {} & \{ k \} ( \{ f \} + \mathbb{R} )     \\
-        = {} & \{ k \} \{ f \} + \{ k \} \mathbb{R} \\
-        = {} & kf + \mathbb{R}.
-    \end{align*}
+
+    取 $f_1 \in k(f + \mathbb{R})$. 那么, 存在 $c \in \mathbb{R}$ 使 $f_1 = k(f + c) = kf + kc \in kf + \mathbb{R}$. 取 $f_2 \in kf + \mathbb{R}$. 那么, 存在 $d \in \mathbb{R}$ 使 $f_2 = kf + d$. 因为 $k \neq 0$, 故 $f_2 = kf + kk^{-1}d = k(f + k^{-1}d) \in k(f + \mathbb{R})$.
+
     最后一个也不难:
     \begin{align*}
         (f + \mathbb{R}) \circ h
