@@ -245,16 +245,9 @@
     设 $P$ 是 $\mathbb{R}$ 的子集. 设 $A$, $B$, $C$ 都是 $P$ 到 (某个) $\mathbb{R}$ 的子集的函数集. 则
     \begin{align*}
         \begin{array}{ll}
-            A + B = B + A,             & AB = BA,            \\
+            A + B = B + A,             & AB = BA,       \\
             (A + B) + C = A + (B + C), & (AB)C = A(BC).
         \end{array}
-    \end{align*}
-\end{theorem}
-
-\begin{theorem}
-    设 $P$ 是 $\mathbb{R}$ 的子集. 任取函数集 $L$ 的元 $\ell$, $\ell$ 的值域都是 $P$ 的子集. 设 $A$, $B$ 是 $P$ 上的函数集. 设 $\ast$ 是五文字 $+$, $-$, $\cdot$, $/$, $\text{\textasciicircum}$ 的任意一个. 则
-    \begin{align*}
-        (A \ast B) \circ L = (A \circ L) \ast (B \circ L).
     \end{align*}
 \end{theorem}
 
@@ -273,6 +266,14 @@
         \{ 0, 1, -1, 2, -2, 3, -3, 4, -4, \dots \},
     \end{align*}
     这里的 $0$, $1$, $-1$, $\dots$ 都是 $P$ 上的常函数. 那么, 不难验证, $A + C = B + C = C$. 可是, $A \neq B$.
+\end{example}
+
+\begin{example}
+    设 $P$ 是 $\mathbb{R}$ 的子集. 设 $A$, $B$, $C$ 都是 $P$ 到 (某个) $\mathbb{R}$ 的子集的函数集. 那么 $A(B + C)$ 跟 $AB + AC$ \emph{不一定}相等. 事实上, 任取 $f \in A(B + C)$, 的确存在 $a \in A$, $b \in B$, $c \in C$ 使 $f = a(b + c) = ab + ac$, 故 $f \in AB + AC$. 可是, 任取 $g \in AB + AC$, 我们只能说存在 $a$, $a^{\prime} \in A$, $b \in B$, $c \in C$ 使 $g = ab + a^{\prime}c$. 注意, 这里的 $a$ 跟 $a^{\prime}$ 不一定相等, 故我们不能说它一定是 $A(B + C)$.
+\end{example}
+
+\begin{example}
+    设 $P$ 是 $\mathbb{R}$ 的子集. 任取函数集 $L$ 的元 $\ell$, $\ell$ 的值域都是 $P$ 的子集. 设 $A$, $B$ 是 $P$ 上的函数集. 设 $\ast$ 是五文字 $+$, $-$, $\cdot$, $/$, $\text{\textasciicircum}$ 的任意一个. 则 $(A \ast B) \circ L$ 与 $(A \circ L) \ast (B \circ L)$ \emph{不一定}相等.
 \end{example}
 
 现在我们考虑一类特殊的函数集; 这也是不定积分的演算重点考察的对象.
@@ -312,11 +313,11 @@
 \end{proof}
 
 \begin{theorem}
-    设 $\mathbb{R}_{P}$ 为 $P$ 上的全体常函数作成的集. 设函数集 $A$ 的每一个函数的值域都是 $P$ 的子集. 则 $\mathbb{R}_{P} \circ A = \mathbb{R}_{P}$.
+    设 $C$ 为 $P$ 上的函数集, 且其元都是常函数. 设函数集 $A$ 的每一个函数的值域都是 $P$ 的子集. 则 $C \circ A = C$.
 \end{theorem}
 
 \begin{proof}
-    注意到对任意 $a \in A$, $k \in \mathbb{R}_{P}$, 必有 $k \circ a = k$.
+    注意到对任意 $a \in A$, $k \in C$, 必有 $k \circ a = k$.
 \end{proof}
 
 设 $I$ 是区间. 设 $f$ 是 $I$ 上的函数. 设 $F$ 是 $f$ 的一个原函数. 那么, 我们就可以简单地写
@@ -438,13 +439,7 @@
 
     取 $f_1 \in k(f + \mathbb{R})$. 那么, 存在 $c \in \mathbb{R}$ 使 $f_1 = k(f + c) = kf + kc \in kf + \mathbb{R}$. 取 $f_2 \in kf + \mathbb{R}$. 那么, 存在 $d \in \mathbb{R}$ 使 $f_2 = kf + d$. 因为 $k \neq 0$, 故 $f_2 = kf + kk^{-1}d = k(f + k^{-1}d) \in k(f + \mathbb{R})$.
 
-    最后一个也不难:
-    \begin{align*}
-        (f + \mathbb{R}) \circ h
-        = {} & (\{ f \} + \mathbb{R}) \circ \{ h \}             \\
-        = {} & \{ f \} \circ \{ h \} + \mathbb{R} \circ \{ h \} \\
-        = {} & ( f \circ h ) + \mathbb{R}. \qedhere
-    \end{align*}
+    最后一个更容易了. 取 $f_1 \in (f + \mathbb{R}) \circ h$. 那么, 存在 $c \in \mathbb{R}$ 使 $f_1 = (f + c) \circ h = f \circ h + c \circ h = f \circ h + c \in f \circ h + \mathbb{R}$. 取 $f_2 \in f \circ h + \mathbb{R}$. 那么, 存在 $d$ 使 $f_2 = f \circ h + d$. 因为 $d = d \circ h$, 故 $f_2 = (f + d) \circ h \in (f + \mathbb{R}) \circ h$.
 \end{proof}
 
 \section{不定积分的演算}
