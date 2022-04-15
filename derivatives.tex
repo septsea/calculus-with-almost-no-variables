@@ -176,7 +176,9 @@
     我们知道, $a\iota + b$: $\mathbb{R} \to \mathbb{R}$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $a$. 特别地, 常函数于 $x$ 的导数为 $0$, 而 $\iota$ 于 $x$ 的导数为 $1$. 利用算学归纳法, 可算出, 当 $n$ 为正整数时, $\iota^n$: $\mathbb{R} \to \mathbb{R}$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $nx^{n-1}$. 由此, 多项式函数于 $\mathbb{R}$ 的任意一点 $x$ 都可导. 进而, 有理函数于有定义的点可导. 顺便一提, 即使 $n$ 为负整数, $\iota^n$ 于非零的 $x$ 的导数仍为 $nx^{n-1}$.
 \end{example}
 
-\begin{theorem}[链规则\index{lian4gui1ze2@链规则}]
+\index{lian4gui1ze2@链规则}
+
+\begin{theorem}[链规则]
     设 $I$, $J$ 为区间. 设 $f$: $I \to J$, $g$: $J \to K$. 设 $x \in I$. 设 $f$ 于 $x$ 可导, 且 $g$ 于 $f[x]$ 可导. 则 $g \circ f$ 于 $x$ 可导, 且
     \begin{align*}
         \text{($g \circ f$ 于 $x$ 的导数)} = \text{($g$ 于 $f[x]$ 的导数)} \cdot \text{($f$ 于 $x$ 的导数)}.
