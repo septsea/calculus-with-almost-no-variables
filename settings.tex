@@ -3,6 +3,10 @@
 % Add "pass" to retain the old page margin settings
 \usepackage[pass]{geometry}
 
+% Load "imakeidx" (or "makeidx") before "hyperref"
+\usepackage{imakeidx}
+\makeindex[intoc]
+
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -34,6 +38,8 @@
 
 \allowdisplaybreaks[3]
 \AtBeginDocument{
+    \def\UrlFont{\ttfamily}
+
     \let\umathpi\pi
     \renewcommand\pi{\symup\umathpi}
     \let\umathiota\iota
@@ -102,8 +108,8 @@
 % Punctuation style: narrow some punctuation symbols
 \punctstyle{kaiming}
 
-\usepackage[sort&compress]{gbt7714}
-\bibliographystyle{gbt7714-numerical}
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+\addbibresource{bibliography.bib}
 
 \setmainfont{XITS}
 % Standing-up-straight integral symbol (For XITS Math)

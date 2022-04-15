@@ -1,5 +1,10 @@
 \cleardoublepage
 
-\addcontentsline{toc}{chapter}{\bibname}
 \nocite{*}
-\bibliography{bibliography}
+
+{
+    \hyphenpenalty=0
+    \tolerance=10000
+    \hbadness=10000
+    \printbibliography[heading=bibintoc]
+}

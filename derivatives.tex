@@ -11,7 +11,7 @@
     \begin{align*}
         f = f[x] + (\iota - x)F,
     \end{align*}
-    且 $F$ 于 $x$ 连续, 则说 $f$ 于 $x$ \emph{可导}, 并称 $F[x]$ 为 $f$ 于 $x$ 的\emph{导数}.
+    且 $F$ 于 $x$ 连续, 则说 $f$ 于 $x$ \emph{可导}\index{ke3dao3@可导}, 并称 $F[x]$ 为 $f$ 于 $x$ 的\emph{导数}\index{dao3shu4@导数}.
 \end{definition}
 
 \begin{remark}
@@ -176,7 +176,7 @@
     我们知道, $a\iota + b$: $\mathbb{R} \to \mathbb{R}$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $a$. 特别地, 常函数于 $x$ 的导数为 $0$, 而 $\iota$ 于 $x$ 的导数为 $1$. 利用算学归纳法, 可算出, 当 $n$ 为正整数时, $\iota^n$: $\mathbb{R} \to \mathbb{R}$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $nx^{n-1}$. 由此, 多项式函数于 $\mathbb{R}$ 的任意一点 $x$ 都可导. 进而, 有理函数于有定义的点可导. 顺便一提, 即使 $n$ 为负整数, $\iota^n$ 于非零的 $x$ 的导数仍为 $nx^{n-1}$.
 \end{example}
 
-\begin{theorem}[链规则]
+\begin{theorem}[链规则\index{lian4gui1ze2@链规则}]
     设 $I$, $J$ 为区间. 设 $f$: $I \to J$, $g$: $J \to K$. 设 $x \in I$. 设 $f$ 于 $x$ 可导, 且 $g$ 于 $f[x]$ 可导. 则 $g \circ f$ 于 $x$ 可导, 且
     \begin{align*}
         \text{($g \circ f$ 于 $x$ 的导数)} = \text{($g$ 于 $f[x]$ 的导数)} \cdot \text{($f$ 于 $x$ 的导数)}.
@@ -264,12 +264,12 @@
         I & \to K,                          \\
         x & \mapsto \text{($f$ 于 $x$ 的导数)},
     \end{align*}
-    其中陪域 $K$ 可视情况而定 (除非特别说明, 我们不在意陪域). 我们称 $\mathrm{D}[f]$ 为 $f$ 的\emph{导函数} (亦可简称其为 $f$ 的\emph{导数}).
+    其中陪域 $K$ 可视情况而定 (除非特别说明, 我们不在意陪域). 我们称 $\mathrm{D}[f]$ 为 $f$ 的\emph{导函数}\index{dao3han2shu4@导函数} (亦可简称其为 $f$ 的\emph{导数}\index{dao3shu4@导数}).
 \end{definition}
 
 抽象地, $\mathrm{D}[f]$ 的 $\mathrm{D}$ 本身就是一个函数; 不过, 这是一个变函数为函数的函数 (有点儿绕). 有时, 在不引起误会的时候, 我们也可写 $\mathrm{D}[f]$ 为 $\mathrm{D}f$; 毕竟, 至少在本书里, $\mathrm{D}$ 也只跟函数 ``作用''.
 
-当然, 我又忘记了一件事: 若 $f$ 于 $I$ 的每一点都可导, 我们就说 $f$ 是 $I$ 上的\emph{可导函数}.
+当然, 我又忘记了一件事: 若 $f$ 于 $I$ 的每一点都可导, 我们就说 $f$ 是 $I$ 上的\emph{可导函数}\index{ke3dao3han2shu4@可导函数}.
 
 曾经, 我们写 ``$f$ 于 $x$ 的导数是 $\ell$''; 现在, 我们总算能简便地表此事以 $\mathrm{D}[f][x] = \ell$ 或 $\mathrm{D}f[x] = \ell$. 乘热打铁, 我们用简单的话转述前节的结论.
 

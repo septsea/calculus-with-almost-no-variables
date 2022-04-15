@@ -7,7 +7,7 @@
 \section{连续的定义}
 
 \begin{definition}
-    设 $x \in \mathbb{R}$. 设 $\delta$ 为正数. 则 $N[x; \delta] = (x - \delta, x + \delta)$ 是 $x$ 的一个\emph{邻域}. 称 $N[x; \delta] \setminus \{ x \} = (x - \delta, x) \cup (x, x + \delta)$ 是 $x$ 的一个\emph{去心邻域}.
+    设 $x \in \mathbb{R}$. 设 $\delta$ 为正数. 则 $N[x; \delta] = (x - \delta, x + \delta)$ 是 $x$ 的一个\emph{邻域}\index{lin2yu4@邻域}. 称 $N[x; \delta] \setminus \{ x \} = (x - \delta, x) \cup (x, x + \delta)$ 是 $x$ 的一个\emph{去心邻域}\index{qu4xin1lin2yu4@去心邻域}.
 \end{definition}
 
 不难看出, $N[x; \delta]$ 就是 $\{ t \mid |t - x| < \delta \}$, 而 $N[x; \delta] \setminus \{ x \}$ 就是 $\{ t \mid 0 < |t - x| < \delta \}$.
@@ -33,7 +33,7 @@
 \end{proof}
 
 \begin{definition}
-    设 $f$ 是 $A$ 上的函数. 设 $x \in A$. 若任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $f[A \cap N[x; \delta]] \subset N[f[x]; \varepsilon]$, 则说 $f$ 于 $x$ \emph{连续}.
+    设 $f$ 是 $A$ 上的函数. 设 $x \in A$. 若任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $f[A \cap N[x; \delta]] \subset N[f[x]; \varepsilon]$, 则说 $f$ 于 $x$ \emph{连续}\index{lian2xu4@连续}.
 \end{definition}
 
 不难看出, $f$ 于 $x$ 连续的一个必要与充分条件是: 任给正数 $\varepsilon$, 存在正数 $\delta$ 使 $|t - x| < \delta$ 且 $t \in A$ 时, 必有 $|f[t] - f[x]| < \varepsilon$.
@@ -166,7 +166,7 @@
 我们已经知道函数于一点连续的意思. 不过, 什么是连续函数呢?
 
 \begin{definition}
-    设 $f$ 是 $A$ 上的函数. 若 $f$ 于 $A$ 的每一点都连续, 则 $f$ 是 ($A$ 上的) \emph{连续函数}.
+    设 $f$ 是 $A$ 上的函数. 若 $f$ 于 $A$ 的每一点都连续, 则 $f$ 是 ($A$ 上的) \emph{连续函数}\index{lian2xu4han2shu4@连续函数}.
 \end{definition}
 
 \begin{remark}
@@ -212,11 +212,11 @@
 为后面的需要, 我们考虑严单调函数与连续函数的关系.
 
 \begin{definition}
-    设 $f$ 是 $A$ 上的函数. 若任取 $A$ 的相异二元 $x$, $y$, 都有 $(x - y)(f[x] - f[y]) \geq 0$, 则说 $f$ \emph{增} (也说 $f$ 是\emph{增函数}); 若任取 $A$ 的相异二元 $x$, $y$, 都有 $(x - y)(f[x] - f[y]) > 0$, 则说 $f$ \emph{严增} (也说 $f$ 是\emph{严增函数}).
+    设 $f$ 是 $A$ 上的函数. 若任取 $A$ 的相异二元 $x$, $y$, 都有 $(x - y)(f[x] - f[y]) \geq 0$, 则说 $f$ \emph{增}\index{zeng1@增} (也说 $f$ 是\emph{增函数}\index{zeng1han2shu4@增函数}); 若任取 $A$ 的相异二元 $x$, $y$, 都有 $(x - y)(f[x] - f[y]) > 0$, 则说 $f$ \emph{严增}\index{yan2zeng1@严增} (也说 $f$ 是\emph{严增函数}\index{yan2zeng1han2shu4@严增函数}).
 
-    若 $-f$ 增, 则 $f$ \emph{减} (也说 $f$ 是\emph{减函数}); 若 $-f$ 严增, 则 $f$ \emph{严减} (也说 $f$ 是\emph{严减函数}).
+    若 $-f$ 增, 则 $f$ \emph{减}\index{jian3@减} (也说 $f$ 是\emph{减函数}\index{jian3han2shu4@减函数}); 若 $-f$ 严增, 则 $f$ \emph{严减}\index{yan2jian3@严减} (也说 $f$ 是\emph{严减函数}\index{yan2jian3han2shu4@严减函数}).
 
-    若 $f$ 增或 $f$ 减, 则 $f$ \emph{单调} (也说 $f$ 是\emph{单调函数}); 若 $f$ 严增或 $f$ 严减, 则 $f$ \emph{严单调} (也说 $f$ 是\emph{严单调函数}).
+    若 $f$ 增或 $f$ 减, 则 $f$ \emph{单调}\index{dan1diao4@单调} (也说 $f$ 是\emph{单调函数}\index{dan1diao4han2shu4@单调函数}); 若 $f$ 严增或 $f$ 严减, 则 $f$ \emph{严单调}\index{yan2dan1diao4@严单调} (也说 $f$ 是\emph{严单调函数}\index{yan2dan1diao4han2shu4@严单调函数}).
 \end{definition}
 
 简单地, 说 $f$ 增 (严增), 就是说对任意适合 $x \in A$, $y \in A$ 且 $x < y$ 的 $x$, $y$, 必有 $f[x] \leq f[y]$ ($f[x] < f[y]$); 说 $f$ 减 (严减), 就是说对任意适合 $x \in A$, $y \in A$ 且 $x < y$ 的 $x$, $y$, 必有 $f[x] \geq f[y]$ ($f[x] > f[y]$).
@@ -353,7 +353,7 @@
     \end{align*}
     则存在唯一的实数 $\alpha$, 使对任意正数 $\varepsilon$, 存在非负整数 $N$, 当 $n > N$ 时, 有 $|A[n] - \alpha| < \varepsilon$.
 
-    我们称 $\alpha$ 为 $f$ 在 $[a, b]$ 上的\emph{积分}, 并记 $\alpha$ 为
+    我们称 $\alpha$ 为 $f$ 在 $[a, b]$ 上的\emph{积分}\index{ji1fen1@积分}, 并记 $\alpha$ 为
     \begin{align*}
         \int_{a}^{b} {f}.
     \end{align*}
