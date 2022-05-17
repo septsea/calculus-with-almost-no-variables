@@ -1,0 +1,162 @@
+\documentclass[fontset=fandol]{ctexbook}
+
+\title{这是书的标题}
+\author{这是作者}
+\date{这是日期}
+
+\begin{document}% 正式开始文档.
+
+\frontmatter
+
+\maketitle
+
+\tableofcontents
+
+\listoftables
+
+\chapter{前言}
+
+我想向乳胶问好.
+
+\mainmatter
+
+\part{甲}
+
+\chapter{我向乳胶问好}
+
+您好, 乳胶\footnote{胡话里, 乳胶就是 ``latex''.}!
+或许, 我应该叫您的原名, \LaTeX{}.
+
+I want%
+    to learn
+        100\% about \LaTeX{}.
+
+\section{指数与三角}
+
+据说, 指数 $\exp$ 跟三角 $\cos$, $\sin$ 间有这样的联系:
+\begin{equation}\label{eq:Euler}
+    \mathrm{e}^{\mathrm{i} x} = \cos {x} + \mathrm{i} \sin {x}.
+\end{equation}
+不过, 这到底是什么意思呢?
+
+似乎还是要给定义的.
+指数函数的定义是
+\[
+    \mathrm{e}^{z} = 1 + \frac{z^1}{1!} + \frac{z^2}{2!}
+    + \dots + \frac{z^n}{n!} + \dots.
+\]
+$\cos$ 的定义是
+\[
+    \cos {z}
+    = \frac{\mathrm{e}^{\mathrm{i} z}
+    + \mathrm{e}^{-\mathrm{i} z}}{2},
+\]
+而 $\sin$ 的定义是
+\[
+    \sin {z}
+    = \frac{\mathrm{e}^{\mathrm{i} z}
+    - \mathrm{e}^{-\mathrm{i} z}}{2\mathrm{i}}.
+\]
+
+所以, 根据定义,
+\[
+    \cos {x} + \mathrm{i} \sin {x}
+    = \frac{\mathrm{e}^{\mathrm{i} x}
+    + \mathrm{e}^{-\mathrm{i} x}}{2}
+    + \frac{\mathrm{e}^{\mathrm{i} x}
+    - \mathrm{e}^{-\mathrm{i} x}}{2}
+    = \mathrm{e}^{\mathrm{i} x}.
+\]
+
+\section{算学家: Leonhard Euler}
+
+据说, 算学家 Leonhard Euler 早就发现式~(\ref{eq:Euler}).
+今日, 大家一般都叫它 Euler 公式.
+
+Euler 是谁?
+他是 18~世纪的瑞士\footnote{一个欧洲国家.}算学家.\\
+1707~年 4~月 15~日出生于瑞士巴塞尔;\\
+1783~年 9~月 18~逝世于俄国\footnote{一个欧洲国家.}圣彼得堡.
+
+事实上, 有很多 Euler 公式;\par
+不过, 我就不多说了.
+
+\clearpage% 分页.
+
+可用 \verb/\clearpage/ 手动换页.
+
+顺便, 也总算看到奇数页的非空页眉了\footnote{也就是说,
+    奇数页的非空页眉的左侧是节标题, 右侧是页码.}.
+
+\chapter{不知道写什么了}
+
+\section{摆了}
+
+我问不下去了啊\footnote{因为真没什么东西可问了.}.
+
+我暂且列出一些术语罢 (表~\ref{tab:glossaries}).
+
+\begin{table}[h!]
+    \centering
+    \caption{术语表}\label{tab:glossaries}
+    \begin{tabular}{l l}
+        \hline
+        胡话   & English       \\
+        土话   & Chinese       \\
+        乳胶   & \LaTeX{}      \\
+        算学   & mathematics   \\
+        算学家 & mathematician \\
+        \hline
+    \end{tabular}
+\end{table}
+
+没别的了.
+
+\part{乙}
+
+\chapter{章}
+
+\section{节}
+
+\subsection{小节}
+
+\subsubsection{小小节}
+
+差不多了.
+其实还有 \verb|paragraph| 跟 \verb-subparagraph-,
+但似乎也没什么用.
+很多书一般不会分这么多层罢\footnote{应该不会罢.}.
+
+\paragraph{段}
+
+您好. 我紧跟着 ``段''\footnote{确实.}.
+
+\subparagraph{小段}
+
+您好. 我也紧跟着 ``小段''. 我还缩进了.
+
+\subparagraph{段小}
+
+您好. 我也紧跟着 ``段小''. 我还缩进了.
+
+\clearpage
+
+就这样罢.
+
+\appendix
+
+\chapter{乳胶的历史}
+
+\section{什么是乳胶?}
+
+乳胶 (胡话: \LaTeX{}) 是
+Leslie Lamport\footnote{一个美国人.}
+作出的一种排版应用.
+
+\backmatter
+
+\chapter{后记}
+
+麻雀虽小, 五脏俱全.
+
+\end{document}% 结束文档.

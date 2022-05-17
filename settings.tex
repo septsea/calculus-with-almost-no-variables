@@ -1,121 +1,23 @@
-\documentclass[UTF8,fontset=none,zihao=-4,a4paper,leqno]{ctexbook}
+% Specify the class of the document.
+% This is a Chinese BOOK (hence "ctexbook");
+% this uses UTF8;
+% this uses fonts to be specified (hence fontset=none);
+% this uses the size of "小四" (hence zihao=-4);
+% the numbers of equations will be displayed in the inner side
+% (the left side on odd pages) (hence leqno)
+% this uses A4 paper.
+% Punctuation style: narrow some punctuation symbols.
+\documentclass[%
+    UTF8,%
+    fontset=none,%
+    punct=kaiming,%
+    zihao=-4,%
+    a4paper,%
+    leqno%
+]{ctexbook}
 
-% Add "pass" to retain the old page margin settings
-\usepackage[pass]{geometry}
-
-% Load "imakeidx" (or "makeidx") before "hyperref"
-\usepackage{imakeidx}
-\makeindex[intoc]
-
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{mathtools}
-\usepackage{thmtools}
-\usepackage{thm-restate}
-\usepackage[hidelinks,hyperindex,breaklinks]{hyperref}
-% Add hyperlinks to the table of contents
-\usepackage{bookmark}
-% partial=upright makes \partial stand up
-\usepackage[math-style=ISO,bold-style=ISO,mathrm=sym,mathbf=sym,partial=upright,warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\setlength{\headheight}{15pt}
-\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
-\fancyhead[RO]{\sffamily\thepage}
-\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
-\fancyhead[LE]{\sffamily\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{%
-    \fancyhf{}
-    \fancyfoot[C]{\sffamily\thepage}
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
-}
-
-\allowdisplaybreaks[3]
-\AtBeginDocument{
-    \def\UrlFont{\ttfamily}
-
-    \let\umathpi\pi
-    \renewcommand\pi{\symup\umathpi}
-    \let\umathiota\iota
-    \renewcommand\iota{\symup\umathiota}
-
-    \renewcommand\leq{\leqslant}
-    \renewcommand\geq{\geqslant}
-    \renewcommand\mathellipsis{\cdots}
-}
-
-\usepackage{enumitem}
-\setlist[1]{labelindent=\parindent}
-\setlist[itemize]{leftmargin=*,nosep}
-\setlist[enumerate]{leftmargin=*,nosep}
-\setlist[enumerate,1]{label=(\arabic*),ref=(\arabic*)}
-\setlist[description]{style=nextline,leftmargin=2\parindent}
-
-\declaretheoremstyle[
-    spaceabove=2ex,
-    spacebelow=2ex,
-    headfont=\normalfont\bfseries,
-    notefont=\mdseries,
-    notebraces={(}{)},
-    bodyfont=\normalfont,
-    headindent=\parindent,
-    headpunct={},
-    postheadspace=1em
-]{TheoremStyle}
-
-\declaretheoremstyle[
-    spaceabove=2ex,
-    spacebelow=2ex,
-    headfont=\normalfont\bfseries,
-    notefont=\mdseries,
-    notebraces={(}{)},
-    bodyfont=\normalfont,
-    headindent=\parindent,
-    headpunct={},
-    postheadspace=1em,
-    qed=\qedsymbol
-]{ProofStyle}
-
-\declaretheorem[style=TheoremStyle,name=定理,numberwithin=chapter]{theorem}
-\declaretheorem[style=TheoremStyle,name=定义,sibling=theorem]{definition}
-\declaretheorem[style=TheoremStyle,name=定义,numbered=no]{definition*}
-\declaretheorem[style=TheoremStyle,name=命题,sibling=theorem]{proposition}
-\declaretheorem[style=TheoremStyle,name=引理,sibling=theorem]{lemma}
-\declaretheorem[style=TheoremStyle,name=公理,sibling=theorem]{axiom}
-\declaretheorem[style=TheoremStyle,name=推论,sibling=theorem]{corollary}
-\declaretheorem[style=TheoremStyle,name=例,sibling=theorem]{example}
-\declaretheorem[style=TheoremStyle,name=注,sibling=theorem]{remark}
-\declaretheorem[style=TheoremStyle,name=注,numbered=no]{remark*}
-\declaretheorem[style=TheoremStyle,name=猜想,sibling=theorem]{conjecture}
-
-% Undefine the proof environment provided by `amsthm`
-\makeatletter
-\let\proof\@undefined
-\let\endproof\@undefined
-\makeatother
-\declaretheorem[style=ProofStyle,name=证,numbered=no]{proof}
-\def\qedsymbol{证毕.}
-
-\let\emph\relax
-\DeclareTextFontCommand{\emph}{\bfseries}
-
-% Punctuation style: narrow some punctuation symbols
-\punctstyle{kaiming}
-
-\usepackage[backend=biber,style=gb7714-2015]{biblatex}
-\addbibresource{bibliography.bib}
-
+% Specify the fonts used by the document.
 \setmainfont{XITS}
-% Standing-up-straight integral symbol (For XITS Math)
-\setmathfont{XITS Math}[StylisticSet=8]
-\setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
-\setmathfont{STIX Two Math}[range={"2218-"2218}]
 \setsansfont{Fira Sans}[
     UprightFont = * Light,
     BoldFont = * SemiBold,
@@ -128,7 +30,6 @@
     ItalicFont = * Light Italic,
     BoldItalicFont = * Semibold Italic,
 ]
-
 \setCJKmainfont{Source Han Serif CN}[
     UprightFont = Source Han Serif CN,
     BoldFont = Sarasa Mono SC Semibold,
@@ -148,13 +49,283 @@
     BoldItalicFont = * Semibold Italic,
 ]
 
+% Redefine the emphasis style.
+\let\emph\relax
+\DeclareTextFontCommand{\emph}{\bfseries}
+
+% Add "pass" to retain the old page margin settings
+% \usepackage[pass]{geometry}
+
+% Allow easier imports
+\usepackage{import}
+
+% Specify the title, author and date of the document.
+\title{几乎无变量的微积分}
+\author{纳纳米}
+\date{\today}
+\makeatletter
+\providecommand*{\thetitle}{\@title}
+\providecommand*{\theauthor}{\@author}
+\providecommand*{\thedate}{\@date}
+\makeatother
+
+% This package makes modifications to existing commands easier.
+\usepackage{xpatch}
+% unnumbered sections, subsections, subsubsections etc.
+% (parts are still numbered)
+\xappto{\frontmatter}{\setcounter{secnumdepth}{0}}{}{}
+% numbered parts, chapters, sections,
+% subsections, subsubsections etc.
+\xappto{\mainmatter}{\setcounter{secnumdepth}{2}}{}{}
+% unnumbered sections, subsections, subsubsections etc.
+% (parts are still numbered)
+\xappto{\backmatter}{\setcounter{secnumdepth}{0}}{}{}
+
+% This is a package which makes indices.
+% Load "imakeidx" (or "makeidx") before "hyperref"
+\usepackage[quiet]{imakeidx}
+\makeindex[intoc]
+\makeindex[
+    name=testing,
+    title={List of Vegetables, Fruits and Spices},
+    intoc
+]
+
+% This is a package which includes a lot of logos about TeX.
+\usepackage{hologo}
+
+% These are packages which deal with mathematical formulae.
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[
+    math-style=ISO,
+    bold-style=ISO,
+    mathrm=sym,
+    mathbf=sym,
+    partial=upright,
+    warnings-off={mathtools-colon,mathtools-overbracket}
+]{unicode-math}
+\allowdisplaybreaks[3]
+% Standing-up-straight integral symbol (For XITS Math)
+\setmathfont{XITS Math}[StylisticSet=8]
+\setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
+\setmathfont{STIX Two Math}[range={"2218-"2218}]
+
+% These are packages which deal with theorem environments.
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\declaretheoremstyle[%
+    spaceabove=2ex,%
+    spacebelow=2ex,%
+    headfont=\normalfont\bfseries,%
+    notefont=\mdseries,%
+    notebraces={(}{)},%
+    bodyfont=\normalfont,%
+    headindent=\parindent,%
+    headpunct={},%
+    postheadspace=1em%
+]{TheoremStyle}
+\declaretheoremstyle[%
+    spaceabove=2ex,%
+    spacebelow=2ex,%
+    headfont=\normalfont\bfseries,%
+    notefont=\mdseries,%
+    notebraces={(}{)},%
+    bodyfont=\normalfont,%
+    headindent=\parindent,%
+    headpunct={},%
+    postheadspace=1em,%
+    qed=\qedsymbol%
+]{ProofStyle}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=定理,%
+    numberwithin=chapter%
+]{theorem}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=定义,%
+    sibling=theorem%
+]{definition}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=定义,%
+    numbered=no%
+]{definition*}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=命题,%
+    sibling=theorem%
+]{proposition}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=引理,%
+    sibling=theorem%
+]{lemma}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=公理,%
+    sibling=theorem%
+]{axiom}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=推论,%
+    sibling=theorem%
+]{corollary}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=例,%
+    sibling=theorem%
+]{example}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=注,%
+    sibling=theorem%
+]{remark}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=注,%
+    numbered=no%
+]{remark*}
+\declaretheorem[%
+    style=TheoremStyle,%
+    name=猜想,%
+    sibling=theorem%
+]{conjecture}
+% Undefine the proof environment provided by `amsthm`
+\makeatletter
+\let\proof\@undefined
+\let\endproof\@undefined
+\makeatother
+\declaretheorem[%
+    style=ProofStyle,%
+    name=证,
+    numbered=no%
+]{proof}
+\renewcommand*{\qedsymbol}{证毕.}
+
+% These are packages which deal with hyperlinks.
+\usepackage[hidelinks,hyperindex,breaklinks]{hyperref}
+% Add hyperlinks to the table of contents
+\usepackage{bookmark}
+% partial=upright makes \partial stand up
+
+% This package deals with footnotes.
+% Slightly modify the style of the footnotes
+\usepackage[perpage,multiple,symbol*]{footmisc}
+
+% This package deals with headers and footers.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
+\fancyhead[RO]{\sffamily\thepage}
+\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
+\fancyhead[LE]{\sffamily\thepage}
+\renewcommand*{\headrulewidth}{0pt}
+\renewcommand*{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyfoot[C]{\sffamily\thepage}
+    \renewcommand*{\headrulewidth}{0pt}
+    \renewcommand*{\footrulewidth}{0pt}
+}
+
+% If a chapter has no section,
+% mark the header on the odd pages as well.
+% Put the definition after fancyhdr.
+\renewcommand{\chaptermark}[1]{%
+    \markboth{\CTEXifname{\CTEXthechapter\hspace{\ccwd}}{}#1}{\CTEXifname{\CTEXthechapter\hspace{\ccwd}}{}#1}%
+}
+
+% No page numbers or headers or footers on empty pages.
+\usepackage{emptypage}
+
+% Ensure that the number of pages is even.
+\usepackage{evenpage}
+
+% This package deals with lists,
+% including numbered and unnumbered ones.
+\usepackage{enumitem}
+\setlist[1]{labelindent=\parindent}
+\setlist[itemize]{leftmargin=*,nosep}
+\setlist[enumerate]{leftmargin=*,nosep}
+\setlist[enumerate,1]{label=(\arabic*),ref=(\arabic*)}
+\setlist[description]{style=nextline,leftmargin=2\parindent}
+
+% Insert the table of bibliography (and reference).
+\usepackage[backend=biber,style=gb7714-2015,backref=true]{biblatex}
+% Multiple .bib files can also be added.
+\addbibresource{data/bibliography.bib}
+\addbibresource{data/less important references.bib}
+\addbibresource{data/other references.bib}
+
+% Trick: https://tex.stackexchange.com/questions/294362/use-fira-code-font-with-ligatures-in-code-listings
+% Make the mono-space font look better.
+\makeatletter
+\def\verbatim@nolig@list{}
+\makeatother
+
+% Display the code more easily.
+\usepackage[savemem]{listings}
+\lstset{% general command to set parameter(s)
+    basicstyle=\ttfamily,
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    tabsize=4
+}
+\renewcommand*{\lstlistingname}{码}
+\renewcommand*{\lstlistlistingname}{代码}
+
+% Insert figures
+\usepackage{graphicx}
+\graphicspath{{images/}}
+% Insert sub-figures
+\usepackage{subcaption}
+
+% This package deals with arrays.
 % The following code makes it easier to input a version number
 % converging to 2pi.
 %
 % Usage: \CalculusVersion[n], where n is a positive integer
 % less than 1100.
 \usepackage{readarray}
-\readrecordarray{ApproximationsTo2Pi.txt}\CalculusVersion
+\readrecordarray{data/ApproximationsTo2Pi.txt}\CalculusVersion
 
-% Well, whatever.
-\usepackage{ifthen}
+% This package deals with glossaries.
+\usepackage[nonumberlist,nopostdot,toc=true]{glossaries-extra}
+\newglossary*{lore}{List of Lores}
+\makenoidxglossaries
+\input{data/glossary entries}
+\input{data/lores}
+% Enable to print all entries without even referring to them%
+\glsaddall
+
+% This is something between \fussy and \sloopy.
+% Source: memoir.
+\makeatletter
+\providecommand*{\midsloppy}{%
+    \tolerance 5000%
+    \hbadness 4000%
+    \emergencystretch 1.5em%
+    \hfuzz .1\p@
+    \vfuzz\hfuzz}
+\makeatother
+
+% These are modifications which are
+% to be inserted after \begin{document}
+\AtBeginDocument{
+    \renewcommand*{\UrlFont}{\ttfamily}
+
+    \let\umathpi\pi
+    \renewcommand*\pi{\symup\umathpi}
+    \let\umathiota\iota
+    \renewcommand*\iota{\symup\umathiota}
+
+    \renewcommand*\leq{\leqslant}
+    \renewcommand*\geq{\geqslant}
+    \renewcommand*\mathellipsis{\cdots}
+}

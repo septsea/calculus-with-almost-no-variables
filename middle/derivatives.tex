@@ -7,11 +7,16 @@
 \section{背景}
 
 \begin{definition}
-    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $x \in I$. 若存在 $x$ 的邻域 $N$, 与 $N \cap I$ 上的函数 $F$, 使
+    设 $I$ 为区间.
+    设 $f$ 为 $I$ 上的函数.
+    设 $x \in I$.
+    若存在 $x$ 的邻域 $N$, 与 $N \cap I$ 上的函数 $F$, 使
     \begin{align*}
         f = f[x] + (\iota - x)F,
     \end{align*}
-    且 $F$ 于 $x$ 连续, 则说 $f$ 于 $x$ \emph{可导}\index{ke3dao3@可导}, 并称 $F[x]$ 为 $f$ 于 $x$ 的\emph{导数}\index{dao3shu4@导数}.
+    且 $F$ 于 $x$ 连续,
+    则说 $f$ 于 $x$ \emph{可导}\index{ke3dao3@可导},
+    并称 $F[x]$ 为 $f$ 于 $x$ 的\emph{导数}\index{dao3shu4@导数}.
 \end{definition}
 
 \begin{remark}
@@ -19,35 +24,67 @@
     \begin{align*}
         \lim_{t \to x} {\frac{f[t] - f[x]}{t - x}}
     \end{align*}
-    是否存在定义 $f$ 是否于 $x$ 可导; 极限存在时, 它的值就是 $f$ 于 $x$ 的导数. 可以证明, 这二个定义是等价的; 不过, 既然我花了不少篇幅讨论连续函数, 我将呈现一种不一样的微分学 (求导学). 我采取的定义来自希腊算学家 Constantin Carath{\'e}odory. 假如您对此事感兴趣, 您可以阅读美国算学家 Stephen Kuhn 的名为 \textit{The Derivative {\'a} la Carath{\'e}odory} 的文章 (不过, 我想说, 标题的 \textit{{\'a} la} 应该是 \textit{{\`a} la}).
+    是否存在定义 $f$ 是否于 $x$ 可导;
+    极限存在时, 它的值就是 $f$ 于 $x$ 的导数.
+    可以证明, 这二个定义是等价的;
+    不过, 既然我花了不少篇幅讨论连续函数,
+    我将呈现一种不一样的微分学 (求导学).
+    我采取的定义来自希腊\gls{mathematician}
+    Constantin Carath\'eodory.
+    假如您对此事感兴趣,
+    您可阅美国\gls{mathematician} Stephen Kuhn 的名为
+    \textit{The Derivative \'a la Carath\'eodory} 的文章
+    (不过, 我想说,
+    标题的 \textit{\'a la} 应该是 \textit{\`a la}).
 \end{remark}
 
-我们看导数的一些基本性质. 在定义里, 若 $f$ 于 $x$ 可导, 则 $f$ 于 $x$ 的导数似乎不止一个. 不过, 我们即将说明, 导数是唯一的.
+我们看导数的一些基本性质.
+在定义里, 若 $f$ 于 $x$ 可导, 则 $f$ 于 $x$ 的导数似乎不止一个.
+不过, 我们即将说明, 导数是唯一的.
 
 \begin{theorem}
-    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $x \in I$. 设存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F_1$, 使
+    设 $I$ 为区间.
+    设 $f$ 为 $I$ 上的函数.
+    设 $x \in I$.
+    设存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F_1$, 使
     \begin{align*}
         f = f[x] + (\iota - x) F_1,
     \end{align*}
-    且 $F_1$ 于 $x$ 连续. 设存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $F_2$, 使
+    且 $F_1$ 于 $x$ 连续.
+    设存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $F_2$, 使
     \begin{align*}
         f = f[x] + (\iota - x) F_2,
     \end{align*}
-    且 $F_2$ 于 $x$ 连续. 则 $F_1 [x] = F_2 [x]$. 也就是说, $f$ 于 $x$ 的导数, 若存在, 则唯一.
+    且 $F_2$ 于 $x$ 连续.
+    则 $F_1 [x] = F_2 [x]$.
+    也就是说, $f$ 于 $x$ 的导数, 若存在, 则唯一.
 \end{theorem}
 
 \begin{proof}
-    用反证法. 设 $F_1 [x] \neq F_2 [x]$, 则 $\varepsilon = |F_1 [x] - F_2 [x]|$ 是正数. 我们要由此推出矛盾.
+    用反证法.
+    设 $F_1 [x] \neq F_2 [x]$,
+    则 $\varepsilon = |F_1 [x] - F_2 [x]|$ 是正数.
+    我们要由此推出矛盾.
 
-    因为 $N_1 \cap I$ 是区间, 且 $F_1$ 于 $x$ 连续, 故存在正数 $\delta_1$, 使 $0 < |t - x| < \delta_1$ 且 $t \in I$ 时, 必有 $|F_1 [t] - F_1 [x]| < {\varepsilon}/{2}$, 即
+    因为 $N_1 \cap I$ 是区间, 且 $F_1$ 于 $x$ 连续,
+    故存在正数 $\delta_1$,
+    使 $0 < |t - x| < \delta_1$ 且 $t \in I$ 时,
+    必有 $|F_1 [t] - F_1 [x]| < {\varepsilon}/{2}$,
+    即
     \begin{align*}
         \Bigg| \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg| < \frac{\varepsilon}{2}.
     \end{align*}
-    因为 $N_2 \cap I$ 是区间, 且 $F_2$ 于 $x$ 连续, 故存在正数 $\delta_2$, 使 $0 < |t - x| < \delta_2$ 且 $t \in I$ 时, 必有 $|F_2 [t] - F_2 [x]| < {\varepsilon}/{2}$, 即
+    因为 $N_2 \cap I$ 是区间,
+    且 $F_2$ 于 $x$ 连续,
+    故存在正数 $\delta_2$,
+    使 $0 < |t - x| < \delta_2$ 且 $t \in I$ 时,
+    必有 $|F_2 [t] - F_2 [x]| < {\varepsilon}/{2}$,
+    即
     \begin{align*}
         \Bigg| \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg| < \frac{\varepsilon}{2}.
     \end{align*}
-    取 $\delta$ 为 $\delta_1$ 与 $\delta_2$ 中的较小者. 则 $0 < |t - x| < \delta$ 且 $t \in I$ 时,
+    取 $\delta$ 为 $\delta_1$ 与 $\delta_2$ 中的较小者.
+    则 $0 < |t - x| < \delta$ 且 $t \in I$ 时,
     \begin{align*}
         \varepsilon
         = {}    & |F_1 [x] - F_2 [x]|                                                                                                 \\
@@ -59,35 +96,53 @@
 \end{proof}
 
 \begin{example}
-    设 $a$, $b$ 为实数. 则 $a\iota + b$ 于其定义域的任意一点都可导. 具体地,
+    设 $a$, $b$ 为实数.
+    则 $a\iota + b$ 于其定义域的任意一点都可导.
+    具体地,
     \begin{align*}
         a\iota + b = (a\iota + b)[x] + (\iota - x)a,
     \end{align*}
-    而 $a$ 是连续函数. 并且, $a\iota + b$ 于任意一点的导数都是 $a$.
+    而 $a$ 是连续函数.
+    并且, $a\iota + b$ 于任意一点的导数都是 $a$.
 \end{example}
 
 \begin{theorem}
-    设 $I$ 为区间. 设 $f$ 为 $I$ 上的函数. 设 $x \in I$. 设 $f$ 于 $x$ 可导. 则 $f$ 于 $x$ 连续.
+    设 $I$ 为区间.
+    设 $f$ 为 $I$ 上的函数.
+    设 $x \in I$.
+    设 $f$ 于 $x$ 可导.
+    则 $f$ 于 $x$ 连续.
 \end{theorem}
 
 \begin{proof}
-    因为 $f$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N$, 与 $N \cap I$ 上的函数 $F$, 使
+    因为 $f$ 于 $x$ 可导,
+    故存在 $x$ 的邻域 $N$,
+    与 $N \cap I$ 上的函数 $F$,
+    使
     \begin{align*}
         f = f[x] + (\iota - x)F,
     \end{align*}
     且 $F$ 于 $x$ 连续.
 
-    因为 $\iota - x$ 于 $x$ 连续, 故 $(\iota - x)F$ 于 $x$ 连续; 因为 $f[x]$ 于 $x$ 连续, 故 $f$ 于 $x$ 连续.
+    因为 $\iota - x$ 于 $x$ 连续,
+    故 $(\iota - x)F$ 于 $x$ 连续;
+    因为 $f[x]$ 于 $x$ 连续,
+    故 $f$ 于 $x$ 连续.
 \end{proof}
 
 \begin{theorem}
-    设 $I$ 为区间. 设 $f$, $g$ 为 $I$ 上的函数. 设 $x \in I$. 设 $f$, $g$ 都于 $x$ 可导. 则:
+    设 $I$ 为区间.
+    设 $f$, $g$ 为 $I$ 上的函数.
+    设 $x \in I$.
+    设 $f$, $g$ 都于 $x$ 可导.
+    则:
     \begin{itemize}
         \item $f + g$ 于 $x$ 可导, 且
               \begin{align*}
                   \text{($f + g$ 于 $x$ 的导数)} = \text{($f$ 于 $x$ 的导数)} + \text{($g$ 于 $x$ 的导数)}.
               \end{align*}
-        \item 设 $k$ 为常数. 则 $kf$ 于 $x$ 可导, 且
+        \item 设 $k$ 为常数.
+              则 $kf$ 于 $x$ 可导, 且
               \begin{align*}
                   \text{($kf$ 于 $x$ 的导数)} = k \cdot \text{($f$ 于 $x$ 的导数)}.
               \end{align*}
@@ -103,15 +158,26 @@
 \end{theorem}
 
 \begin{proof}
-    因为 $f$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$, 使
+    因为 $f$ 于 $x$ 可导,
+    故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$,
+    使
     \begin{align*}
         f = f[x] + (\iota - x)F,
     \end{align*}
-    且 $F$ 于 $x$ 连续. 类似地, 因为 $g$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $G$, 使
+    且 $F$ 于 $x$ 连续.
+    类似地,
+    因为 $g$ 于 $x$ 可导,
+    故存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $G$,
+    使
     \begin{align*}
         g = g[x] + (\iota - x)G,
     \end{align*}
-    且 $G$ 于 $x$ 连续. 取 $N = N_1 \cap N_2$, 则 $N$ 也是 $x$ 的邻域. 这里, 为方便, 无妨滥用记号, 视 $F$, $G$ 分别是 $F$, $G$ 在 $N \cap I$ 上的限制. 此外, 注意到, $f$, $g$ 于 $x$ 的导数分别为 $F[x]$, $G[x]$.
+    且 $G$ 于 $x$ 连续.
+    取 $N = N_1 \cap N_2$, 则 $N$ 也是 $x$ 的邻域.
+    这里, 为方便, 无妨滥用记号,
+    视 $F$, $G$ 分别是 $F$, $G$ 在 $N \cap I$ 上的限制.
+    此外, 注意到,
+    $f$, $g$ 于 $x$ 的导数分别为 $F[x]$, $G[x]$.
 
     因为
     \begin{align*}
@@ -120,7 +186,9 @@
         = {} & (f[x] + g[x]) + (\iota - x)(F + G)            \\
         = {} & (f + g)[x] + (\iota - x)(F + G),
     \end{align*}
-    且 $F + G$ 于 $x$ 连续, 故 $f + g$ 于 $x$ 可导, 且导数为 $(F + G)[x] = F[x] + G[x]$.
+    且 $F + G$ 于 $x$ 连续,
+    故 $f + g$ 于 $x$ 可导,
+    且导数为 $(F + G)[x] = F[x] + G[x]$.
 
     因为
     \begin{align*}
@@ -129,7 +197,9 @@
         = {} & kf[x] + k(\iota - x)F      \\
         = {} & (kf)[x] + (\iota - x)(kF),
     \end{align*}
-    且 $kF$ 于 $x$ 连续, 故 $kf$ 于 $x$ 可导, 且导数为 $(kF)[x] = k \cdot F[x]$.
+    且 $kF$ 于 $x$ 连续,
+    故 $kf$ 于 $x$ 可导,
+    且导数为 $(kF)[x] = k \cdot F[x]$.
 
     因为
     \begin{align*}
@@ -138,9 +208,15 @@
         = {} & f[x]g[x] + f[x](\iota - x)G + (\iota - x)Fg[x] + (\iota - x)F(\iota - x)G \\
         = {} & (fg)[x] + (F \cdot g[x] + f[x] \cdot G + FG(\iota - x))(\iota - x),
     \end{align*}
-    且 $h = F \cdot g[x] + f[x] \cdot G + FG(\iota - x)$ 于 $x$ 连续, 故 $fg$ 于 $x$ 可导, 且导数为 $h[x] = F[x]g[x] + f[x]G[x]$.
+    且
+    $h = F \cdot g[x] + f[x] \cdot G + FG(\iota - x)$
+    于 $x$ 连续,
+    故 $fg$ 于 $x$ 可导,
+    且导数为 $h[x] = F[x]g[x] + f[x]G[x]$.
 
-    最后一个等式需要一点儿技巧. 首先, 既然 $f[x] \neq 0$, 且 $f$ 于 $x$ 连续, 故存在 $x$ 的邻域 $M$, 使 $t \in M \cap I$ 时,
+    最后一个等式需要一点儿技巧.
+    首先, 既然 $f[x] \neq 0$, 且 $f$ 于 $x$ 连续,
+    故存在 $x$ 的邻域 $M$, 使 $t \in M \cap I$ 时,
     \begin{align*}
         |f[t] - f[x]| < \frac{|f[x]|}{2},
     \end{align*}
@@ -152,7 +228,8 @@
     \begin{align*}
         |f[t]| > |f[x]| - \frac{|f[x]|}{2} = \frac{|f[x]|}{2}.
     \end{align*}
-    所以, 在 $M$ 上, $f$ 不取零值. 从而, 在 $(M \cap N) \cap I$ 上,
+    所以, 在 $M$ 上, $f$ 不取零值.
+    从而, 在 $(M \cap N) \cap I$ 上,
     \begin{align*}
         f^{-1}
         = {} & f^{-1} [x] + \Bigg( \frac{1}{f} - \frac{1}{f[x]} \Bigg)           \\
@@ -160,9 +237,13 @@
         = {} & f^{-1} [x] - \frac{(\iota - x)F}{f[x] f}                          \\
         = {} & f^{-1} [x] + (\iota - x) \cdot \Bigg( {-\frac{F}{f[x] f}} \Bigg).
     \end{align*}
-    因为 $-F/(f[x]f)$ 于 $x$ 连续, 故 $f^{-1}$ 于 $x$ 可导, 且导数为 $-F[x]/(f^2 [x])$.
+    因为 $-F/(f[x]f)$ 于 $x$ 连续,
+    故 $f^{-1}$ 于 $x$ 可导,
+    且导数为 $-F[x]/(f^2 [x])$.
 
-    注意到 $g/f = g \cdot f^{-1}$, 故 $g/f$ 于 $x$ 可导, 且
+    注意到 $g/f = g \cdot f^{-1}$,
+    故 $g/f$ 于 $x$ 可导,
+    且
     \begin{align*}
              & \text{(${g}/{f}$ 于 $x$ 的导数)}                                                                                      \\
         = {} & \text{($gf^{-1}$ 于 $x$ 的导数)}                                                                                      \\
@@ -173,30 +254,65 @@
 \end{proof}
 
 \begin{example}
-    我们知道, $a\iota + b$: $\mathbb{R} \to \mathbb{R}$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $a$. 特别地, 常函数于 $x$ 的导数为 $0$, 而 $\iota$ 于 $x$ 的导数为 $1$. 利用算学归纳法, 可算出, 当 $n$ 为正整数时, $\iota^n$: $\mathbb{R} \to \mathbb{R}$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $nx^{n-1}$. 由此, 多项式函数于 $\mathbb{R}$ 的任意一点 $x$ 都可导. 进而, 有理函数于有定义的点可导. 顺便一提, 即使 $n$ 为负整数, $\iota^n$ 于非零的 $x$ 的导数仍为 $nx^{n-1}$.
+    我们知道,
+    $a\iota + b$: $\mathbb{R} \to \mathbb{R}$
+    于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $a$.
+    特别地,
+    常函数于 $x$ 的导数为 $0$,
+    而 $\iota$ 于 $x$ 的导数为 $1$.
+    利用\gls{math}归纳法, 可算出,
+    当 $n$ 为正整数时,
+    $\iota^n$: $\mathbb{R} \to \mathbb{R}$
+    于 $\mathbb{R}$ 的任意一点 $x$ 都可导,
+    且导数为 $nx^{n-1}$.
+    由此, 多项式函数于 $\mathbb{R}$ 的任意一点 $x$ 都可导.
+    进而, 有理函数于有定义的点可导.
+    顺便一提, 即使 $n$ 为负整数,
+    $\iota^n$ 于非零的 $x$ 的导数仍为 $nx^{n-1}$.
 \end{example}
 
 \index{lian4gui1ze2@链规则}
 
 \begin{theorem}[链规则]
-    设 $I$, $J$ 为区间. 设 $f$: $I \to J$, $g$: $J \to K$. 设 $x \in I$. 设 $f$ 于 $x$ 可导, 且 $g$ 于 $f[x]$ 可导. 则 $g \circ f$ 于 $x$ 可导, 且
+    设 $I$, $J$ 为区间.
+    设 $f$: $I \to J$, $g$: $J \to K$.
+    设 $x \in I$.
+    设 $f$ 于 $x$ 可导, 且 $g$ 于 $f[x]$ 可导.
+    则 $g \circ f$ 于 $x$ 可导, 且
     \begin{align*}
         \text{($g \circ f$ 于 $x$ 的导数)} = \text{($g$ 于 $f[x]$ 的导数)} \cdot \text{($f$ 于 $x$ 的导数)}.
     \end{align*}
 \end{theorem}
 
 \begin{proof}
-    因为 $g$ 于 $f[x]$ 可导, 故存在 $f[x]$ 的邻域 $M$, 与 $M \cap J$ 上的函数 $G$, 使
+    因为 $g$ 于 $f[x]$ 可导,
+    故存在 $f[x]$ 的邻域 $M$, 与 $M \cap J$ 上的函数 $G$,
+    使
     \begin{align*}
         g = g[f[x]] + (\iota - f[x])G,
     \end{align*}
-    且 $G$ 于 $f[x]$ 连续; 同时, $G[f[x]]$ 即为 $g$ 于 $f[x]$ 的导数. 因为 $f$ 于 $x$ 可导, 故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$, 使
+    且 $G$ 于 $f[x]$ 连续;
+    同时, $G[f[x]]$ 即为 $g$ 于 $f[x]$ 的导数.
+    因为 $f$ 于 $x$ 可导,
+    故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$,
+    使
     \begin{align*}
         f = f[x] + (\iota - x)F,
     \end{align*}
-    且 $F$ 于 $x$ 连续; 同时, $F[x]$ 即为 $f$ 于 $x$ 的导数.
+    且 $F$ 于 $x$ 连续;
+    同时, $F[x]$ 即为 $f$ 于 $x$ 的导数.
 
-    因为 $f$ 亦于 $x$ 连续, 故对 $f[x]$ 的邻域 $M$ 来说, 必存在 $x$ 的邻域 $N_2$, 使 $f[N_2 \cap I] \subset M$; 又因为 $f$ 的陪域为 $J$, 故 $f[N_2 \cap I] \subset J$. 所以, $f[N_2 \cap I] \subset M \cap J$. 取 $N = N_1 \cap N_2$, 则 $N$ 也是 $x$ 的邻域, 且 $f[N \cap I] \subset M \cap J$. 为方便, 无妨滥用记号, 视 $F$, $f$ 分别是 $F$, $f$ 在 $N \cap I$ 上的限制. (事实上, 本段文字只是保证复合 $G \circ f$ 有意义罢了.)
+    因为 $f$ 亦于 $x$ 连续,
+    故对 $f[x]$ 的邻域 $M$ 来说,
+    必存在 $x$ 的邻域 $N_2$, 使 $f[N_2 \cap I] \subset M$;
+    又因为 $f$ 的陪域为 $J$,
+    故 $f[N_2 \cap I] \subset J$.
+    所以, $f[N_2 \cap I] \subset M \cap J$.
+    取 $N = N_1 \cap N_2$, 则 $N$ 也是 $x$ 的邻域,
+    且 $f[N \cap I] \subset M \cap J$.
+    为方便, 无妨滥用记号,
+    视 $F$, $f$ 分别是 $F$, $f$ 在 $N \cap I$ 上的限制.
+    (事实上, 本段文字只是保证复合 $G \circ f$ 有意义罢了.)
 
     现在考察 $g \circ f$:
     \begin{align*}
@@ -205,11 +321,22 @@
         = {} & (g \circ f)[x] + (\iota - x)F(G \circ f)         \\
         = {} & (g \circ f)[x] + (\iota - x) \cdot (G \circ f)F.
     \end{align*}
-    因为 $G$ 于 $f[x]$ 连续, 而 $f$ 于 $x$ 连续, 故 $G \circ f$ 于 $x$ 连续; 又因 $F$ 于 $x$ 连续, 故 $(G \circ f)F$ 于 $x$ 连续. 所以 $g \circ f$ 于 $x$ 可导, 且导数为 $G[f[x]] \cdot F[x]$.
+    因为 $G$ 于 $f[x]$ 连续, 而 $f$ 于 $x$ 连续,
+    故 $G \circ f$ 于 $x$ 连续;
+    又因 $F$ 于 $x$ 连续,
+    故 $(G \circ f)F$ 于 $x$ 连续.
+    所以 $g \circ f$ 于 $x$ 可导,
+    且导数为 $G[f[x]] \cdot F[x]$.
 \end{proof}
 
 \begin{theorem}
-    设 $I$, $J$ 为区间. 设 $f$: $I \to J$ 严单调, 且有反函数 $f^{[-1]}$: $J \to I$. 设 $y \in J$. 设 $f$ 于 $f^{[-1]} [y]$ 可导. 则 $f^{[-1]}$ 于 $y$ 可导的一个必要与充分条件是: $f$ 于 $f^{[-1]} [y]$ 的导数非零.
+    设 $I$, $J$ 为区间.
+    设 $f$: $I \to J$ 严单调,
+    且有反函数 $f^{[-1]}$: $J \to I$.
+    设 $y \in J$.
+    设 $f$ 于 $f^{[-1]} [y]$ 可导.
+    则 $f^{[-1]}$ 于 $y$ 可导的一个必要与充分条件是:
+    $f$ 于 $f^{[-1]} [y]$ 的导数非零.
 
     若 $f$ 于 $f^{[-1]} [y]$ 的导数不等于零, 则
     \begin{align*}
@@ -218,22 +345,45 @@
 \end{theorem}
 
 \begin{proof}
-    先看必要性. 既然 $f^{[-1]}$ 于 $y$ 可导, 且 $f$ 于 $f^{[-1]} [y]$ 可导, 那么 $\iota_J = f \circ f^{[-1]}$ 于 $y$ 可导. 由链规则, 有
+    先看必要性.
+    既然 $f^{[-1]}$ 于 $y$ 可导,
+    且 $f$ 于 $f^{[-1]} [y]$ 可导,
+    那么 $\iota_J = f \circ f^{[-1]}$ 于 $y$ 可导.
+    由链规则, 有
     \begin{align*}
         1 = \text{($f$ 于 $f^{[-1]} [y]$ 的导数)} \cdot \text{($f^{[-1]}$ 于 $y$ 的导数)}.
     \end{align*}
     从而 $f$ 于 $f^{[-1]} [y]$ 的导数非零.
 
-    再看充分性. 因为 $f$ 于 $f^{[-1]} [y]$ 可导, 故存在 $f^{[-1]} [y]$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$, 使
+    再看充分性.
+    因为 $f$ 于 $f^{[-1]} [y]$ 可导,
+    故存在 $f^{[-1]} [y]$ 的邻域 $N_1$,
+    与 $N_1 \cap I$ 上的函数 $F$, 使
     \begin{align*}
         f = f[f^{[-1]} [y]] + (\iota - f^{[-1]} [y])F,
     \end{align*}
-    且 $F$ 于 $f^{[-1]} [y]$ 连续. 依假定, $f$ 于 $f^{[-1]} [y]$ 的导数 $F[f^{[-1]} [y]] \neq 0$. 所以, 存在 $f^{[-1]} [y]$ 的邻域 $N_2$, 使在 $N_2 \cap (N_1 \cap I)$ 上, $F$ 不取零值. 取 $N = N_2 \cap N_1$, 则 $N$ 也是 $f^{[-1]} [y]$ 的邻域, 且在 $N \cap I$ 上, 不但 $F$ 不取零值, 且
+    且 $F$ 于 $f^{[-1]} [y]$ 连续.
+    依假定, $f$ 于 $f^{[-1]} [y]$ 的导数
+    $F[f^{[-1]} [y]] \neq 0$.
+    所以, 存在 $f^{[-1]} [y]$ 的邻域 $N_2$,
+    使在 $N_2 \cap (N_1 \cap I)$ 上, $F$ 不取零值.
+    取 $N = N_2 \cap N_1$,
+    则 $N$ 也是 $f^{[-1]} [y]$ 的邻域,
+    且在 $N \cap I$ 上, 不但 $F$ 不取零值, 且
     \begin{align*}
         f = y + (\iota - f^{[-1]} [y])F.
     \end{align*}
 
-    因为 $f$ 严单调, 且 $I$, $J$ 都是区间, 故 $f$, $f^{[-1]}$ 都是连续函数. 特别地, $f^{[-1]}$ 于 $y$ 连续. 故对 $f^{[-1]} [y]$ 的邻域 $N$, 存在 $y$ 的邻域 $M$, 使 $f^{[-1]} [M \cap J] \subset N$. 因为 $f^{[-1]}$ 的值域为 $I$, 故 $f^{[-1]} [M \cap J] \subset I$. 也就是说, $f^{[-1]} [M \cap J] \subset N \cap I$. (事实上, 这只是为保证复合 $F \circ f^{[-1]}$ 有意义.) 那么, 在 $M \cap J$ 上, 有
+    因为 $f$ 严单调, 且 $I$, $J$ 都是区间,
+    故 $f$, $f^{[-1]}$ 都是连续函数.
+    特别地, $f^{[-1]}$ 于 $y$ 连续.
+    故对 $f^{[-1]} [y]$ 的邻域 $N$,
+    存在 $y$ 的邻域 $M$, 使 $f^{[-1]} [M \cap J] \subset N$.
+    因为 $f^{[-1]}$ 的值域为 $I$,
+    故 $f^{[-1]} [M \cap J] \subset I$.
+    也就是说, $f^{[-1]} [M \cap J] \subset N \cap I$.
+    (事实上, 这只是为保证复合 $F \circ f^{[-1]}$ 有意义.)
+    那么, 在 $M \cap J$ 上, 有
     \begin{align*}
         f \circ f^{[-1]} = y + (f^{[-1]} - f^{[-1]} [y]) (F \circ f^{[-1]}),
     \end{align*}
@@ -241,39 +391,70 @@
     \begin{align*}
         f^{[-1]} = f^{[-1]} [y] + (\iota - y) \cdot \frac{1}{F \circ f^{[-1]}}.
     \end{align*}
-    因为 $f^{[-1]}$ 于 $y$ 连续, 而 $F$ 于 $f^{[-1]} [y]$ 连续, 故 $F \circ f^{[-1]}$ 于 $y$ 连续; 因为 (在 $M \cap J$ 上) $F$ 不取零值, 故 $1/(F \circ f^{[-1]})$ 亦于 $y$ 连续. 所以, $f^{[-1]}$ 于 $y$ 可导, 且导数为 $1/F[f^{[-1]} [y]]$.
+    因为 $f^{[-1]}$ 于 $y$ 连续, 而 $F$ 于 $f^{[-1]} [y]$ 连续,
+    故 $F \circ f^{[-1]}$ 于 $y$ 连续;
+    因为 (在 $M \cap J$ 上) $F$ 不取零值,
+    故 $1/(F \circ f^{[-1]})$ 亦于 $y$ 连续.
+    所以, $f^{[-1]}$ 于 $y$ 可导, 且导数为 $1/F[f^{[-1]} [y]]$.
 \end{proof}
 
-最后, 我给出一个十分有用的事实; 不过, 由于没有足够多的工具, 我就不论证了.
+最后, 我给出一个十分有用的事实;
+不过, 由于没有足够多的工具, 我就不论证了.
 
 \begin{theorem}
-    指数函数、馀弦函数、正弦函数于其定义域的每一点都可导. 具体地说:
+    指数函数、馀弦函数、正弦函数于其定义域的每一点都可导.
+    具体地:
     \begin{itemize}
-        \item $\mathrm{exp}$: $\mathbb{R} \to (0, +\infty)$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $\mathrm{exp} [x]$.
-        \item $\mathrm{cos}$: $\mathbb{R} \to [-1, 1]$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $-\mathrm{sin} [x]$,
-        \item $\mathrm{sin}$: $\mathbb{R} \to [-1, 1]$ 于 $\mathbb{R}$ 的任意一点 $x$ 都可导, 且导数为 $\mathrm{cos} [x]$.
+        \item $\mathrm{exp}$: $\mathbb{R} \to (0, +\infty)$
+              于 $\mathbb{R}$ 的任意一点 $x$ 都可导,
+              且导数为 $\mathrm{exp} [x]$.
+        \item $\mathrm{cos}$: $\mathbb{R} \to [-1, 1]$
+              于 $\mathbb{R}$ 的任意一点 $x$ 都可导,
+              且导数为 $-\mathrm{sin} [x]$,
+        \item $\mathrm{sin}$: $\mathbb{R} \to [-1, 1]$
+              于 $\mathbb{R}$ 的任意一点 $x$ 都可导,
+              且导数为 $\mathrm{cos} [x]$.
     \end{itemize}
 \end{theorem}
 
 \section{无变量的导数计算}
 
-这是本章的重点; 这也是本书的一个重点. 不过, 不重要地, ``无变量的导数计算'' 的 ``导数'' 跟前面的 ``导数'' 不是一个词, 但仍有联系.
+这是本章的重点; 这也是本书的一个重点.
+不过, 不重要地,
+``无变量的导数计算'' 的 ``导数''
+跟前面的 ``导数'' 不是一个词,
+但仍有联系.
 
 \begin{definition}
-    设 $f$ 是区间 $I$ 上的函数. 若 $f$ 于 $I$ 的每一点都可导, 则定义函数
+    设 $f$ 是区间 $I$ 上的函数.
+    若 $f$ 于 $I$ 的每一点都可导, 则定义函数
     \begin{align*}
         \text{$\mathrm{D}[f]$:} \quad
         I & \to K,                          \\
         x & \mapsto \text{($f$ 于 $x$ 的导数)},
     \end{align*}
-    其中陪域 $K$ 可视情况而定 (除非特别说明, 我们不在意陪域). 我们称 $\mathrm{D}[f]$ 为 $f$ 的\emph{导函数}\index{dao3han2shu4@导函数} (亦可简称其为 $f$ 的\emph{导数}\index{dao3shu4@导数}).
+    其中陪域 $K$ 可视情况而定
+    (除非特别说明, 我们不在意陪域).
+    我们称 $\mathrm{D}[f]$ 为 $f$ 的\emph{导函数}%
+    \index{dao3han2shu4@导函数}
+    (亦可简称其为 $f$ 的\emph{导数}\index{dao3shu4@导数}).
 \end{definition}
 
-抽象地, $\mathrm{D}[f]$ 的 $\mathrm{D}$ 本身就是一个函数; 不过, 这是一个变函数为函数的函数 (有点儿绕). 有时, 在不引起误会的时候, 我们也可写 $\mathrm{D}[f]$ 为 $\mathrm{D}f$; 毕竟, 至少在本书里, $\mathrm{D}$ 也只跟函数 ``作用''.
+抽象地, $\mathrm{D}[f]$ 的 $\mathrm{D}$ 本身就是一个函数;
+不过, 这是一个变函数为函数的函数 (有点儿绕).
+有时, 在不引起误会的时候,
+我们也可写 $\mathrm{D}[f]$ 为 $\mathrm{D}f$;
+毕竟, 至少在本书里, $\mathrm{D}$ 也只跟函数 ``作用''.
 
-当然, 我又忘记了一件事: 若 $f$ 于 $I$ 的每一点都可导, 我们就说 $f$ 是 $I$ 上的\emph{可导函数}\index{ke3dao3han2shu4@可导函数}.
+当然, 我又忘记了一件事:
+若 $f$ 于 $I$ 的每一点都可导,
+我们就说 $f$ 是 $I$ 上的\emph{可导函数}%
+\index{ke3dao3han2shu4@可导函数}.
 
-曾经, 我们写 ``$f$ 于 $x$ 的导数是 $\ell$''; 现在, 我们总算能简便地表此事以 $\mathrm{D}[f][x] = \ell$ 或 $\mathrm{D}f[x] = \ell$. 乘热打铁, 我们用简单的话转述前节的结论.
+曾经, 我们写 ``$f$ 于 $x$ 的导数是 $\ell$'';
+现在, 我们总算能简便地表此事以
+$\mathrm{D}[f][x] = \ell$ 或 $\mathrm{D}f[x] = \ell$.
+乘热打铁, 我们用简单的话转述前节的结论.
 
 \begin{theorem}
     设 $f$, $g$ 都是区间 $I$ 上的可导函数.
@@ -282,7 +463,8 @@
               \begin{align*}
                   \mathrm{D} [f + g] = \mathrm{D} f + \mathrm{D} g.
               \end{align*}
-        \item 设 $k$ 为常数. 则 $kf$ 也是 $I$ 上的可导函数, 且
+        \item 设 $k$ 为常数.
+              则 $kf$ 也是 $I$ 上的可导函数, 且
               \begin{align*}
                   \mathrm{D} [kf] = k\mathrm{D} f.
               \end{align*}
@@ -290,7 +472,8 @@
               \begin{align*}
                   \mathrm{D} [fg] = \mathrm{D} f \cdot g + f \cdot \mathrm{D} g.
               \end{align*}
-        \item 设 $f$ 不取零值. 则 $g/f$ 也是 $I$ 上的可导函数, 且
+        \item 设 $f$ 不取零值.
+              则 $g/f$ 也是 $I$ 上的可导函数, 且
               \begin{align*}
                   \mathrm{D}\, \frac{g}{f} = \frac{\mathrm{D} g \cdot f - g \cdot \mathrm{D} f}{f^2}.
               \end{align*}
@@ -298,42 +481,59 @@
 \end{theorem}
 
 \begin{theorem}
-    设 $I$, $J$ 为区间. 设 $f$: $I \to J$, $g$: $J \to K$ 都是可导函数. 则 $g \circ f$ 也是可导函数, 且
+    设 $I$, $J$ 为区间.
+    设 $f$: $I \to J$, $g$: $J \to K$ 都是可导函数.
+    则 $g \circ f$ 也是可导函数, 且
     \begin{align*}
         \mathrm{D} [g \circ f] = (\mathrm{D}g \circ f) \cdot \mathrm{D}f.
     \end{align*}
 \end{theorem}
 
 \begin{remark}
-    有时, 我们也写 $g \circ f$ 为 $g[f]$; 相应地, 也可写链规则为
+    有时, 我们也写 $g \circ f$ 为 $g[f]$;
+    相应地, 也可写链规则为
     \begin{align*}
         \mathrm{D} [g[f]] = \mathrm{D}g[f] \cdot \mathrm{D}f.
     \end{align*}
-    我们约定 $\mathrm{D}g[f]$ 表示 $(\mathrm{D}g)[f]$; 这跟 $\mathrm{D}g \circ f$ 表示 $(\mathrm{D}g) \circ f$ 是一致的. 不过, 由于 $\mathrm{D}g[f]$ 比 $\mathrm{D}g \circ f$ 紧凑, 我们省去了一对圆括号.
+    我们约定 $\mathrm{D}g[f]$ 表示 $(\mathrm{D}g)[f]$;
+    这跟 $\mathrm{D}g \circ f$ 表示
+    $(\mathrm{D}g) \circ f$ 是一致的.
+    不过, 由于 $\mathrm{D}g[f]$ 比 $\mathrm{D}g \circ f$ 紧凑,
+    我们省去了一对圆括号.
 \end{remark}
 
 \begin{theorem}
-    设 $I$, $J$ 为区间. 设 $f$: $I \to J$ 严单调, 且有反函数 $f^{[-1]}$: $J \to I$. 设 $f$ 是可导函数, 且 $\mathrm{D}f$ 不取零值. 则 $f^{[-1]}$ 也是可导函数, 且
+    设 $I$, $J$ 为区间.
+    设 $f$: $I \to J$ 严单调, 且有反函数 $f^{[-1]}$: $J \to I$.
+    设 $f$ 是可导函数, 且 $\mathrm{D}f$ 不取零值.
+    则 $f^{[-1]}$ 也是可导函数, 且
     \begin{align*}
         \mathrm{D} f^{[-1]} = \frac{1}{\mathrm{D}f \circ f^{[-1]}}.
     \end{align*}
 \end{theorem}
 
 \begin{theorem}
-    导数表 I:
+    导数表~I:
     \begin{itemize}
-        \item $\mathrm{D} c = 0$, 此处 $c$ 为常函数.
-        \item $\mathrm{D}\, \iota^n = n \, \iota^{n - 1}$ ($n$ 为整数).
+        \item $\mathrm{D} c = 0$,
+              此处 $c$ 为常函数.
+        \item $\mathrm{D}\, \iota^n = n \, \iota^{n - 1}$
+              ($n$ 为整数).
         \item $\mathrm{D}\, \mathrm{exp} = \mathrm{exp}$.
         \item $\mathrm{D}\, \mathrm{cos} = -\mathrm{sin}$.
         \item $\mathrm{D}\, \mathrm{sin} = \mathrm{cos}$.
     \end{itemize}
 \end{theorem}
 
-用这四个定理, 我们可以\emph{清楚地}、\emph{有条理地}计算常见的函数的导 (函) 数. 我举一些例; 您可以拿本书的计算过程跟传统的导数计算过程比较.
+用这四个定理,
+我们可以\emph{清楚地}、\emph{有条理地}计算%
+常见的函数的导 (函) 数.
+我举一些例;
+您可以比较本书的计算过程跟传统的导数计算过程.
 
 \begin{example}
-    因为 $\mathrm{tan} = {\mathrm{sin}}\,/\,{\mathrm{cos}}$, 故
+    因为 $\mathrm{tan} = {\mathrm{sin}}\,/\,{\mathrm{cos}}$,
+    故
     \begin{align*}
         \mathrm{D}\, \mathrm{tan}
         = {} & \mathrm{D}\, \frac{\mathrm{sin}}{\mathrm{cos}}                                                                     \\
@@ -344,30 +544,51 @@
 \end{example}
 
 \begin{example}
-    因为 $\mathrm{exp}$: $\mathbb{R} \to (0, +\infty)$ 严增, $\mathbb{R}$, $(0, +\infty)$ 都是区间, 且 $\mathrm{D}\, \mathrm{exp} = \mathrm{exp} > 0$, 故 $\mathrm{ln}$: $(0, +\infty) \to \mathbb{R}$ 也是可导函数, 且
+    因为 $\mathrm{exp}$: $\mathbb{R} \to (0, +\infty)$ 严增,
+    $\mathbb{R}$, $(0, +\infty)$ 都是区间,
+    且 $\mathrm{D}\, \mathrm{exp} = \mathrm{exp} > 0$,
+    故 $\mathrm{ln}$: $(0, +\infty) \to \mathbb{R}$
+    也是可导函数, 且
     \begin{align*}
         \mathrm{D}\, \mathrm{ln} = \frac{1}{\mathrm{D}\, \mathrm{exp} \circ \mathrm{ln}} = \frac{1}{\mathrm{exp} \circ \mathrm{ln}} = \frac{1}{\iota}.
     \end{align*}
 
-    因为 $\mathrm{sin}$: $(-2\pi/4, 2\pi/4) \to (-1, 1)$ 严增, $(-2\pi/4, 2\pi/4)$, $(-1, 1)$ 都是区间, 且 $\mathrm{D}\, \mathrm{sin} = \mathrm{cos} > 0$, 故 $\mathrm{arcsin}$: $(-1, 1) \to (-2\pi/4, 2\pi/4)$ 也是可导函数, 且
+    因为 $\mathrm{sin}$: $(-2\pi/4, 2\pi/4) \to (-1, 1)$ 严增,
+    $(-2\pi/4, 2\pi/4)$, $(-1, 1)$ 都是区间,
+    且 $\mathrm{D}\, \mathrm{sin} = \mathrm{cos} > 0$,
+    故 $\mathrm{arcsin}$: $(-1, 1) \to (-2\pi/4, 2\pi/4)$
+    也是可导函数, 且
     \begin{align*}
         \mathrm{D}\, \mathrm{arcsin} = \frac{1}{\mathrm{D}\, \mathrm{sin} \circ \mathrm{arcsin}} = \frac{1}{\mathrm{cos} \circ \mathrm{arcsin}} = \frac{1}{\mathrm{sqrt} \circ (1 - \iota^2)}.
     \end{align*}
 
-    因为 $\mathrm{tan}$: $(-2\pi/4, 2\pi/4) \to \mathbb{R}$ 严增, $(-2\pi/4, 2\pi/4)$, $\mathbb{R}$ 都是区间, 且 $\mathrm{D}\, \mathrm{tan} = 1 + \mathrm{tan}^2 > 0$, 故 $\mathrm{arctan}$: $\mathbb{R} \to (-2\pi/4, 2\pi/4)$ 也是可导函数, 且
+    因为 $\mathrm{tan}$: $(-2\pi/4, 2\pi/4) \to \mathbb{R}$ 严增,
+    $(-2\pi/4, 2\pi/4)$, $\mathbb{R}$ 都是区间,
+    且 $\mathrm{D}\, \mathrm{tan} = 1 + \mathrm{tan}^2 > 0$,
+    故 $\mathrm{arctan}$: $\mathbb{R} \to (-2\pi/4, 2\pi/4)$
+    也是可导函数, 且
     \begin{align*}
         \mathrm{D}\, \mathrm{arctan} = \frac{1}{\mathrm{D}\, \mathrm{tan} \circ \mathrm{arctan}} = \frac{1}{(1 + \mathrm{tan}^2) \circ \mathrm{arctan}} = \frac{1}{1 + \iota^2}.
     \end{align*}
 
-    设 $n$ 为正整数. 因为 $\mathrm{\iota}^n$: $(0, +\infty) \to (0, +\infty)$ 严增, $(0, +\infty)$ 是区间, 且 $\mathrm{D}\, \mathrm{\iota}^n = n \cdot \iota^{n-1} > 0$, 故 $\iota^{1/n}$: $(0, +\infty) \to (0, +\infty)$ 也是可导函数, 且
+    设 $n$ 为正整数.
+    因为 $\mathrm{\iota}^n$: $(0, +\infty) \to (0, +\infty)$ 严增,
+    $(0, +\infty)$ 是区间, 且
+    $\mathrm{D}\, \mathrm{\iota}^n = n \cdot \iota^{n-1} > 0$,
+    故 $\iota^{1/n}$: $(0, +\infty) \to (0, +\infty)$
+    也是可导函数, 且
     \begin{align*}
         \mathrm{D}\, \iota^{1/n} = \frac{1}{\mathrm{D}\, \mathrm{\iota}^n \circ \iota^{1/n}} = \frac{1}{(n \cdot \iota^{n-1}) \circ \iota^{1/n}} = \frac{1}{n} \iota^{1/n - 1}.
     \end{align*}
-    设 $m$ 为整数. 则 $\iota^{m/n} = (\iota^{1/n})^m = \iota^m \circ \iota^{1/n}$. 故
+    设 $m$ 为整数.
+    则
+    $\iota^{m/n} = (\iota^{1/n})^m = \iota^m \circ \iota^{1/n}$.
+    故
     \begin{align*}
         \mathrm{D}\, \iota^{m/n} = ({\mathrm{D}\, \iota^m} \circ {\iota^{1/n}}) \cdot {\mathrm{D}\, \iota^{1/n}} = ((m \cdot \iota^{m-1}) \circ \iota^{1/n}) \cdot \frac{1}{n} \iota^{1/n - 1} = \frac{m}{n} \iota^{m/n - 1}.
     \end{align*}
-    也就是说, 对任意有理数 $r$, $\mathrm{D}\, \iota^r = r\,\iota^{r - 1}$.
+    也就是说, 对任意有理数 $r$,
+    $\mathrm{D}\, \iota^r = r\,\iota^{r - 1}$.
 \end{example}
 
 \begin{example}
@@ -381,9 +602,12 @@
                                  -1, & t < 0.
                              \end{cases}
     \end{align*}
-    设 $I$ 是某个不含 $0$ 的区间. 故 $\mathrm{sign}$ (在 $I$ 上的限制) 是常函数, 且导数为 $0$.
+    设 $I$ 是某个不含 $0$ 的区间.
+    故 $\mathrm{sign}$ (在 $I$ 上的限制) 是常函数,
+    且导数为 $0$.
 
-    不难看出, $\mathrm{abs} = \mathrm{sign} \cdot \iota$. 所以,
+    不难看出, $\mathrm{abs} = \mathrm{sign} \cdot \iota$.
+    所以,
     \begin{align*}
         \mathrm{D}\, \mathrm{abs} = {\mathrm{D}\, \mathrm{sign}} \cdot \iota + \mathrm{sign} \cdot {\mathrm{D}\, \iota} = \mathrm{sign} = \frac{\mathrm{abs}}{\iota}.
     \end{align*}
@@ -393,13 +617,17 @@
     \end{align*}
 \end{example}
 
-我们添加上面的计算结果到导数表 I, 就得到了一张较为完善的导数表 II. 以后, 我们的导数计算十分依赖此表与导数表 I 前的三个定理.
+我们添加上面的计算结果到导数表~I,
+就得到了一张较为完善的导数表~II.\@
+以后, 我们的导数计算十分依赖此表与导数表~I 前的三个定理.
 
 \begin{theorem}
-    导数表 II:
+    导数表~II:
     \begin{itemize}
-        \item $\mathrm{D} c = 0$, 此处 $c$ 为常函数.
-        \item $\mathrm{D}\, \iota^r = r \, \iota^{r - 1}$ ($r$ 为有理数).
+        \item $\mathrm{D} c = 0$,
+              此处 $c$ 为常函数.
+        \item $\mathrm{D}\, \iota^r = r \, \iota^{r - 1}$
+              ($r$ 为有理数).
         \item $\mathrm{D}\, \mathrm{exp} = \mathrm{exp}$.
         \item $\mathrm{D}\, \mathrm{cos} = -\mathrm{sin}$.
         \item $\mathrm{D}\, \mathrm{sin} = \mathrm{cos}$.
@@ -413,9 +641,13 @@
 \end{theorem}
 
 \begin{example}
-    设 $f$, $g$ 是区间 $I$ 上的可导函数, 且 $f > 0$. 求 $\mathrm{D}[f^g]$.
+    设 $f$, $g$ 是区间 $I$ 上的可导函数, 且 $f > 0$.
+    求 $\mathrm{D}[f^g]$.
 
-    事实上, $f^g$ 就是 $\mathrm{e}^{g(\mathrm{ln} \circ f)}$, 也就是 $\mathrm{exp} \circ (g(\mathrm{ln} \circ f)) = \mathrm{exp} \circ (g\, \mathrm{ln}[f])$. 所以
+    事实上, $f^g$ 就是 $\mathrm{e}^{g(\mathrm{ln} \circ f)}$,
+    也就是
+    $\mathrm{exp} \circ (g(\mathrm{ln} \circ f)) = \mathrm{exp} \circ (g\, \mathrm{ln}[f])$.
+    所以
     \begin{align*}
         \mathrm{D}[f^g]
         = {} & \mathrm{D}[\mathrm{exp} \circ (g\, \mathrm{ln}[f])]                    \\
@@ -439,7 +671,8 @@
     \end{align*}
     求 $\mathrm{D}f$.
 
-    本问题定义 $f$ 时, 使用了带变量的记号. 为了方便地计算 $f$ 的导数, 我们不妨先无变量地表达 $f$:
+    本问题定义 $f$ 时, 使用了带变量的记号.
+    为了方便地计算 $f$ 的导数, 我们不妨先无变量地表达 $f$:
     \begin{align*}
         g & = \iota^2 \cdot \mathrm{exp} + \mathrm{sqrt} \circ (1 + \iota^3), \\
         f & = \mathrm{ln} \circ g.

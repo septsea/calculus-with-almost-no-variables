@@ -1,6 +1,8 @@
 ## Ignore VS Code settings
 # .vscode/
 
+*.headfootlength
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

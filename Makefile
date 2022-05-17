@@ -1,13 +1,18 @@
-MAIN = main
-LATEXMK = latexmk
+MAIN       =main
+LATEXMK    =latexmk
+LATEXMKOPT =-xelatex -shell-escape -file-line-error -norc
+BUILDOPT   =-synctex=1 -interaction=nonstopmode -silent
+DEBUGOPT   =-dependents -logfilewarninglist -recorder -rules -time -verbose -interaction=errorstopmode
 
-.PHONY: $(MAIN).pdf all clean cleanup debug force
+.PHONY: all clean cleanup debug force
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex
-# %O is a substitution for options and %S is a substitution for the source file
-		$(LATEXMK) -pdflatex="xelatex -shell-escape -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1 %O %S" -pdf $(MAIN)
+$(MAIN).pdf:
+		$(LATEXMK) $(LATEXMKOPT) $(BUILDOPT) $(MAIN)
+
+debug:
+		$(LATEXMK) $(LATEXMKOPT) $(DEBUGOPT) $(MAIN)
 
 clean:
 		$(LATEXMK) -c $(MAIN)
@@ -16,7 +21,4 @@ cleanup:
 		$(LATEXMK) -C $(MAIN)
 
 force:
-		$(LATEXMK) -pdflatex="xelatex -shell-escape -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1 %O %S" -g -pdf $(MAIN)
-
-debug:
-		$(LATEXMK) -xelatex -shell-escape -file-line-error -norc -dependents -logfilewarninglist -recorder -rules -time -verbose -interaction=errorstopmode $(MAIN)
+		$(LATEXMK) $(LATEXMKOPT) $(BUILDOPT) -g $(MAIN)

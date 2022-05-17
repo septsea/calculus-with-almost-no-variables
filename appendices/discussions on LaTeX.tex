@@ -1,0 +1,821 @@
+\chapter{\theauthor{}论\texorpdfstring{\gls{latex}}{乳胶}}
+
+\begin{remark*}
+    本章是用来测试排版的.
+\end{remark*}
+
+我将在本章讨论跟\gls{latex}有关的东西.
+
+\section{一些说明}
+
+我建议您安装\gls{latex};
+这样, 您就可以跟着我 (或者, 本书) 操作了.
+
+怎么装\gls{latex}呢?
+您可以去看一看王然的%
+\href{http://mirrors.ctan.org/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf}%
+{《一份简短的关于 \hologo{LaTeX} 安装的介绍》};
+我认为这份安装说明还是挺好理解的.
+
+我现在假定您\emph{安装了\gls{latex}},
+并且您\emph{能用\gls{latex}写简单的小文档};
+同时, 我还假定您最近更新了\gls{latex}的包
+(假如您不知道怎么更新\gls{latex}的包,
+请参考上面提到的\gls{latex}安装指南的 ``升级宏包'' 的部分).
+
+我提一提路径的事项.
+您现在应该在阅一个叫 \verb`main.pdf` 的文件, 对罢?
+我称这个文件所在的目录为 \verb`./`~.
+那么, \verb`./main.pdf` 就是您正在读的文件.
+类似地, \verb`./main.tex` 就是 \verb`./main.pdf` 的 ``父亲'';
+具体地, \gls{latex}可编 \verb`./main.tex`
+(与别的一些文件) 为 \verb`./main.pdf`~.
+在 \verb`./` 下, 您可以看到一些别的目录;
+别的目录下也会有一些文件.
+比如, \nameref{lst:sparrow} 就是一只 ``\gls{latex}麻雀''
+(我在后面还会提到此事).
+
+本书涉及的所有文字文件的编码都是\emph{\gls{utf8}};
+同时, 我使用如下的指令编译\gls{latex}代码:
+\begin{lstlisting}[
+    language=bash,
+    morecomment={[s]{<}{>}},
+    caption={本书用到的\gls{latex}编译设定},
+    label={lst:theWayOfCompilingTexFiles},
+    frame=single
+]
+latexmk -xelatex -shell-escape -file-line-error -norc -synctex=1 -interaction=nonstopmode <file>
+\end{lstlisting}
+其中 \lstinline[language=bash,morecomment={[s]{<}{>}}]`<file>`
+就是待编译的\gls{latex}文件的名字 (不含后缀 \verb`.tex`);
+具体一些, 是指含 \verb`\begin{document}`
+与 \verb`\end{document}` 的文件.
+比如, 为编译此书, 可执行
+\begin{lstlisting}[language=bash,morecomment={[s]{<}{>}}]
+latexmk -xelatex -shell-escape -file-line-error -norc -synctex=1 -interaction=nonstopmode ./main
+\end{lstlisting}
+(当然, 您可能需要适当地调整 \verb`./`~,
+使其含一个名为 \verb`main.tex` 的文件.)
+
+一般地, 我不会详细地讨论一个\gls{latex}包;
+所以, 欲了解更多的信息, 可在终端里执行
+\begin{lstlisting}[
+    language=bash,
+    morecomment={[s]{<}{>}},
+    caption={阅\gls{latex}包的文档},
+    label={lst:readingTheDocOfAPackage},
+    frame=single
+]
+texdoc <name_of_the_package>
+\end{lstlisting}
+以阅包的文档;
+其中
+\lstinline[language=bash,morecomment={[s]{<}{>}}]`<name_of_the_package>`
+就是包的名字.
+例如,
+若我想了解%
+可自由定制页眉跟页脚的包 \textsf{fancyhdr} 的信息,
+我可以在终端执行
+\begin{lstlisting}[language=bash,morecomment={[s]{<}{>}}]
+texdoc fancyhdr
+\end{lstlisting}
+稍等片刻, 您就可以看到一个名为 \verb`fancyhdr.pdf` 的文档.
+
+值得一提的是,
+大部分包的文档都是用\gls{eng}写的 (如 \textsf{fancyhdr});
+所以, 您最好具备一定的读\gls{eng}的能力.
+当然了, 也有不少%
+\href{https://ctan.org/topic/chinese-doc}{\emph{\gls{chi}的资料}}.
+
+本章提及的代码要么在
+\verb`./appendices/discussions on LaTeX.tex` 里 (较短的代码),
+要么在 \verb`./listings/` 目录下的文件里 (较长的代码).
+使用任何一个文字编辑器即可看到代码.
+建议您善用文字编辑器为您提供的查找功能.
+一般地, 按 \verb`Ctrl` 键不放
+(假如您使用水果系统, 请按 \verb`Command` 键),
+再按 \verb`f` 键, 最后释放这二个键,
+应该就可以搜索文件内的文字了.
+假如您用维姆或依麦克斯文字编辑器,
+想必您比我更懂如何查找文字, 对罢?
+
+一般地, 我推荐使用\gls{vsc}写\gls{latex}文件.
+\glssymbol{vsc}是一个现代的、美观的、强大的文字编辑器;
+您可以在互联网上找到关于它的更多信息.
+
+我假定您安装了这款编辑器, 并打算用它写\gls{latex}.
+那么, 按 \verb`F1` 键, 删去大于号 \verb`>`~, 输入
+\begin{lstlisting}
+ext install james-yu.latex-workshop
+\end{lstlisting}
+再按 \verb`Enter` 键,
+即可安装\glssymbol{vsc}的\gls{latex}插件 LaTeX Workshop.
+然后, 按 \verb`F1` 键, 输入 \verb`open settings json`~,
+触发 ``Preferences: Open Settings (UI)'',
+就可以看到一个名为 \verb`settings.json` 的文字文件.
+在最外层的 \verb`{` 与 \verb`}` 里, 追加
+\begin{lstlisting}[
+    frame=single,
+    caption={为\glssymbol{vsc}准备的\gls{latex}编译设定},
+    label={lst:aLatexRecipeForVsc},
+]
+"latex-workshop.latex.recipe.default": "latexmk",
+"latex-workshop.latex.recipes": [
+    {
+        "name": "latexmk",
+        "tools": [
+            "latexmk"
+        ]
+    }
+],
+"latex-workshop.latex.tools": [
+    {
+        "args": [
+            "-xelatex",
+            "-shell-escape",
+            "-file-line-error",
+            "-norc",
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "%DOCFILE%"
+        ],
+        "command": "latexmk",
+        "name": "latexmk"
+    }
+],
+\end{lstlisting}
+假如您看到 ``Expected comma'' 的错误, 那么, 在
+\begin{lstlisting}
+"latex-workshop.latex.recipe.default": "latexmk",
+\end{lstlisting}
+的上一行的末尾加一个 \verb`,` (逗号).
+最后, 记得保存文件.
+这样, 您就不必每次都输入较长的编译命令了.
+
+您可以自行在互联网上了解 LaTeX Workshop 的用法;
+我就不继续展开了.
+(当然, 假如您愿意, 此插件自带的\gls{eng}文档就很不错.)
+
+\section{麻雀}
+
+或许, 您知道, 麻雀是一种小但完整的生物.
+That is to say,
+a sparrow is something small but complete in every detail.
+在学习新的东西时, 麻雀是一种对初学者相当友好的东西;
+我喜欢, 您应该也不讨厌.
+
+下面就是一只\gls{latex}麻雀 (\gls{eng}: \hologo{LaTeX} sparrow).
+具体地, 下面的代码虽小,
+但充分体现了用\gls{latex}写\emph{\gls{chi}}的\emph{书}时的基本要素.
+
+\lstinputlisting[
+    frame=single,
+    language=TeX,
+    caption={\lstinline`./listings/sparrow.tex`},
+    label={lst:sparrow},
+    showspaces=true
+]{listings/sparrow.tex}
+
+既然您可以正常地用\gls{latex}, 那就试编译这只\gls{latex}麻雀罢.
+您也不必手动复制本章的代码;
+我早已准备了一个独立的\gls{latex}文件供您编译
+(首行代码的上面的那行字告诉您这只麻雀的家在哪儿).
+
+您应该能编出一个 23~页的\emph{\gls{pdf}}文件, 对罢?
+如果没有问题, 我就继续讲解了.
+
+一般地, 一个完整的\gls{latex}文件由二个部分作成:
+导言区 (\gls{eng}: preamble) 与文档区.
+所谓导言区, 就是 \verb`\begin{document}` 前面的内容.
+这么看来, 这只\gls{latex}麻雀的导言区就是
+\begin{lstlisting}[language=TeX]
+\documentclass[fontset=fandol]{ctexbook}
+
+\title{这是书的标题}
+\author{这是作者}
+\date{这是日期}
+\end{lstlisting}
+
+可以看到, \verb`\documentclass` 后面接了一些东西.
+\verb`{ctexbook}` 告诉\gls{latex},
+这个文件使用名为 \textsf{ctexbook} 的文档类 (\gls{chi}的书);
+\verb`[fontset=fandol]` 是所谓的 ``可选参数'' (按需求加).
+具体地, \verb`fontset=fandol` 指使用%
+名为 fandol 的一套 (用于\gls{chi}的) 字体.
+原则上, 我可以不加这个可选参数;
+不过, 我还是加上了它.
+为什么呢?
+其实这得问问\gls{marcohard}公司
+为什么\emph{\gls{eng}}的\gls{windows}不带黑体、楷体与仿宋罢.
+假如您使用\emph{\gls{chi}}的\gls{windows},
+那么您可以删去麻雀的 \verb`[fontset=fandol]`~,
+再试着编译,
+以证明这确实只是一个 ``可选参数''.
+
+后面的
+\verb`\title`~, \verb`\author` 跟 \verb`\date`
+的作用就很明显了.
+就算您看不懂长长的\gls{eng}文档, 您也一定能看出,
+这分别是 ``标题'' ``作者'' ``日期'' 的意思.
+使用方法也很简单:
+在花括号里输入对应的信息即可.
+值得一提, 假如您不希望指定日期, 您可以留白;
+也就是说, 写 \verb`\date{}` 即可.
+假如您希望指定今日的日期,
+您可以向花括号内写入 \verb`\today`;
+也就是说, 写 \verb`\date{\today}` 即可.
+那么, 您今日编它是一个结果, 而明日编它就又是另一个结果.
+
+这只麻雀的导言区倒是没什么亮点;
+所以, 现在看一看文档区.
+文档区就是
+\verb`\begin{document}` 到 \verb`\end{document}` 的内容.
+具体地, 就是码~\ref{lst:sparrow} 去除其导言区后的内容.
+
+我们深入文档区罢.
+
+我先说一下 \verb`%` 的作用.
+\emph{一般地}, 假如\gls{latex}代码的一行里出现了 \verb`%`~,
+那么从 \verb`%` 到该行的末尾的所有字符都会被忽视.
+所以,
+\lstinline[language=TeX]`% 正式开始文档.`
+就是不会被\gls{latex}所处理的内容.
+我们可利用此特性, 为\gls{latex}代码插入注释.
+当然, 假如我们需要在文档里输入百分号, 可输入 \verb`\%`~;
+这里, 反斜线 \verb`\` 起到了 ``转义'' 的作用:
+原本\gls{latex}会忽视一行内 \verb`%` 到行尾的字符,
+但 \verb`\` 却 ``改变'' 了 \verb`%` 的含义, 使百分号被输出.
+
+一般地, 一本书有三个部分:
+正文前的资料 (\gls{eng}: front matter),
+正文的主要部分 (\gls{eng}: main matter),
+正文后的附加资料 (\gls{eng}: back matter).
+正文前的资料一般包括封面、目录、前言等内容.
+正文的主要部分一般就是书的主体.
+正文后的附加资料一般包括参考文献、索引、后记等内容.
+跟正文的主要部分相比,
+正文前的资料与正文后的附加资料一般都不带章的编号
+(直白地, 书有第一章, 第二章等章节,
+但一般都不说 ``目录是第几章'' ``后记是第几章'', 对罢?).
+并且, 经验告诉我们, 正文前的资料的页码一般不用~1, 2, 3,
+而是用罗马数字~i, ii, iii.
+然后, 正文的主要部分的页码一般会被重置为~1, 并使用阿拉伯数字.
+最后, 正文后的附加资料的页码一般不会被重置,
+而是延续正文的主要部分的页码的风格.
+
+现在您应该不难理解 \verb`\frontmatter` 的作用了.
+它就是告诉\gls{latex}, 如果不遇见 \verb`\mainmatter`~,
+那么不给章编号, 且页码使用罗马数字.
+具体地, 在这只麻雀里, 下面的内容都是 ``正文前的资料'':
+
+\begin{lstlisting}[language=TeX]
+\maketitle% 利用导言区的信息作一个简洁的封面.
+
+\tableofcontents% 作一个目录.
+
+\listoftables% 作一个展示书的表格的位置的目录.
+
+\chapter{前言}% 插入新的一章. 注意, 本章不被编号.
+
+% 下面的都是前言里的内容.
+我想向乳胶问好.
+\end{lstlisting}
+
+您可能会注意到, 跟码~\ref{lst:sparrow} 相比,
+我添加了一些以 \verb`%` 开头的文字:
+这些都相当于是注释, 解释了命令的功能.
+(所以, 原则上,
+我完全可在码~\ref{lst:sparrow} 里加入这些东西;
+不过, 为了简洁, 我还是选择单独提取相应的代码加注释.)
+
+有一个小细节值得一提: ``目录'' 跟 ``前言'' 前都有空白页.
+这是因为, \gls{latex}默认会使章从奇数页 (右手边) 开始.
+当然, 有简单的办法取消这个设定;
+不过, 我暂时不提此事.
+具体地, 这只麻雀的第~ii, iv, vi, viii~页都是空的.
+
+好.
+现在我们进入 \verb`\mainmatter`~.
+从这儿到 \verb`\backmatter` 前的章都会被编号;
+并且, 页码被重置, 且使用阿拉伯数字编号.
+具体地, 这只麻雀的第~viii~页的下一页就是第~1~页.
+
+又有一个小细节值得一提:
+虽然这只麻雀的 ``第一部分\quad 甲'' 下方标注的页码为~1,
+但您的\gls{pdf}文件阅读器会认为它在第~9~页.
+同时, 这只麻雀的封面并不在第~i~页, 而是在第~1~页.
+作为对比, 您现在正在看的 \verb`main.pdf` 就没有这个\gls{bug};
+本书的封面在第~i~页.
+此\gls{bug}可被一个名为 \textsf{bookmark} 的包修复.
+具体地, 在导言区里加入一行字
+\begin{lstlisting}[language=TeX]
+\usepackage{bookmark}
+\end{lstlisting}
+保存文件, 然后再试着编译~\nameref{lst:sparrow}.
+那么, 这只麻雀所显示的页码就会与%
+\gls{pdf}文件阅读器的页码保持一致.
+顺便, 您还会发现, 这只麻雀还多了一些 ``书签'';
+您用\gls{mouse}点一点,
+阅读器就会跳到您刚点的地方.
+
+我顺便提一提 \verb`\usepackage` 罢.
+正如其字面意思那样,
+这句话可导入被 \verb`{` 与 \verb`}` 所包围的那个包.
+当然, 一般地, 就像文档类有可选参数那样, 包也有可选参数.
+在 \verb`\usepackage` 后加入一对方括号,
+然后向方括号内填入需要的东西,
+就可以实现自己想要的效果.
+可向方括号内写入的内容一般都会被包的文档提及
+(您还记得怎么看一个包的文档吗?).
+
+我们看 ``第一章\quad 我向乳胶问好''.
+您可能会注意到, ``您好, 乳胶'' 的右上角有一个小小的数字~1;
+这其实是所谓的脚注编号. 往脚 (页底) 看, 您就会看到一条注解,
+``解释了'' \gls{latex}为何物.
+命令 \verb`\footnote` 即可实现此事;
+在需要脚注的地方后写 \verb`\footnote`~,
+再写一对花括号, 再往花括号里填脚注即可.
+您可能会问:
+``1'' 在哪儿?
+为什么不需要指定编号呢?
+一般地, \gls{latex}会自动地计算编号;
+您一般也不愿手动指定 1, 2, 3 罢.
+
+您可能经常看到像 ``\LaTeX{}'' 这样交错的五字母;
+这算是\gls{latex}的 ``彩蛋'' 罢.
+事实上, 单独的 \verb`\LaTeX` 就可输出这样的文字.
+那么, 为什么还要一对花括号呢?
+那是因为有些人打字时, \gls{eng}跟\gls{chi}间是不带空格的:
+\begin{lstlisting}[language=TeX]
+\documentclass[fontset=fandol]{ctexbook}
+
+\begin{document}
+打游戏还是得用Windows系统
+\end{document}
+\end{lstlisting}
+您可试编译上面的\gls{latex}代码;
+因为它比较简短, 我就不单独提供文件了.
+不出意外, 您可以看到 ``打游戏还是得用 Windows 系统''.
+在代码里, 我没加空格;
+不过, 它的输出里, ``Windows'' 的前后都有空白.
+
+那么, 假如他想输出 ``我觉得 \LaTeX{} 真不错'', 会怎么打?
+一个可能的版本如下:
+\begin{lstlisting}[language=TeX]
+\documentclass[fontset=fandol]{ctexbook}
+
+\begin{document}
+我觉得\LaTeX真不错
+\end{document}
+\end{lstlisting}
+您可试编译上面的\gls{latex}代码;
+因为它比较简短, 我就不单独提供文件了.
+不出意外, 您会 ``逝世''.
+事实上, 这么打代码, \gls{latex}会认为
+\verb`\LaTeX真不错`
+是一个命令;
+可惜, 这是一个未被定义的东西,
+故\gls{latex}无法编译上面的\gls{latex}代码.
+
+对此, 他有三种解决办法. 他可以加空格:
+\begin{lstlisting}[language=TeX]
+我觉得 \LaTeX 真不错
+\end{lstlisting}
+当然, 假如他不想加太多空格, 则可考虑
+\begin{lstlisting}[language=TeX]
+我觉得\LaTeX 真不错
+\end{lstlisting}
+假如他就是不想加空格, 那就得这样了:
+\begin{lstlisting}[language=TeX]
+我觉得\LaTeX{}真不错
+\end{lstlisting}
+这里, \verb`{}` 就隔开了命令 \verb`\LaTeX`
+跟后面的文字 \verb`真不错`~.
+
+值得注意的是, 这只麻雀的第~1~章的第~1~段是
+\begin{quotation}
+    您好, 乳胶\textsuperscript{1}!
+    或许, 我应该叫您的原名, \LaTeX{}.
+\end{quotation}
+而不是
+\begin{quotation}
+    您好, 乳胶\textsuperscript{1}!
+\end{quotation}
+为什么呢?
+
+您用过\gls{word}或 WPS~文字罢?
+当您在一段里输入较多文字时,
+您会发现, \gls{word}或 WPS~文字自动地断行.
+毕竟, 这是所谓的 ``所见即所得'' 的文字处理应用.
+不过, 我们一般都是用各种各样的文字编辑器写\gls{latex}.
+所以, 就会有这样的情况:
+有的文字编辑器不支持自动地断行
+(也就是说, 就算一行文字很长,
+超过了屏幕的显示范围, 它还是不会断此行);
+有的文字编辑器支持自动地断行,
+不过, 因为各种各样的原因, 这个功能并没有被启用.
+至少, 我很清楚,
+不少主流的代码编辑器都不会自动地断行,
+除非您自己更改这个设定.
+不过, 据我所知, 初始设定的力量还是很强大的:
+很多人不用 ``更好用的设定'',
+仅仅是因为初始的设定不是 ``更好用的设定'' 罢了.
+而且, ``更好用的'' 往往因人而异.
+
+\gls{latex}就 ``照顾'' 那些不自动地断行的文字编辑器.
+具体地, \emph{简单地 ``换行'' 只是加空格,
+    而 ``二次换行'' 才是另起一段.}
+也就是说, 一般地, 在\gls{latex}里, 我们用空行隔开二段.
+所以,
+\begin{quotation}
+    I wantto learn 100\% about \LaTeX{}.
+\end{quotation}
+是第~2~段.
+
+或许您会好奇, 为什么这只麻雀给出 ``wantto''.
+这也很简单: 我在 \verb`want` 后加了 \verb`%`~.
+您还记得 \verb`%` 的作用罢?
+一般地, 假如\gls{latex}代码的一行里出现了 \verb`%`~,
+那么从 \verb`%` 到该行的末尾的所有字符都会被忽视.
+这么看来, 这里的 \verb`%` 只是忽视了自身才对呀?
+您还记得, ``一次换行'' 只是加空格罢?
+\verb`%` 其实也忽视了这个 ``相当于空格的换行''.
+并且, \gls{latex}\emph{一般}会忽视行首的空白.
+所以, 就算 \verb`to` 前有 4~个空格, 它还是无作用.
+所以, 这只麻雀给出 ``wantto''.
+这也顺便解释了为什么 \verb`100\%` 前的 8~个空格被忽略.
+
+可用 \verb`\section` 插入新的一节.
+它的用法跟 \verb`\chapter` 的类似, 所以我不细说了.
+
+接下来, 您可以看到一些\gls{math}公式.
+我不在这里教您输入\emph{具体的}\gls{math}公式;
+也就是说,
+\emph{我不教您\gls{math}符号与\gls{latex}指令的对应关系.}
+您可以参考别的资料学习它.
+我简单说几句话.
+一般地, \gls{math}公式有 ``显示型'', 还有 ``行内型''.
+``显示型'' 一般是独立成行的公式的样式;
+``行内型'' 一般是被嵌入于内文的公式的样式.
+
+一般地, 欲输入行内公式,
+用二个 \verb`$` 包围公式即可.
+不被二个 \verb`$` 包围,
+\verb`ABC` 就只是普通的一个\gls{eng}词 ABC;
+被二个 \verb`$` 包围,
+\verb`$ABC$` 就是\gls{math}公式 $ABC$.
+
+一般地, 欲输入显示公式, 有二个常用的方法.
+一个是不带编号的 \verb`\[` 与 \verb`\]`~;
+一个是带编号的 \verb`equation` 环境.
+假如您希望您待输入的公式无编号,
+用 \verb`\[` 与 \verb`\]` 包围它;
+假如您希望您待输入的公式有编号,
+用 \verb`\begin{equation}` 与 \verb`\end{equation}` 包围它.
+
+一般地, 您还可方便地引用带编号的公式.
+实现此事需二步: 加标签, 再引用它.
+在 \verb`\begin{equation}` 后, 加入 \verb`\label`~,
+再写一对花括号, 再往花括号里填一个 (唯一的) 标签.
+如:
+\begin{lstlisting}[language=TeX]
+\begin{equation}\label{eq:Euler}
+    \mathrm{e}^{\mathrm{i} x} = \cos {x} + \mathrm{i} \sin {x}.
+\end{equation}
+\end{lstlisting}
+我使用了 \verb`eq:Euler`~.
+\verb`eq` 告诉我, 这是公式 (\gls{eng}: equation);
+\verb`Euler` 告诉我, 这跟算学家 Euler 有关的公式.
+于是, 我可如此引用此公式:
+\begin{lstlisting}[language=TeX]
+据说, 算学家 Leonhard Euler 早就发现式~(\ref{eq:Euler}).
+今日, 大家一般都叫它 Euler 公式.
+\end{lstlisting}
+这二行字给出
+\begin{quotation}
+    据说, 算学家 Leonhard Euler 早就发现式~(1.1).
+    今日, 大家一般都叫它 Euler 公式.
+\end{quotation}
+可以看到, 一般地,
+\verb`\ref{eq:Euler}` 给出 ``纯的编号'':
+不带 ``式'', 也不带括号.
+
+我顺便解释一下 \verb`~` 是什么罢.
+它其实就是一个空格.
+不过, 它是一个 ``不可被断行的'' 空格.
+在什么时候有用呢?
+譬如, ``式~(1.1)'' 的 ``(1.1)'' 不宜出现于行首, 是罢?
+``Mrs.~Mori'' 也不宜跨越二行, 对罢?
+这个时候, 可用 \verb`~`~;
+它告诉\gls{latex}, 不要在此处断行.
+
+我们接着看这只麻雀.
+不出意外, 您应该会在下一页看到二条脚注.
+不出意外, 二条脚注的编号分别为 2 与 3.
+一般地, \gls{latex}按章为脚注编号, 而不是按页.
+
+您会发现, 若在一行后插入 \verb`\\`~,
+则\gls{latex}强行在此处断行 (但不分段);
+若在一行后插入 \verb`\par`~,
+则\gls{latex}强行在此处分段 (自然地, 也断行了).
+我曾说,
+\emph{一般地}, 一次换行是加空格, 而二次换行是分段.
+现在, 您也知道了, 也有强制断行与分段的方法.
+不过, 一般地, 不要用它们太多次.
+
+类似地, 您可用 \verb`\clearpage` 强行换页.
+
+不过, 有意思地, 为什么
+\begin{lstlisting}[language=TeX]
+可用 \verb/\clearpage/ 手动换页.
+\end{lstlisting}
+里的 \verb`\clearpage` 不换页呢?
+这是一个好问题; 好问题值得有好解答.
+很简单: 可用 \verb`\verb` 输出一些需
+``原样打印'' (\gls{eng}: to be printed verbatim) 的文字.
+您可能会问: 假如待原样打印的文字带 \verb`/` 怎么办?
+很简单; 换别的.
+\verb`\verb:g/f:` 就是 \verb:g/f: .
+当然了, \verb`\verb+g/f+` 也是 \verb+g/f+ ;
+类似地, \verb`\verb?g/f?` 还是 \verb?g/f? .
+一般地, 待原样打印的文字里, 总有没被用到的符号罢?
+挑一个没被用到的符号 $s$,
+再使待原样打印的文字被二个 $s$ 包围即可.
+
+我也提一提\gls{latex}的书的页眉与页脚的初始设定.
+一般地, 章从右边 (奇数页) 开始.
+章的首页的页眉无内容, 页脚有被居中放置的页码.
+章的偶数页的页脚无内容, 页眉为页码跟章名.
+章的奇数页 (除首页) 的页脚无内容, 页眉为节名跟页码.
+章名与节名都被设为斜体 (不过, 土话除外).
+章名与节名都被全部大写.
+
+我们看完了 ``第一章''.
+接着, 我们看 ``第二章\quad 不知道写什么了''.
+
+可以看到,
+``我问不下去了啊'' 的右上角有一个小小的 1.
+没错, 这是脚注;
+也正如我所言, 一般地, 脚注按章编号.
+
+您还能看到一个表格.
+一般地, 在\gls{latex}里, 欲作一个表格,
+用 \verb`tabular` 环境.
+譬如, 用
+\begin{lstlisting}[language=TeX]
+\begin{tabular}{l c r}
+    胡话   & English       & 1   \\
+    土话   & Chinese       & 22  \\
+    乳胶   & \LaTeX{}      & 333 \\
+    算学   & mathematics   & 4   \\
+    算学家 & mathematician & 05  \\
+\end{tabular}
+\end{lstlisting}
+可作出如下表格:
+\begin{quotation}
+    \begin{tabular}{l c r}
+        胡话  & English       & 1   \\
+        土话  & Chinese       & 22  \\
+        乳胶  & \LaTeX{}      & 333 \\
+        算学  & mathematics   & 4   \\
+        算学家 & mathematician & 05  \\
+    \end{tabular}
+\end{quotation}
+
+一般地, 用 \verb`&` 分隔表格的列,
+用 \verb`\\` 分隔表格的行
+(当然, 您可能还记得 \verb`\\` 的其他的用途).
+
+可以看到, 这个表格无任何边框,
+且第~1, 2, 3~列分别左、中、右对齐.
+\verb`l`~, \verb`c`~, \verb`r`
+分别对应\gls{eng}的
+left, center, right.
+
+假如我们要为表格绘外边框, 可用
+\begin{lstlisting}[language=TeX]
+\begin{tabular}{|l c r|}
+    \hline
+    胡话   & English       & 1   \\
+    土话   & Chinese       & 22  \\
+    乳胶   & \LaTeX{}      & 333 \\
+    算学   & mathematics   & 4   \\
+    算学家 & mathematician & 05  \\
+    \hline
+\end{tabular}
+\end{lstlisting}
+这可作出
+\begin{quotation}
+    \begin{tabular}{|l c r|}
+        \hline
+        胡话  & English       & 1   \\
+        土话  & Chinese       & 22  \\
+        乳胶  & \LaTeX{}      & 333 \\
+        算学  & mathematics   & 4   \\
+        算学家 & mathematician & 05  \\
+        \hline
+    \end{tabular}
+\end{quotation}
+
+当然, 我们还可作出稍复杂的表格:
+\begin{lstlisting}[language=TeX]
+\begin{tabular}{||l c|r||}
+    \hline\hline
+    胡话   & English       & 1   \\
+    土话   & Chinese       & 22  \\
+    乳胶   & \LaTeX{}      & 333 \\
+    算学   & mathematics   & 4   \\
+    \hline
+    算学家 & mathematician & 05  \\
+    \hline\hline
+\end{tabular}
+\end{lstlisting}
+这可作出
+\begin{quotation}
+    \begin{tabular}{||l c|r||}
+        \hline\hline
+        胡话  & English       & 1   \\
+        土话  & Chinese       & 22  \\
+        乳胶  & \LaTeX{}      & 333 \\
+        算学  & mathematics   & 4   \\
+        \hline
+        算学家 & mathematician & 05  \\
+        \hline\hline
+    \end{tabular}
+\end{quotation}
+
+总之, 在表格的行的相应位置插入 \verb`\hline`,
+可绘制水平的线;
+而在紧跟 \verb`\begin{tabular}` 后的
+\verb`{` 跟 \verb`}` 里,
+用 \verb`|` 可绘制竖直的线;
+空格代表此处不绘制竖直的线.
+
+我就不继续讲制表的细节了;
+这不是我的主要任务.
+您可以考虑阅专门的\gls{latex}教程.
+
+您还看到了 ``表~2.1: 术语表'' 罢?
+我讲讲如何作出这样的东西.
+
+事实上, \verb`tabular` 是一个相对简单的表环境.
+它无法处理稍复杂的需求.
+所以, 我们要组合多个环境.
+可用 \verb`table` 环境为表加题注与 (自动) 编号:
+\begin{lstlisting}[language=TeX]
+\begin{table}[h!]
+    \caption{术语表}
+    \begin{tabular}{l c|r}
+        \hline
+        胡话   & English       & 1  \\
+        算学家 & mathematician & 05 \\
+        \hline
+    \end{tabular}
+\end{table}
+\end{lstlisting}
+这可作出
+\begin{table}[h!]
+    \centering
+    \caption{术语表}
+    \begin{tabular}{l c|r}
+        \hline
+        胡话  & English       & 1  \\
+        算学家 & mathematician & 05 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+这里, 紧跟 \verb`\begin{table}` 后的 \verb`[h!]` 告诉\gls{latex},
+若空间允许, 则在 ``此处'' (\gls{eng}: here) 插入表格.
+假如您不加 \verb`[h!]`~, 那么它可能会跑到页的上方.
+\verb`\centering` 要求\gls{latex}居中表格.
+用 \verb`\caption` 即可为表添加题注.
+因为我置它于 \verb`tabular` 前, 故题注在表的上方.
+
+那么, 又要如何提及表格呢?
+您可能还记得,
+可用 \verb`\label` 为公式加标注,
+并用 \verb`\ref` 提及公式.
+我们也可施此法于表格.
+具体地, 在
+\lstinline[%
+    language=TeX,morecomment={[s]{<}{>}}%
+]`\caption{<您的题注>}`
+后加 \verb`\label`~,
+再写一对花括号, 再往花括号里填一个 (唯一的) 标签.
+引用时, 用 \verb`\ref`~.
+
+这是一个具体的例:
+\begin{lstlisting}[language=TeX]
+我在表~\ref{tab:terms} 列出了一些被我用,
+但在其他场合不常被见到的术语.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{l c|r}
+        \hline
+        胡话   & English       & 1  \\
+        算学家 & mathematician & 05 \\
+        \hline
+    \end{tabular}
+    \caption{术语表}\label{tab:terms}
+\end{table}
+\end{lstlisting}
+这可作出
+\begin{quotation}
+    我在表~\ref{tab:terms} 列出了一些被我用,
+    但在其他场合不常被见到的术语.
+
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{l c|r}
+            \hline
+            胡话  & English       & 1  \\
+            算学家 & mathematician & 05 \\
+            \hline
+        \end{tabular}
+        \caption{术语表}\label{tab:terms}
+    \end{table}
+\end{quotation}
+
+我就说这么多作表的事罢.
+
+接下来, 就是 ``第二部分\quad 乙''.
+其实这没什么亮点:
+我也只是展现关于
+\verb`\part`~, \verb`\chapter`~,
+\verb`\section`~, \verb`\subsection`~,
+\verb`\subsubsection`~,
+\verb`\paragraph`~, \verb`\subparagraph`
+的用法而已.
+
+接下来, 您可以看到 ``附录~A\quad 乳胶的历史''.
+这是 \verb`\appendix` 干的好事.
+原本, 这应当是 ``第四章\quad 乳胶的历史'';
+不过, 我加了魔法, 故从此之后 (到 \verb`\backmatter` 前)
+章被编号为 A, B, C 等大写字母.
+相应地, 节就是 A.1, A.2, A.3 等.
+不过, 页码并没有被重置.
+
+最后, 您可以看到 ``后记'';
+因为我加了 \verb`\backmatter`~, 故此章不被编号.
+
+或许, 我该指出一个事实:
+\verb`\frontmatter`~, \verb`\mainmatter`~,
+\verb`\appendix`~, \verb`\backmatter`
+都不是必要的.
+毕竟, 不是所有的书都有附录;
+不是所有的书都会在最后一个带编号的章后加不带编号的章;
+也不是所有的书都要目录 (尤其是小篇幅的作品).
+我在前面举的一些例里没说这四句话.
+
+好了.
+我觉得我已经讲完了这只麻雀.
+我希望本节能帮您更好地理解\gls{latex}.
+
+\section{各种各样的东西}
+
+接下来, 我简单地提及我怎么作出本书罢.
+
+我使用 \textsf{ctexbook} 写书.
+事实上, 这并不是一个特别好用的文档类.
+据我所知, 专业的有 \textsf{memoir} 跟 \hologo{KOMAScript}.
+不过, 它们对\gls{chi}的支持没有 \textsf{ctexbook} 的那么好.
+这是一本\gls{chi}书,
+所以, 我还是决定,
+充分利用自己的蹩脚的\gls{eng}%
+阅包的文档%
+与
+\href{https://tex.stackexchange.com/questions/}{%
+    \hologo{LaTeX} Stack Exchange%
+}.
+毕竟, \gls{latex}是胡人的东西;
+而且, 跟\gls{word}或 WPS~文字相比,
+\gls{latex}确实不那么好上手.
+而且, 要想用好\gls{latex}, 最好自己有一定的动手能力.
+
+在下面的讨论里,
+我假定您按码~\ref{lst:theWayOfCompilingTexFiles}
+或码~\ref{lst:aLatexRecipeForVsc}
+编译\gls{latex}文件;
+我假定您的目标是写一本以\gls{chi}为主的书;
+我假定您也用 \textsf{ctexbook}.
+
+\subsection{修改字体}
+
+本书选用了一些跟初始字体不一样的字体.
+
+简单地, 可用 \verb`\setmainfont` 修改\gls{eng}的字体,
+用 \verb`\setCJKmainfont` 修改\gls{chi}的字体.
+在导言区添加
+\begin{lstlisting}[language=TeX]
+\setmainfont{XITS}
+\setCJKmainfont{Source Han Serif CN}
+\end{lstlisting}
+即可改主要的\gls{eng}的字体为 XITS,
+且改主要的\gls{chi}的字体为 Source Han Serif CN (思源宋体%
+\footnote{A serif-style Pan-CJK typeface family
+    which provides seven weights---ExtraLight, Light, Regular,
+    Medium, SemiBold, Bold, and Heavy}).
+
+To be continued.

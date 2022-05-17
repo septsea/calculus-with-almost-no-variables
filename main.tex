@@ -5,22 +5,23 @@
 
 \begin{document}
 
-\input{chapter 0}
+% A magic that kills as many overfull lines as possible.
+\midsloppy
 
-\input{sets and functions}
+\frontmatter
+\subinputfrom{beginning/}{.submain}
 
-\input{continuous functions}
+\mainmatter
+\subinputfrom{middle/}{.submain}
 
-\input{derivatives}
+% Do not put chapters after \mainmatter in the last part.
+\bookmarksetup{startatroot}
 
-\input{antiderivatives}
+\appendix
+\subinputfrom{appendices/}{.submain}
+% Well, nothing here.
 
-\input{integrals}
-
-\input{I wonder how many pages there are}
-
-\input{bibliography}
-
-\input{index}
+\backmatter
+\subinputfrom{end/}{.submain}
 
 \end{document}
