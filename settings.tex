@@ -73,13 +73,19 @@
 \usepackage{xpatch}
 % unnumbered sections, subsections, subsubsections etc.
 % (parts are still numbered)
-\xappto{\frontmatter}{\setcounter{secnumdepth}{0}}{}{}
+\xapptocmd{\frontmatter}{\setcounter{secnumdepth}{0}}{}{}
 % numbered parts, chapters, sections,
 % subsections, subsubsections etc.
-\xappto{\mainmatter}{\setcounter{secnumdepth}{2}}{}{}
+\xapptocmd{\mainmatter}{\setcounter{secnumdepth}{2}}{}{}
 % unnumbered sections, subsections, subsubsections etc.
 % (parts are still numbered)
-\xappto{\backmatter}{\setcounter{secnumdepth}{0}}{}{}
+\xapptocmd{\backmatter}{\setcounter{secnumdepth}{0}}{}{}
+% Modify how margin notes look.
+\makeatletter
+\xapptocmd{\@marginparreset}{%
+    \footnotesize\raggedright\sffamily\itshape%
+}{}{}
+\makeatother
 
 % This is a package which makes indices.
 % Load "imakeidx" (or "makeidx") before "hyperref"
