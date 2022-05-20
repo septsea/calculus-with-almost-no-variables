@@ -486,7 +486,7 @@ a sparrow is something small but complete in every detail.
 我使用了 \verb`eq:Euler`~.
 我推荐您像我一样为公式加标签.
 \verb`eq` 告诉我, 这是公式 (\gls{eng}: equation);
-\verb`Euler` 告诉我, 这跟算学家 Euler 有关的公式.
+\verb`Euler` 告诉我, 这是跟算学家 Euler 有关的公式.
 于是, 我可如此引用此公式:
 \begin{lstlisting}[language=TeX]
 据说, 算学家 Leonhard Euler 早就发现式~(\ref{eq:Euler}).
@@ -807,16 +807,32 @@ left, center, right.
 本书选用了一些跟初始字体不一样的字体.
 
 简单地, 可用 \verb`\setmainfont` 修改\gls{eng}的字体,
-用 \verb`\setCJKmainfont` 修改\gls{chi}的字体.
-在导言区添加
+用 \verb`\setCJKmainfont` 修改\gls{chi}的字体;
+不过, 具体地,
+因为 \textsf{ctexbook} 有 ``默认\gls{chi}字体'',
+故我们要先取消它们.
+此事不难:
+指定 \textsf{ctexbook} 的一个选项即可:
+\begin{lstlisting}[language=TeX]
+\documentclass[fontset=none]{ctexbook}
+\end{lstlisting}
+当然, 若您指定了其他的选项, 您自行添上相关设定即可.
+譬如, 我假定您已使用如下的设定:
+\begin{lstlisting}[language=TeX]
+\documentclass[a4paper,UTF8]{ctexbook}
+\end{lstlisting}
+那么, 您在 \verb`[` 后加入 \verb`fontset=none,`~, 即
+\begin{lstlisting}[language=TeX]
+\documentclass[fontset=none,a4paper,UTF8]{ctexbook}
+\end{lstlisting}
+假如您已经指定了 \verb`fontset`~,
+那么请改其值为 \verb`none`~.
+最后, 在导言区添加
 \begin{lstlisting}[language=TeX]
 \setmainfont{XITS}
 \setCJKmainfont{Source Han Serif CN}
 \end{lstlisting}
 即可改主要的\gls{eng}的字体为 XITS,
-且改主要的\gls{chi}的字体为 Source Han Serif CN (思源宋体%
-\footnote{A serif-style Pan-CJK typeface family
-    which provides seven weights---ExtraLight, Light, Regular,
-    Medium, SemiBold, Bold, and Heavy}).
+且改主要的\gls{chi}的字体为 Source Han Serif CN (思源宋体).
 
-To be continued.
+Well. To be continued.

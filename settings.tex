@@ -31,7 +31,7 @@
     BoldItalicFont = * Semibold Italic,
 ]
 \setCJKmainfont{Source Han Serif CN}[
-    UprightFont = Source Han Serif CN,
+    UprightFont = * Light,
     BoldFont = Sarasa Mono SC Semibold,
     ItalicFont = Sarasa Mono SC Light Italic,
     BoldItalicFont = Sarasa Mono SC Semibold Italic,
@@ -257,12 +257,12 @@
 \usepackage{enumitem}
 \setlist[1]{labelindent=\parindent}
 \setlist[itemize]{leftmargin=*,nosep}
-\setlist[enumerate]{leftmargin=*,nosep}
+\setlist[enumerate]{leftmargin=*,nosep,align=left}
 \setlist[enumerate,1]{label=(\arabic*),ref=(\arabic*)}
 \setlist[description]{style=nextline,leftmargin=2\parindent}
 
 % Insert the table of bibliography (and reference).
-\usepackage[backend=biber,style=gb7714-2015,backref=true]{biblatex}
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
 % Multiple .bib files can also be added.
 \addbibresource{data/bibliography.bib}
 \addbibresource{data/less important references.bib}
