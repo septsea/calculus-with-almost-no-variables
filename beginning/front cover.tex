@@ -3,7 +3,7 @@
 
 % The title page is inspired by "The Not So Short
 % Introduction to LaTeX2e"
-\begin{titlepage}
+{%
     \newlength{\centeroffset}
     \setlength{\centeroffset}{-0.5\oddsidemargin}
     \addtolength{\centeroffset}{0.5\evensidemargin}
@@ -29,13 +29,14 @@
             \flushright
             \textbf{\theauthor}
             \\[1ex]
-            版本~\CalculusVersion[3], \thedate
+            % 版本~\CalculusVersion[3], \thedate
+            版本~5.20, \thedate
         \end{minipage}%
     }
 
     %\addtolength{\textwidth}{\centeroffset}
-    \vspace{\stretch{2}}
-\end{titlepage}
+    \vspace{\stretch{2}}%
+}
 
 % Make a really empty page.
 \clearpage

@@ -204,12 +204,12 @@
     因为
     \begin{align*}
         fg
-        = {} & (f[x] + (\iota - x)F)(g[x] + (\iota - x)G)                                \\
-        = {} & f[x]g[x] + f[x](\iota - x)G + (\iota - x)Fg[x] + (\iota - x)F(\iota - x)G \\
-        = {} & (fg)[x] + (F \cdot g[x] + f[x] \cdot G + FG(\iota - x))(\iota - x),
+        = {} & (f[x] + (\iota - x)F)g                           \\
+        = {} & f[x] (g[x] + (\iota - x)G) + ((\iota - x)F)g     \\
+        = {} & (fg)[x] + (\iota - x)(F \cdot g + f[x] \cdot G),
     \end{align*}
     且
-    $h = F \cdot g[x] + f[x] \cdot G + FG(\iota - x)$
+    $h = F \cdot g + f[x] \cdot G$
     于 $x$ 连续,
     故 $fg$ 于 $x$ 可导,
     且导数为 $h[x] = F[x]g[x] + f[x]G[x]$.
