@@ -48,6 +48,27 @@
     ItalicFont = * Light Italic,
     BoldItalicFont = * Semibold Italic,
 ]
+% If you do not want to use external fonts mentioned above,
+% consider commenting lines 27--50
+% and uncommenting lines 55--72.
+% \setCJKmainfont{FandolSong}[
+%     UprightFont = *,
+%     BoldFont = FandolHei,
+%     ItalicFont = FandolKai,
+%     BoldItalicFont = FandolHei,
+% ]
+% \setCJKsansfont{FandolHei}[
+%     UprightFont = *,
+%     BoldFont = *,
+%     ItalicFont = FandolKai,
+%     BoldItalicFont = *,
+% ]
+% \setCJKmonofont{FandolFang}[
+%     UprightFont = *,
+%     BoldFont = FandolHei,
+%     ItalicFont = FandolKai,
+%     BoldItalicFont = FandolHei,
+% ]
 
 % Redefine the emphasis style.
 \let\emph\relax
@@ -59,10 +80,7 @@
 % Allow easier imports
 \usepackage{import}
 
-% Specify the title, author and date of the document.
-\title{几乎无变量的微积分}
-\author{纳纳米}
-\date{\today}
+% Make aliases.
 \makeatletter
 \providecommand*{\thetitle}{\@title}
 \providecommand*{\theauthor}{\@author}
@@ -296,10 +314,10 @@
 % The following code makes it easier to input a version number
 % converging to 2pi.
 %
-% Usage: \CalculusVersion[n], where n is a positive integer
+% Usage: \ApproxToTwoPi[n], where n is a positive integer
 % less than 1100.
 \usepackage{readarray}
-\readrecordarray{data/ApproximationsTo2Pi.txt}\CalculusVersion
+\readrecordarray{data/ApproximationsTo2Pi.txt}\ApproxToTwoPi
 
 % This package deals with glossaries.
 \usepackage[nonumberlist,nopostdot,toc=true]{glossaries-extra}

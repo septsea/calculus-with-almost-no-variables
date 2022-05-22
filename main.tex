@@ -9,19 +9,19 @@
 \midsloppy
 
 \frontmatter
-\subinputfrom{beginning/}{.submain}
+\subinputfrom{beginning/}{submain}
 
 \mainmatter
-\subinputfrom{middle/}{.submain}
+\subinputfrom{middle/}{submain}
 
-% Do not put chapters after \mainmatter in the last part.
+% Chapters after \mainmatter should not
+% be put in the last \part.
 \bookmarksetup{startatroot}
 
 \appendix
-\subinputfrom{appendices/}{.submain}
-% Well, nothing here.
+\subinputfrom{appendices/}{submain}
 
 \backmatter
-\subinputfrom{end/}{.submain}
+\subinputfrom{end/}{submain}
 
 \end{document}

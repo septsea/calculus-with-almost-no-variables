@@ -152,7 +152,9 @@
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "git.postCommitCommand": "sync",
-    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.bibtex-fields.sort.enabled": true,
+    "latex-workshop.bibtex-format.tab": "4 spaces",
+    "latex-workshop.intellisense.file.base": "both",
     "latex-workshop.latex.recipe.default": "latexmk",
     "latex-workshop.latex.recipes": [
         {
