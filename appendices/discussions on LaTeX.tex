@@ -1,4 +1,4 @@
-\chapter{\theauthor{}论\texorpdfstring{\gls{latex}}{乳胶}}
+\chapter{\theauthor{}论\glsentryname{latex}}
 
 \begin{remark*}
     本章是用来测试排版的.
@@ -32,7 +32,7 @@
 (与别的一些文件) 为 \verb`./main.pdf`~.
 在 \verb`./` 下, 您可以看到一些别的目录;
 别的目录下也会有一些文件.
-比如, \nameref{lst:sparrow} 就是一只 ``\gls{latex}麻雀''
+比如, \nameref{lst:Sparrow} 就是一只 ``\gls{latex}麻雀''
 (我在后面还会提到此事).
 
 本书涉及的所有文字文件的编码都是\emph{\gls{utf8}};
@@ -41,7 +41,7 @@
     language=bash,
     morecomment={[s]{<}{>}},
     caption={本书用到的\gls{latex}编译设定},
-    label={lst:theWayOfCompilingTexFiles},
+    label={lst:TheWayOfCompilingTexFiles},
     frame=single
 ]
 latexmk -xelatex -shell-escape -file-line-error -norc -synctex=1 -interaction=nonstopmode <file>
@@ -63,7 +63,7 @@ latexmk -xelatex -shell-escape -file-line-error -norc -synctex=1 -interaction=no
     language=bash,
     morecomment={[s]{<}{>}},
     caption={阅\gls{latex}包的文档},
-    label={lst:readingTheDocOfAPackage},
+    label={lst:ReadingTheDocOfAPackage},
     frame=single
 ]
 texdoc <name_of_the_package>
@@ -117,7 +117,7 @@ ext install james-yu.latex-workshop
 \begin{lstlisting}[
     frame=single,
     caption={为\glssymbol{vsc}准备的\gls{latex}编译设定},
-    label={lst:aLatexRecipeForVsc},
+    label={lst:ALatexRecipeForVsc},
 ]
 "latex-workshop.latex.recipe.default": "latexmk",
 "latex-workshop.latex.recipes": [
@@ -172,7 +172,7 @@ a sparrow is something small but complete in every detail.
     frame=single,
     language=TeX,
     caption={\lstinline`./listings/sparrow.tex`},
-    label={lst:sparrow},
+    label={lst:Sparrow},
     showspaces=true
 ]{listings/sparrow.tex}
 
@@ -230,7 +230,7 @@ a sparrow is something small but complete in every detail.
 所以, 现在看一看文档区.
 文档区就是
 \verb`\begin{document}` 到 \verb`\end{document}` 的内容.
-具体地, 就是码~\ref{lst:sparrow} 去除其导言区后的内容.
+具体地, 就是码~\ref{lst:Sparrow} 去除其导言区后的内容.
 
 我们深入文档区罢.
 
@@ -281,11 +281,11 @@ a sparrow is something small but complete in every detail.
 我想向乳胶问好.
 \end{lstlisting}
 
-您可能会注意到, 跟码~\ref{lst:sparrow} 相比,
+您可能会注意到, 跟码~\ref{lst:Sparrow} 相比,
 我添加了一些以 \verb`%` 开头的文字:
 这些都相当于是注释, 解释了命令的功能.
 (所以, 原则上,
-我完全可在码~\ref{lst:sparrow} 里加入这些东西;
+我完全可在码~\ref{lst:Sparrow} 里加入这些东西;
 不过, 为了简洁, 我还是选择单独提取相应的代码加注释.)
 
 有一个小细节值得一提: ``目录'' 跟 ``前言'' 前都有空白页.
@@ -311,7 +311,7 @@ a sparrow is something small but complete in every detail.
 \begin{lstlisting}[language=TeX]
 \usepackage{bookmark}
 \end{lstlisting}
-保存文件, 然后再试着编译~\nameref{lst:sparrow}.
+保存文件, 然后再试着编译~\nameref{lst:Sparrow}.
 那么, 这只麻雀所显示的页码就会与%
 \gls{pdf}文件阅读器的页码保持一致.
 顺便, 您还会发现, 这只麻雀还多了一些 ``书签'';
@@ -486,7 +486,8 @@ a sparrow is something small but complete in every detail.
 我使用了 \verb`eq:Euler`~.
 我推荐您像我一样为公式加标签.
 \verb`eq` 告诉我, 这是公式 (\gls{eng}: equation);
-\verb`Euler` 告诉我, 这是跟算学家 Euler 有关的公式.
+\verb`Euler` 告诉我, 这是跟\gls{mathematician}
+Euler 有关的公式.
 于是, 我可如此引用此公式:
 \begin{lstlisting}[language=TeX]
 据说, 算学家 Leonhard Euler 早就发现式~(\ref{eq:Euler}).
@@ -708,7 +709,7 @@ left, center, right.
 
 这是一个具体的例:
 \begin{lstlisting}[language=TeX]
-我在表~\ref{tab:terms} 列出了一些被我用,
+我在表~\ref{tab:Terms} 列出了一些被我用,
 但在其他场合不常被见到的术语.
 
 \begin{table}[h!]
@@ -719,12 +720,12 @@ left, center, right.
         算学家 & mathematician & 05 \\
         \hline
     \end{tabular}
-    \caption{术语表}\label{tab:terms}
+    \caption{术语表}\label{tab:Terms}
 \end{table}
 \end{lstlisting}
 这可作出
 \begin{quotation}
-    我在表~\ref{tab:terms} 列出了一些被我用,
+    我在表~\ref{tab:Terms} 列出了一些被我用,
     但在其他场合不常被见到的术语.
 
     \begin{table}[h!]
@@ -735,7 +736,7 @@ left, center, right.
             算学家 & mathematician & 05 \\
             \hline
         \end{tabular}
-        \caption{术语表}\label{tab:terms}
+        \caption{术语表}\label{tab:Terms}
     \end{table}
 \end{quotation}
 
@@ -796,13 +797,20 @@ left, center, right.
 而且, 要想用好\gls{latex}, 最好自己有一定的动手能力.
 
 在下面的讨论里,
-我假定您按码~\ref{lst:theWayOfCompilingTexFiles}
-或码~\ref{lst:aLatexRecipeForVsc}
+我假定您按码~\ref{lst:TheWayOfCompilingTexFiles}
+或码~\ref{lst:ALatexRecipeForVsc}
 编译\gls{latex}文件;
 我假定您的目标是写一本以\gls{chi}为主的书;
 我假定您也用 \textsf{ctexbook}.
 
 \subsection{修改字体}
+
+\begin{remark*}
+    我假定您安装了本节提到的二款\gls{chi}字体.
+    假如您没有安装某一款字体,
+    您可安装它,
+    或选用您喜欢的字体.
+\end{remark*}
 
 本书选用了一些跟初始字体不一样的字体.
 
@@ -835,10 +843,172 @@ left, center, right.
 即可改主要的\gls{eng}的字体为 XITS,
 且改主要的\gls{chi}的字体为 Source Han Serif CN (思源宋体).
 
-\vspace*{4ex}
+当然, 您还可修改
+\textsf{``无衬线的'' (\gls{eng}: sans serif)}
+与
+\texttt{``打字机的'' (\gls{eng}: typewriter)}
+字体的样式:
+\begin{lstlisting}[language=TeX]
+\setsansfont{Fira Sans}
+\setCJKsansfont{Sarasa Mono SC}
+\setmonofont{Sarasa Mono SC}
+\setCJKmonofont{Sarasa Mono SC}
+\end{lstlisting}
+类似地, 带 \verb`CJK` 的行修改\gls{chi}的字体,
+而不带 \verb`CJK` 的行修改\gls{eng}的字体.
 
-Well. To be continued.
+不过, 有时, 您还需要进一步地调整字体.
+譬如,
+\begin{lstlisting}[language=TeX]
+\documentclass[fontset=none]{ctexbook}
 
-I have been busy with other things in real life.
+\setmainfont{XITS}
+\setCJKmainfont{Source Han Serif CN}
+\setsansfont{Fira Sans}
+\setCJKsansfont{Sarasa Mono SC}
+\setmonofont{Sarasa Mono SC}
+\setCJKmonofont{Sarasa Mono SC}
 
-I will come back.
+\begin{document}
+
+\noindent%
+主要: main\\
+\textsf{无衬线: sans serif}\\
+\texttt{打字机: typewriter}
+
+\end{document}
+\end{lstlisting}
+的结果是 (以后, 我就不展示右上角的页码 ``1'' 了):
+\begin{quotation}
+    \noindent%
+    \textrm{\fontspec{XITS}\CJKfontspec{Source Han Serif CN}%
+        主要: main}\\
+    \textsf{\fontspec{Fira Sans}\CJKfontspec{Sarasa Mono SC}%
+        无衬线: sans serif}\\
+    \texttt{\fontspec{Sarasa Mono SC}\CJKfontspec{Sarasa Mono SC}%
+        打字机: typewriter}
+\end{quotation}
+可以看到, 有些字体较 ``粗'' (笔画较重),
+这使得结果看起来不是特别协调.
+因此, 可设定 \verb`\set???!!!!font`
+(这里, \verb`???` 表示空或 \verb`CJK`~,
+而 \verb`!!!!` 表示
+\verb`main`~, \verb`sans` 或 \verb`mono`
+的任意一个)
+的可选参数:
+\begin{lstlisting}[language=TeX]
+\setmainfont{XITS}
+\setsansfont{Fira Sans}[
+    UprightFont = * Light,
+    BoldFont = * SemiBold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * SemiBold Italic,
+]
+\setmonofont{Sarasa Mono SC}[
+    UprightFont = * Light,
+    BoldFont = * Semibold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * Semibold Italic,
+]
+\setCJKmainfont{Source Han Serif CN}[
+    UprightFont = * Light,
+    BoldFont = Sarasa Mono SC Semibold,
+    ItalicFont = Sarasa Mono SC Light Italic,
+    BoldItalicFont = Sarasa Mono SC Semibold Italic,
+]
+\setCJKsansfont{Sarasa Mono SC}[
+    UprightFont = * Light,
+    BoldFont = * Semibold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * Semibold Italic,
+]
+\setCJKmonofont{Sarasa Mono SC}[
+    UprightFont = * Light,
+    BoldFont = * Semibold,
+    ItalicFont = * Light Italic,
+    BoldItalicFont = * Semibold Italic,
+]
+\end{lstlisting}
+这里, \verb`*` 指被 \verb`{` 与 \verb`}` 包围的内容.
+\verb`UprightFont`~, \verb`BoldFont`~,
+\verb`ItalicFont`~, \verb`BoldItalicFont`
+分别指
+\textrm{``直立的'' (\gls{eng}: upright)},
+\textbf{``粗的'' (\gls{eng}: bold)},
+\textit{``斜的'' (\gls{eng}: italic)},
+\textbf{\textit{``粗斜的'' (\gls{eng}: bold italic)}}.
+原则上, 可自由指定这四个字体.
+思源宋体虽好, 但无 ``斜的'';
+这也导致它无 ``粗斜的''.
+一般地, \gls{chi}的文字不应被倾斜.
+所以, \gls{latex}默认代斜体以 ``楷体''.
+不过, 我找不到什么好的楷体:
+要么不能被相对自由地使用,
+要么就是跟别的字体不搭.
+所以, 我只好用 ``还行的'' Sarasa Mono SC (更纱黑体).
+
+借此机会, 我列出本书用到的字体.
+\begin{longtable}[c]{r|l}
+    \caption{本书用到的字体}
+    \label{tab:FontsUsedInTheBook}                             \\
+    样式       & 字体                                              \\ \hline
+    \endfirsthead
+    %
+    \multicolumn{2}{r}%
+    {{\tablename~\thetable\ (续表)}}                             \\[2ex]
+    样式       & 字体                                              \\ \hline
+    \endhead
+    %
+    主要的      &
+    \makecell{\textrm{\textup{思源宋体淡}}                          \\
+    \textrm{\textup{XITS}}}                                    \\
+    主要的与粗的   &
+    \makecell{\textrm{\textbf{更纱黑体半粗}}                         \\
+    \textrm{\textbf{XITS Bold}}}                               \\
+    主要的与斜的   &
+    \makecell{\textrm{\textit{更纱黑体淡斜}}                         \\
+    \textrm{\textit{XITS Italic}}}                             \\
+    主要的与粗斜的  &
+    \makecell{\textrm{\textbf{\textit{更纱黑体半粗斜}}}               \\
+    \textrm{\textbf{\textit{XITS Bold Italic}}}}               \\
+    无衬线的     &
+    \makecell{\textsf{\textup{更纱黑体淡}}                          \\
+    \textsf{\textup{Fira Sans Light}}}                         \\
+    无衬线的与粗的  &
+    \makecell{\textsf{\textbf{更纱黑体半粗}}                         \\
+    \textsf{\textbf{Fira Sans SemiBold}}}                      \\
+    无衬线的与斜的  &
+    \makecell{\textsf{\textit{更纱黑体淡斜}}                         \\
+    \textsf{\textit{Fira Sans Light Italic}}}                  \\
+    无衬线的与粗斜的 &
+    \makecell{\textsf{\textbf{\textit{更纱黑体半粗斜}}}               \\
+    \textsf{\textbf{\textit{Fira Sans SemiBold Italic}}}}      \\
+    打字机的     &
+    \makecell{\texttt{\textup{更纱黑体淡}}                          \\
+    \texttt{\textup{Sarasa Mono SC Light}}}                    \\
+    打字机的与粗的  &
+    \makecell{\texttt{\textbf{更纱黑体半粗}}                         \\
+    \texttt{\textbf{Sarasa Mono SC Semibold}}}                 \\
+    打字机的与斜的  &
+    \makecell{\texttt{\textit{更纱黑体淡斜}}                         \\
+    \texttt{\textit{Sarasa Mono SC Light Italic}}}             \\
+    打字机的与粗斜的 &
+    \makecell{\texttt{\textbf{\textit{更纱黑体半粗斜}}}               \\
+    \texttt{\textbf{\textit{Sarasa Mono SC Semibold Italic}}}} \\
+\end{longtable}
+
+不重要地, 表~\ref{tab:FontsUsedInTheBook}
+的字体都使用 SIL Open Font License (Version~1.1).
+
+\subsection{修改\glsentryname{math}字体}
+
+原则上, 本节应当在上一节里.
+不过, 因为不是所有的书都有\gls{math}公式,
+不是每一个写书人都需要改\gls{math}字体,
+且\gls{math}字体的数量太少,
+故我另开一节.
+
+欲修改\gls{math}公式的字体, 您需要包 \textsf{unicode-math}:
+\begin{lstlisting}[language=TeX]
+\usepackage{unicode-math}
+\end{lstlisting}

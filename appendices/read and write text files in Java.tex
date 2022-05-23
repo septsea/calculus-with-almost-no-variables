@@ -1,4 +1,4 @@
-\chapter{在\texorpdfstring{\gls{java}}{爪哇}里读写文字文件}
+\chapter{在\glsentryname{java}里读写文字文件}
 
 \begin{remark*}
     本章是用来测试排版的.
@@ -194,7 +194,7 @@ public static boolean write(String txtFile,
           为了使\glssymbol{vsc}提供的%
           \emph{\gls{java}话插件}工作,
           我得使用\gls{java}~11 或更高版本的\gls{java}.
-          可是, 我在桌面环境里安装了桌面宠物 (图~\ref{fig:girls}),
+          可是, 我在桌面环境里安装了桌面宠物 (图~\ref{fig:Girls}),
           而这需要较低版本的\gls{java}才可正常地工作.
           所以, 我的解决办法也很简单:
           ``安装'' \gls{java}辛,
@@ -222,5 +222,48 @@ public static boolean write(String txtFile,
     \centering
     \includegraphics[width=\textwidth]{girls}
     \caption{桌面宠物}
-    \label{fig:girls}
+    \label{fig:Girls}
 \end{figure}
+
+\section{后续}
+
+\begin{remark*}
+    本节算是所谓的支线故事罢.
+\end{remark*}
+
+我于 2022~年 5~月 22~日在哔哩哔哩上发了一个%
+\href{https://www.bilibili.com/video/BV1JY4y157BX}{视频}.
+它没有什么营养;
+它就是以每 2~秒翻 2~页的速率展现了本书的正文.
+
+我如何实现此事呢?
+首先, 我打开书.
+然后, 我翻到此书的页~1.
+接着, 我还是用\gls{java}写了个机器人帮我翻页.
+当然了, 我肯定还开了屏幕录制.
+最后, 我也不必修改录制的结果, 直接上传它到哔哩哔哩.
+
+\lstinputlisting[
+    frame=single,
+    language=Java,
+    caption={\lstinline`./listings/KeyPress.java`},
+    label={lst:KeyPress}
+]
+{listings/KeyPress.java}
+
+我用到了 \verb`Robot` 类.
+它的功能还是很强大的.
+我认为,
+\verb`keyPress()` 跟 \verb`keyRelease()`
+是二个关键的方法.
+\verb`KeyEvent` 类使我方便地召唤一个键.
+假如没有它,
+我就要手动输入 ``右键'' 的编码了.
+当然了, \verb`delay()` 也很好用.
+毕竟, 我要给观众 2~秒读 2~页书.
+\verb`2000` 就是 2\,000~毫秒.
+前面的 \verb`delay(20000)` 相当于给我
+20~秒的准备时间.
+利用循环, 我就可以反复地按一个键, 并松开之.
+
+我姑且说到这里罢.

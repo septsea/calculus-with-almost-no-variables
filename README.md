@@ -137,7 +137,7 @@ Code ---> Download ZIP
 - [Sarasa Mono SC](https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Sarasa-Gothic/LatestRelease/)
 - [XITS](https://ctan.org/pkg/xits)
 - [Fira Sans](https://ctan.org/pkg/fira)
-- [XITS Math]((https://ctan.org/pkg/xits))
+- [XITS Math](https://ctan.org/pkg/xits)
 - [TeX Gyre Termes Math](https://ctan.org/pkg/tex-gyre-math-termes)
 - [STIX Two Math](https://ctan.org/pkg/stix2-otf)
 

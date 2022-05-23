@@ -310,6 +310,12 @@
 % Insert sub-figures
 \usepackage{subcaption}
 
+% Make long tables.
+\usepackage{longtable}
+% Line break in a cell.
+\providecommand*{\makecell}[2][c]{%
+    \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
 % This package deals with arrays.
 % The following code makes it easier to input a version number
 % converging to 2pi.
