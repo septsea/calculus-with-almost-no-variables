@@ -1008,7 +1008,76 @@ left, center, right.
 且\gls{math}字体的数量太少,
 故我另开一节.
 
-欲修改\gls{math}公式的字体, 您需要包 \textsf{unicode-math}:
+欲修改\gls{math}字体, 您需要包 \textsf{unicode-math}:
 \begin{lstlisting}[language=TeX]
 \usepackage{unicode-math}
 \end{lstlisting}
+然后, 您就可以这么改字体:
+\begin{lstlisting}[language=TeX]
+\setmathfont{XITS Math}
+\end{lstlisting}
+其中 \verb`XITS Math` 是一个跟 XITS 配套的\gls{math}字体.
+
+事实上, 跟普通的字体比,
+开放源代码的\gls{math}字体的数量确实太少了.
+所以, 我才说, 不是每个人都需要改\gls{math}字体.
+我提二款\gls{math}字体
+whose name I can remember 罢
+(我居然不会用地道的\gls{chi}说
+``I want to mention two math fonts
+whose name I can remember'' 了).
+一款是 XITS Math, 跟 XITS 一样, 有较浓的 Times New Roman 风.
+另一款是 Fira Math, 是一套无衬线的\gls{math}字体%
+\footnote{大部分的\gls{math}字体都是带衬线的.
+    然而, 在一些场合 (如演示文稿),
+    无衬线的字体比带衬线的字体的显示效果更好.
+    在 Fira Math 前,
+    没有什么好的且自由的无衬线的\gls{math}字体.};
+搭配其与 Fira Sans, 效果很好.
+当然了, \gls{latex}的默认的字体
+(主要的: Latin Modern Roman;
+无衬线的: Latin Modern Sans;
+打字机的: Latin Modern Mono;
+\gls{math}的: Latin Modern Math)
+也不错.
+
+我的书使用如下的\gls{math}字体:
+\begin{lstlisting}[language=TeX]
+\setmathfont{XITS Math}[StylisticSet=8]
+\setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
+\setmathfont{STIX Two Math}[range={"2218-"2218}]
+\end{lstlisting}
+跟前面的 \verb`\set???!!!!font` 类似,
+\verb`\setmathfont` 也有可选参数.
+首行指定了主要的\gls{math}字体为 XITS Math,
+还要求采用编号为 8 的风格集;
+词行修改双线字母的字体为 TeX Gyre Termes Math;
+末行指定编号为 2218 (十进制: 8\,728)
+的字符的字体为 STIX Two Math.
+类似地, 不重要地,
+XITS Math 与 STIX Two Math
+都使用 SIL Open Font License (Version~1.1),
+而 TeX Gyre Termes Math
+使用 GUST Font License (Version~1.0).
+
+\subsection{Others}
+
+To be continued.
+
+\section{尾声}
+
+不得不说, 写本章需要很多的精力.
+
+写\gls{math}材料时, 我不需要关注太多:
+我可以较理性地表达\gls{math}知识
+(虽然这些知识挺低级).
+可是, 写\gls{latex}材料时, 我只有经验, 没有理论.
+毕竟, \gls{latex}论比\gls{math}难.
+我坚信, 若只是 ``会用而已'', 那么\gls{latex}较易;
+可是, 若要知其然, 且知其所以然,
+那么\gls{math}较易.
+毕竟, 教\gls{math}理论的人可比%
+教\gls{latex}理论的人多得多.
+我就不多说了.
+
+就这样罢.
