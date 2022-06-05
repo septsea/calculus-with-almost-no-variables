@@ -118,6 +118,10 @@
 % This is a package which includes a lot of logos about TeX.
 \usepackage{hologo}
 
+% This is a package which makes it possible
+% to typeset numbers correctly and easily
+\usepackage[group-minimum-digits=4]{siunitx}
+
 % These are packages which deal with mathematical formulae.
 \usepackage{amsmath}
 \usepackage{mathtools}
@@ -342,6 +346,12 @@
     \hfuzz .1\p@
     \vfuzz\hfuzz}
 \makeatother
+
+% Some xeCJK settings.
+\xeCJKsetup{%
+    xCJKecglue = true,%
+    CheckSingle = true,%
+}
 
 % These are modifications which are
 % to be inserted after \begin{document}
