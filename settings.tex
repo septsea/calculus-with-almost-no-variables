@@ -4,7 +4,7 @@
 % this uses fonts to be specified (hence fontset=none);
 % this uses the size of "小四" (hence zihao=-4);
 % the numbers of equations will be displayed in the inner side
-% (the left side on odd pages) (hence leqno)
+% (the left side on odd pages) (hence leqno).
 % this uses A4 paper.
 % Punctuation style: narrow some punctuation symbols.
 \documentclass[%
@@ -75,10 +75,10 @@
 \let\emph\relax
 \DeclareTextFontCommand{\emph}{\bfseries}
 
-% Add "pass" to retain the old page margin settings
+% Add "pass" to retain the old page margin settings.
 % \usepackage[pass]{geometry}
 
-% Allow easier imports
+% Allow easier imports.
 \usepackage{import}
 
 % Make aliases.
@@ -97,7 +97,7 @@
 % subsections, subsubsections etc.
 \xapptocmd{\mainmatter}{\setcounter{secnumdepth}{2}}{}{}
 % unnumbered sections, subsections, subsubsections etc.
-% (parts are still numbered)
+% (Parts are still numbered.)
 \xapptocmd{\backmatter}{\setcounter{secnumdepth}{0}}{}{}
 % Modify how margin notes look.
 \makeatletter
@@ -107,7 +107,7 @@
 \makeatother
 
 % This is a package which makes indices.
-% Load "imakeidx" (or "makeidx") before "hyperref"
+% Load "imakeidx" (or "makeidx") before "hyperref".
 \usepackage[quiet]{imakeidx}
 \makeindex[intoc]
 \makeindex[
@@ -120,7 +120,7 @@
 \usepackage{hologo}
 
 % This is a package which makes it possible
-% to typeset numbers correctly and easily
+% to typeset numbers correctly and easily.
 \usepackage[group-minimum-digits=4]{siunitx}
 
 % These are packages which deal with mathematical formulae.
@@ -135,7 +135,7 @@
     warnings-off={mathtools-colon,mathtools-overbracket}
 ]{unicode-math}
 \allowdisplaybreaks[3]
-% Standing-up-straight integral symbol (For XITS Math)
+% Standing-up-straight integral symbol (For XITS Math).
 \setmathfont{XITS Math}[StylisticSet=8]
 \setmathfont{TeX Gyre Termes Math}[range=bb/{latin,Latin}]
 \setmathfont{STIX Two Math}[range={"2218-"2218}]
@@ -234,12 +234,12 @@
 
 % These are packages which deal with hyperlinks.
 \usepackage[hidelinks,hyperindex,breaklinks]{hyperref}
-% Add hyperlinks to the table of contents
+% Add hyperlinks to the table of contents.
 \usepackage{bookmark}
-% partial=upright makes \partial stand up
+% partial=upright makes \partial stand up.
 
 % This package deals with footnotes.
-% Slightly modify the style of the footnotes
+% Slightly modify the style of the footnotes.
 \usepackage[perpage,multiple,symbol*]{footmisc}
 
 % This package deals with headers and footers.
@@ -309,10 +309,10 @@
 \renewcommand*{\lstlistingname}{码}
 \renewcommand*{\lstlistlistingname}{代码}
 
-% Insert figures
+% Insert figures.
 \usepackage{graphicx}
 \graphicspath{{images/}}
-% Insert sub-figures
+% Insert sub-figures.
 \usepackage{subcaption}
 
 % Make long tables.
@@ -336,7 +336,7 @@
 \makenoidxglossaries
 \input{data/glossary entries}
 \input{data/lores}
-% Enable to print all entries without even referring to them%
+% Enable to print all entries without even referring to them.
 \glsaddall
 
 % This is something between \fussy and \sloopy.
@@ -346,7 +346,7 @@
     \tolerance 5000%
     \hbadness 4000%
     \emergencystretch 1.5em%
-    \hfuzz .1\p@
+    \hfuzz .1\p@%
     \vfuzz\hfuzz}
 \makeatother
 
@@ -357,7 +357,7 @@
 }
 
 % These are modifications which are
-% to be inserted after \begin{document}
+% to be inserted after \begin{document}.
 \AtBeginDocument{
     \renewcommand*{\UrlFont}{\ttfamily}
 
