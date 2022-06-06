@@ -22,35 +22,36 @@
     UprightFont = * Light,
     BoldFont = * SemiBold,
     ItalicFont = * Light Italic,
-    BoldItalicFont = * SemiBold Italic,
+    BoldItalicFont = * SemiBold Italic
 ]
 \setmonofont{Sarasa Mono SC}[
     UprightFont = * Light,
     BoldFont = * Semibold,
     ItalicFont = * Light Italic,
-    BoldItalicFont = * Semibold Italic,
+    BoldItalicFont = * Semibold Italic
 ]
 \setCJKmainfont{Source Han Serif CN}[
     UprightFont = * Light,
     BoldFont = Sarasa Mono SC Semibold,
     ItalicFont = Sarasa Mono SC Light Italic,
-    BoldItalicFont = Sarasa Mono SC Semibold Italic,
+    BoldItalicFont = Sarasa Mono SC Semibold Italic
 ]
 \setCJKsansfont{Sarasa Mono SC}[
     UprightFont = * Light,
     BoldFont = * Semibold,
     ItalicFont = * Light Italic,
-    BoldItalicFont = * Semibold Italic,
+    BoldItalicFont = * Semibold Italic
 ]
 \setCJKmonofont{Sarasa Mono SC}[
     UprightFont = * Light,
     BoldFont = * Semibold,
     ItalicFont = * Light Italic,
-    BoldItalicFont = * Semibold Italic,
+    BoldItalicFont = * Semibold Italic
 ]
+
 % If you do not want to use external fonts mentioned above,
 % consider commenting lines 27--50
-% and uncommenting lines 54--71.
+% and uncommenting lines 55--72.
 % \setCJKmainfont{FandolSong}[
 %     UprightFont = *,
 %     BoldFont = FandolHei,
@@ -262,8 +263,10 @@
 % If a chapter has no section,
 % mark the header on the odd pages as well.
 % Put the definition after fancyhdr.
-\renewcommand{\chaptermark}[1]{%
-    \markboth{\CTEXifname{\CTEXthechapter\hspace{\ccwd}}{}#1}{\CTEXifname{\CTEXthechapter\hspace{\ccwd}}{}#1}%
+\renewcommand*{\chaptermark}[1]{%
+    \markboth{\CTEXifname{\CTEXthechapter\hspace{\ccwd}}{%
+        }#1}{\CTEXifname{\CTEXthechapter\hspace{\ccwd}}{%
+        }#1}%
 }
 
 % No page numbers or headers or footers on empty pages.
@@ -359,11 +362,11 @@
     \renewcommand*{\UrlFont}{\ttfamily}
 
     \let\umathpi\pi
-    \renewcommand*\pi{\symup\umathpi}
+    \renewcommand*{\pi}{\symup\umathpi}
     \let\umathiota\iota
-    \renewcommand*\iota{\symup\umathiota}
+    \renewcommand*{\iota}{\symup\umathiota}
 
-    \renewcommand*\leq{\leqslant}
-    \renewcommand*\geq{\geqslant}
-    \renewcommand*\mathellipsis{\cdots}
+    \renewcommand*{\leq}{\leqslant}
+    \renewcommand*{\geq}{\geqslant}
+    \renewcommand*{\mathellipsis}{\cdots}
 }
