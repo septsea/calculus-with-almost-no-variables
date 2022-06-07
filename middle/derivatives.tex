@@ -46,27 +46,36 @@
     设 $I$ 为区间.
     设 $f$ 为 $I$ 上的函数.
     设 $x \in I$.
+    设存在 $x$ 的邻域 $N_0$, 与 $N_0 \cap I$ 上的函数 $F_0$, 使
+    \begin{align*}
+        f = f[x] + (\iota - x) F_0,
+    \end{align*}
+    且 $F_0$ 于 $x$ 连续.
     设存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F_1$, 使
     \begin{align*}
         f = f[x] + (\iota - x) F_1,
     \end{align*}
     且 $F_1$ 于 $x$ 连续.
-    设存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $F_2$, 使
-    \begin{align*}
-        f = f[x] + (\iota - x) F_2,
-    \end{align*}
-    且 $F_2$ 于 $x$ 连续.
-    则 $F_1 [x] = F_2 [x]$.
+    则 $F_0 [x] = F_1 [x]$.
     也就是说, $f$ 于 $x$ 的导数, 若存在, 则唯一.
 \end{theorem}
 
 \begin{proof}
     用反证法.
-    设 $F_1 [x] \neq F_2 [x]$,
-    则 $\varepsilon = |F_1 [x] - F_2 [x]|$ 是正数.
+    设 $F_0 [x] \neq F_1 [x]$,
+    则 $\varepsilon = |F_0 [x] - F_1 [x]|$ 是正数.
     我们要由此推出矛盾.
 
-    因为 $N_1 \cap I$ 是区间, 且 $F_1$ 于 $x$ 连续,
+    因为 $N_0 \cap I$ 是区间, 且 $F_0$ 于 $x$ 连续,
+    故存在正数 $\delta_0$,
+    使 $0 < |t - x| < \delta_0$ 且 $t \in I$ 时,
+    必有 $|F_0 [t] - F_0 [x]| < {\varepsilon}/{2}$,
+    即
+    \begin{align*}
+        \Bigg| \frac{f[t] - f[x]}{t - x} - F_0 [x] \Bigg| < \frac{\varepsilon}{2}.
+    \end{align*}
+    因为 $N_1 \cap I$ 是区间,
+    且 $F_1$ 于 $x$ 连续,
     故存在正数 $\delta_1$,
     使 $0 < |t - x| < \delta_1$ 且 $t \in I$ 时,
     必有 $|F_1 [t] - F_1 [x]| < {\varepsilon}/{2}$,
@@ -74,22 +83,13 @@
     \begin{align*}
         \Bigg| \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg| < \frac{\varepsilon}{2}.
     \end{align*}
-    因为 $N_2 \cap I$ 是区间,
-    且 $F_2$ 于 $x$ 连续,
-    故存在正数 $\delta_2$,
-    使 $0 < |t - x| < \delta_2$ 且 $t \in I$ 时,
-    必有 $|F_2 [t] - F_2 [x]| < {\varepsilon}/{2}$,
-    即
-    \begin{align*}
-        \Bigg| \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg| < \frac{\varepsilon}{2}.
-    \end{align*}
-    取 $\delta$ 为 $\delta_1$ 与 $\delta_2$ 中的较小者.
+    取 $\delta$ 为 $\delta_0$ 与 $\delta_1$ 中的较小者.
     则 $0 < |t - x| < \delta$ 且 $t \in I$ 时,
     \begin{align*}
         \varepsilon
-        = {}    & |F_1 [x] - F_2 [x]|                                                                                                 \\
-        = {}    & \Bigg| \Bigg( \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg) - \Bigg( \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg) \Bigg| \\
-        \leq {} & \Bigg| \frac{f[t] - f[x]}{t - x} - F_2 [x] \Bigg| + \Bigg| \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg|               \\
+        = {}    & |F_0 [x] - F_1 [x]|                                                                                                 \\
+        = {}    & \Bigg| \Bigg( \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg) - \Bigg( \frac{f[t] - f[x]}{t - x} - F_0 [x] \Bigg) \Bigg| \\
+        \leq {} & \Bigg| \frac{f[t] - f[x]}{t - x} - F_1 [x] \Bigg| + \Bigg| \frac{f[t] - f[x]}{t - x} - F_0 [x] \Bigg|               \\
         < {}    & \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
     \end{align*}
     这是矛盾.
@@ -159,7 +159,7 @@
 
 \begin{proof}
     因为 $f$ 于 $x$ 可导,
-    故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$,
+    故存在 $x$ 的邻域 $N_0$, 与 $N_0 \cap I$ 上的函数 $F$,
     使
     \begin{align*}
         f = f[x] + (\iota - x)F,
@@ -167,13 +167,13 @@
     且 $F$ 于 $x$ 连续.
     类似地,
     因为 $g$ 于 $x$ 可导,
-    故存在 $x$ 的邻域 $N_2$, 与 $N_2 \cap I$ 上的函数 $G$,
+    故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $G$,
     使
     \begin{align*}
         g = g[x] + (\iota - x)G,
     \end{align*}
     且 $G$ 于 $x$ 连续.
-    取 $N = N_1 \cap N_2$, 则 $N$ 也是 $x$ 的邻域.
+    取 $N = N_0 \cap N_1$, 则 $N$ 也是 $x$ 的邻域.
     这里, 为方便, 无妨滥用记号,
     视 $F$, $G$ 分别是 $F$, $G$ 在 $N \cap I$ 上的限制.
     此外, 注意到,
@@ -294,7 +294,7 @@
     且 $G$ 于 $f[x]$ 连续;
     同时, $G[f[x]]$ 即为 $g$ 于 $f[x]$ 的导数.
     因为 $f$ 于 $x$ 可导,
-    故存在 $x$ 的邻域 $N_1$, 与 $N_1 \cap I$ 上的函数 $F$,
+    故存在 $x$ 的邻域 $N_0$, 与 $N_0 \cap I$ 上的函数 $F$,
     使
     \begin{align*}
         f = f[x] + (\iota - x)F,
@@ -304,11 +304,11 @@
 
     因为 $f$ 亦于 $x$ 连续,
     故对 $f[x]$ 的邻域 $M$ 来说,
-    必存在 $x$ 的邻域 $N_2$, 使 $f[N_2 \cap I] \subset M$;
+    必存在 $x$ 的邻域 $N_1$, 使 $f[N_1 \cap I] \subset M$;
     又因为 $f$ 的陪域为 $J$,
-    故 $f[N_2 \cap I] \subset J$.
-    所以, $f[N_2 \cap I] \subset M \cap J$.
-    取 $N = N_1 \cap N_2$, 则 $N$ 也是 $x$ 的邻域,
+    故 $f[N_1 \cap I] \subset J$.
+    所以, $f[N_1 \cap I] \subset M \cap J$.
+    取 $N = N_0 \cap N_1$, 则 $N$ 也是 $x$ 的邻域,
     且 $f[N \cap I] \subset M \cap J$.
     为方便, 无妨滥用记号,
     视 $F$, $f$ 分别是 $F$, $f$ 在 $N \cap I$ 上的限制.
@@ -357,17 +357,17 @@
 
     再看充分性.
     因为 $f$ 于 $f^{[-1]} [y]$ 可导,
-    故存在 $f^{[-1]} [y]$ 的邻域 $N_1$,
-    与 $N_1 \cap I$ 上的函数 $F$, 使
+    故存在 $f^{[-1]} [y]$ 的邻域 $N_0$,
+    与 $N_0 \cap I$ 上的函数 $F$, 使
     \begin{align*}
         f = f[f^{[-1]} [y]] + (\iota - f^{[-1]} [y])F,
     \end{align*}
     且 $F$ 于 $f^{[-1]} [y]$ 连续.
     依假定, $f$ 于 $f^{[-1]} [y]$ 的导数
     $F[f^{[-1]} [y]] \neq 0$.
-    所以, 存在 $f^{[-1]} [y]$ 的邻域 $N_2$,
-    使在 $N_2 \cap (N_1 \cap I)$ 上, $F$ 不取零值.
-    取 $N = N_2 \cap N_1$,
+    所以, 存在 $f^{[-1]} [y]$ 的邻域 $N_1$,
+    使在 $N_1 \cap (N_0 \cap I)$ 上, $F$ 不取零值.
+    取 $N = N_1 \cap N_0$,
     则 $N$ 也是 $f^{[-1]} [y]$ 的邻域,
     且在 $N \cap I$ 上, 不但 $F$ 不取零值, 且
     \begin{align*}

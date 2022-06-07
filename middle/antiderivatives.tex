@@ -29,13 +29,13 @@
 
 \begin{theorem}
     设 $I$ 为区间.
-    设 $f_1$, $f_2$ 为 $I$ 上的可导函数.
-    若 $\mathrm{D}{f_1} = \mathrm{D}{f_2}$,
-    则存在常函数 $c$, 使 $f_2 = f_1 + c$.
+    设 $f_0$, $f_1$ 为 $I$ 上的可导函数.
+    若 $\mathrm{D}{f_0} = \mathrm{D}{f_1}$,
+    则存在常函数 $c$, 使 $f_1 = f_0 + c$.
 \end{theorem}
 
 \begin{proof}
-    考虑 $h = f_2 - f_1$.
+    考虑 $h = f_1 - f_0$.
     那么 $\mathrm{D}h = 0$.
     从而 $h$ 是常函数.
 \end{proof}
@@ -238,9 +238,9 @@
 
     任取 $u + v \in B$,
     其中 $u \in \int {f}$, 且 $v \in \int {g}$.
-    那么存在常函数 $d_1$, $d_2$ 使
-    $u = F + d_1$, $v = G + d_2$.
-    所以 $u + v = F + G + (d_1 + d_2)$.
+    那么存在常函数 $d_0$, $d_1$ 使
+    $u = F + d_0$, $v = G + d_1$.
+    所以 $u + v = F + G + (d_0 + d_1)$.
     二个常函数的和仍为常函数, 故 $u + v \in A$.
     这说明, $A \supset B$.
 
@@ -467,8 +467,8 @@ $\mathbb{R}_{P}$.
 
 \begin{proof}
     任取 $f \in \mathbb{R}_{P} + \mathbb{R}_{P}$.
-    那么, 存在 $f_1$, $f_2 \in \mathbb{R}_{P}$,
-    使 $f = f_1 + f_2$.
+    那么, 存在 $f_0$, $f_1 \in \mathbb{R}_{P}$,
+    使 $f = f_0 + f_1$.
     因为二个常函数的和还是常函数,
     故 $f \in \mathbb{R}_{P}$.
     反过来, 任取 $g \in \mathbb{R}_{P}$.
@@ -723,22 +723,22 @@ $\mathbb{R}_{P}$.
         = {} & (f + g) + \mathbb{R}.
     \end{align*}
 
-    取 $f_1 \in k(f + \mathbb{R})$.
+    取 $f_0 \in k(f + \mathbb{R})$.
     那么, 存在 $c \in \mathbb{R}$ 使
-    $f_1 = k(f + c) = kf + kc \in kf + \mathbb{R}$.
-    取 $f_2 \in kf + \mathbb{R}$.
-    那么, 存在 $d \in \mathbb{R}$ 使 $f_2 = kf + d$.
+    $f_0 = k(f + c) = kf + kc \in kf + \mathbb{R}$.
+    取 $f_1 \in kf + \mathbb{R}$.
+    那么, 存在 $d \in \mathbb{R}$ 使 $f_1 = kf + d$.
     因为 $k \neq 0$,
-    故 $f_2 = kf + kk^{-1}d = k(f + k^{-1}d) \in k(f + \mathbb{R})$.
+    故 $f_1 = kf + kk^{-1}d = k(f + k^{-1}d) \in k(f + \mathbb{R})$.
 
     最后一个更容易了.
-    取 $f_1 \in (f + \mathbb{R}) \circ h$.
+    取 $f_0 \in (f + \mathbb{R}) \circ h$.
     那么, 存在 $c \in \mathbb{R}$ 使
-    $f_1 = (f + c) \circ h = f \circ h + c \circ h = f \circ h + c \in f \circ h + \mathbb{R}$.
-    取 $f_2 \in f \circ h + \mathbb{R}$.
-    那么, 存在 $d$ 使 $f_2 = f \circ h + d$.
+    $f_0 = (f + c) \circ h = f \circ h + c \circ h = f \circ h + c \in f \circ h + \mathbb{R}$.
+    取 $f_1 \in f \circ h + \mathbb{R}$.
+    那么, 存在 $d$ 使 $f_1 = f \circ h + d$.
     因为 $d = d \circ h$,
-    故 $f_2 = (f + d) \circ h \in (f + \mathbb{R}) \circ h$.
+    故 $f_1 = (f + d) \circ h \in (f + \mathbb{R}) \circ h$.
 \end{proof}
 
 \section{不定积分的演算}

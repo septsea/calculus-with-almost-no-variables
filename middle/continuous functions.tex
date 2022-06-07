@@ -75,16 +75,16 @@ $|t - x| < \delta$ 且 $t \in A$ 时,
     以 $\ast$ 为 $+$ 或 $-$ 时为例.
     任取 $\varepsilon > 0$.
     这样, 因为 $f$ 于 $x$ 连续,
-    故存在正数 $\delta_1$ 使
+    故存在正数 $\delta_0$ 使
     \begin{align*}
-        \text{$|t - x| < \delta_1$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{\varepsilon}{2}.
+        \text{$|t - x| < \delta_0$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{\varepsilon}{2}.
     \end{align*}
     因为 $g$ 于 $x$ 连续,
-    故存在正数 $\delta_2$ 使
+    故存在正数 $\delta_1$ 使
     \begin{align*}
-        \text{$|t - x| < \delta_2$ 且 $t \in A$} \implies |g[t] - g[x]| < \frac{\varepsilon}{2}.
+        \text{$|t - x| < \delta_1$ 且 $t \in A$} \implies |g[t] - g[x]| < \frac{\varepsilon}{2}.
     \end{align*}
-    取 $\delta$ 为 $\delta_1$, $\delta_2$ 的较小者.
+    取 $\delta$ 为 $\delta_0$, $\delta_1$ 的较小者.
     这样, $|t - x| < \delta$ 且 $t \in A$ 时,
     \begin{align*}
         {|(f \ast g)[t] - (f \ast g)[x]|}
@@ -109,24 +109,24 @@ $|t - x| < \delta$ 且 $t \in A$ 时,
     跟
     $f[x](g[t] - g[x])$
     的绝对值都不超过 $\frac{\varepsilon}{2}$ 就好.
-    首先, 存在正数 $\delta_3$ 使
+    首先, 存在正数 $\delta_2$ 使
     \begin{align*}
-        \text{$|t - x| < \delta_3$ 且 $t \in A$} \implies |g[t] - g[x]| < \frac{\varepsilon}{2(1 + |f[x]|)}.
+        \text{$|t - x| < \delta_2$ 且 $t \in A$} \implies |g[t] - g[x]| < \frac{\varepsilon}{2(1 + |f[x]|)}.
     \end{align*}
-    其次, 存在正数 $\delta_4$ 使
+    其次, 存在正数 $\delta_3$ 使
     \begin{align*}
-        \text{$|t - x| < \delta_4$ 且 $t \in A$} \implies |g[t] - g[x]| < 1.
+        \text{$|t - x| < \delta_3$ 且 $t \in A$} \implies |g[t] - g[x]| < 1.
     \end{align*}
-    由此可知, $|t - x| < \delta_4$ 且 $t \in A$ 时,
+    由此可知, $|t - x| < \delta_3$ 且 $t \in A$ 时,
     \begin{align*}
         |g[t]| = |g[x] + (g[t] - g[x])| < |g[x]| + 1.
     \end{align*}
-    最后, 存在正数 $\delta_5$ 使
+    最后, 存在正数 $\delta_4$ 使
     \begin{align*}
-        \text{$|t - x| < \delta_5$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{\varepsilon}{2(1 + |g[x]|)}.
+        \text{$|t - x| < \delta_4$ 且 $t \in A$} \implies |f[t] - f[x]| < \frac{\varepsilon}{2(1 + |g[x]|)}.
     \end{align*}
     取 $\delta$ 为
-    $\delta_3$, $\delta_4$, $\delta_5$ 的最小者.
+    $\delta_2$, $\delta_3$, $\delta_4$ 的最小者.
     这样, $|t - x| < \delta$ 且 $t \in A$ 时,
     \begin{align*}
                 & |(fg)[t] - (fg)[x]|                                                                                   \\
