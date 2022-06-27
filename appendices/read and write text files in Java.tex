@@ -46,9 +46,9 @@ public static String read(String txtFile,
 \end{lstlisting}
 
 这里, 我姑且提一提 \lstinline[language=Java]`try` 后的圆括号.
-在括号里, 我们可追加一些 ``需要被关闭的东西''
+在括号里, 我们可追加一些 ``需要关闭的东西''
 (具体地, 就是有 \lstinline[language=Java]`close()` 方法的对象),
-它们可被自动地关闭.
+使\gls{java}可自动地关闭它们.
 曾经, 我们可能要这么写代码:
 \begin{lstlisting}[frame=single,language=Java]
 public static String read(String txtFile,

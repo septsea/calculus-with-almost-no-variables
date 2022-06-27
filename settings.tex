@@ -236,7 +236,6 @@
 \usepackage[hidelinks,hyperindex,breaklinks]{hyperref}
 % Add hyperlinks to the table of contents.
 \usepackage{bookmark}
-% partial=upright makes \partial stand up.
 
 % This package deals with footnotes.
 % Slightly modify the style of the footnotes.
@@ -360,7 +359,10 @@
 
 % These are modifications which are
 % to be inserted after \begin{document}.
-\AtBeginDocument{
+\AtBeginDocument{%
+    % A magic that kills as many overfull lines as possible.
+    \midsloppy
+
     \renewcommand*{\UrlFont}{\ttfamily}
 
     \let\umathpi\pi

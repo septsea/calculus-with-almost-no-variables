@@ -1,5 +1,10 @@
 # Calculus with almost no variables
 
+**本书已死.**
+**有心无力.**
+
+---
+
 ## 术语表
 
 |                |                               |
@@ -168,3 +173,5 @@ Code ---> Download ZIP
 ---
 
 纳纳米
+
+2022 年 6 月 28 日
